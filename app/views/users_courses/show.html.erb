@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/courses/new"><button class="btn btn-default">Add A Course</button></a>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><%= @user.name %>'s Courses</div>
+                <div class="panel-body">
+
+                    <% @user_courses.each do |user_course| %>
+                        <div class="panel col-md-6">
+                            <div class="panel-body">
+                                <div class="col-sm-11">
+                                    <p><%= user_course.course.subject %> <%= user_course.course.number %> - <%= user_course.course.credit %></p>
+                                    <p><%= user_course.course.title %></p>
+                                </div>
+                                <%= link_to users_course_path(:id => user_course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-1" do %>
+                                    <i class="fa fa-times"></i>
+                                <% end %>
+
+                            </div>
+                        </div>
+                    <% end %>
+                
+                </div>
+            </div>
+            <div class="panel-footer">Total Hours: <%= @total_hours %></div>
+        </div>
+    </div>
+</div>

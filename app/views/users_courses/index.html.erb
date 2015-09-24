@@ -1,0 +1,32 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag "chosen/chosen" %>
+    <%= stylesheet_link_tag "chosen/chosen.min" %>
+<% end %>
+
+<% content_for :script do %>
+    <%= javascript_include_tag "chosen/chosen.jquery" %>
+    <%= javascript_include_tag "chosen/chosen.jquery.min" %>
+    <%= javascript_include_tag "users_courses/main" %>
+<% end %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/users_courses/new"><button class="btn btn-default">Add A User's Course</button></a>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">User's Courses</div>
+                <div class="panel-body">
+                    
+                <%= form_tag(users_course_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                    <p class="col-sm-2">Find By Name</p>
+                        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "John Doe" %>
+                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

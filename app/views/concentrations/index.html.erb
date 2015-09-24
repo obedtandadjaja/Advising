@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/concentrations/new"><button class="btn btn-default">Add A Concentration</button></a>
+            <button class="btn btn-default">Delete A Concentration</button>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Concentrations</div>
+                <div class="panel-body">
+
+                
+                    <% @majors.each do |major| %>
+                        <div class="panel panel-default col-md-12" style="padding-left: 0px; padding-right: 0px;">
+                            <div class="panel-heading">
+                                <%= major.name %>
+                            </div>
+                            <div class="panel-body" class="col-sm-12">
+                            <% major.concentration.each do |concentration| %>
+                                <div class="row">
+                                <p class="col-sm-10"><%= concentration.name %></p>
+                                <%= link_to concentration_path(:id => concentration.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                    <i class="fa fa-times"></i>
+                                <% end %>
+                                </div>
+                            <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/concentrations_courses/new"><button class="btn btn-default">Add A Concentration's Course</button></a>
+            <button class="btn btn-default">Delete A Concentration's Course</button>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Concentration's Courses</div>
+                <div class="panel-body">
+
+                    <% @concentrations_courses.each do |concentrations_course| %>
+                        <div class="panel col-md-6">
+                            <div class="panel-body">
+                                <div class="col-sm-11">
+                                    <p><%= concentrations_course.course.subject %> <%= concentrations_course.course.number %> - <%= concentrations_course.course.credit %></p>
+                                    <p><%= concentrations_course.course.title %></p>
+                                    <p>Concentration: <%= concentrations_course.concentration.name %></p>
+                                </div>
+                                <%= link_to concentrations_course_path(:id => concentrations_course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-1" do %>
+                                    <i class="fa fa-times"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
