@@ -8,7 +8,7 @@ class CreateCourses < ActiveRecord::Migration
     	t.date :date_offered
     	t.integer :crn
 
-      	t.timestamps null: false
+      t.timestamps null: false
     end
   end
 end

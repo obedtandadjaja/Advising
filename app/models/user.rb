@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 	has_many :users_course
+	has_many :course, through: :users_course
 
   	has_secure_password
 

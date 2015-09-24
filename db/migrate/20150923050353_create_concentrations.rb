@@ -3,7 +3,7 @@ class CreateConcentrations < ActiveRecord::Migration
     create_table :concentrations do |t|
     	t.string :name
     	t.integer :total_hours
-    	t.integer :major_id
+    	t.references :major
       	t.timestamps null: false
     end
   end

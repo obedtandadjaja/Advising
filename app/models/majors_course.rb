@@ -1,4 +1,4 @@
 class MajorsCourse < ActiveRecord::Base
 	belongs_to :major
-	has_many :course
+	belongs_to :course
 end

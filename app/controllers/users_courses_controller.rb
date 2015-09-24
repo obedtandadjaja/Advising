@@ -1,14 +1,10 @@
 class UsersCoursesController < ApplicationController
 
 	def index
-		if params[:search]
-	      @user = User.search(params[:search])
-	    end
+		@users = User.courses
 	end
 
 	def show
-		@user = User.find(params[:id])
-		@user_courses = UsersCourse.joins(:course).where(user_id: params[:id])
 	end
 
 	def new
