@@ -2,6 +2,8 @@
 
 Email me for any errors: obed.tandadjaja@gmail.com or obed.tandadjaja@covenant.edu
 
+Visit the Github wiki of this project for coding guidelines
+
 How to get the application running:
 
 * Ruby version - make sure you have the newest version of ruby
