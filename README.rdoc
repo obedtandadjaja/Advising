@@ -1,28 +1,42 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Email me for any errors: obed.tandadjaja@gmail.com or obed.tandadjaja@covenant.edu
 
-Things you may want to cover:
+How to get the application running:
 
-* Ruby version
+* Ruby version - make sure you have the newest version of ruby
 
-* System dependencies
+* System dependencies - as long as you have a running laptop
 
-* Configuration
+* Configuration - none at this moment, the app is going to run under development state (ENV=develop)
 
-* Database creation
+* Database creation + initialization:
+    For database creation, do the following:
+    - rake db:drop -- drops the current database if exists
+    - rake db:create -- creates the database under the name of Advising_develop because it is in development state
+    - rake db:migrate -- migrates the tables
+    - rake db:seed -- seeds the tables; right now the only seed is the test user (email: test@test.com, password: testing). Later on we need to seed in the courses, majors, minors, distributions and their connection to each other.
 
-* Database initialization
+    To access the database simply type "mysql -uroot" in the command line. However, make sure that mysql is installed on your computer to do this.
+    -> once in mysql, type "use Advising_development;" to set a default database to be "operated" on
+    -> type "exit" to exit mysql
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+    To run the RoR application, do the following:
+    - go to the directory of the project
+    - bundle install
+    - to start the RoR server, simply type: "rails server"
+    - look at the port listed on your command line and go to your browser, type in: "http://localhost:_port_/" - replace _port_ with the port listed in your command line
+    
+* Other useful commands
+    To know all the routes of the app
+    - rake routes
+    
+    To generate a model
+    - rails generate model model_name
+    
+    To generate a controller
+    - rails generate controller controller_name
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
