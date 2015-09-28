@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923050353) do
+ActiveRecord::Schema.define(version: 20150925030537) do
 
   create_table "concentrations", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -66,26 +66,60 @@ ActiveRecord::Schema.define(version: 20150923050353) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "minors", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "total_hours", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "minors_courses", force: :cascade do |t|
+    t.integer  "minor_id",   limit: 4
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.string   "email",            limit: 255
-    t.string   "password_digest",  limit: 255
-    t.integer  "enrollment_time",  limit: 4
-    t.integer  "major_id",         limit: 4
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.integer  "enrollment_time", limit: 4
+    t.integer  "banner_id",       limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "users_concentrations", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
     t.integer  "concentration_id", limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users_courses", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "course_id",  limit: 4
     t.date     "taken_on"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "users_majors", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "major_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "users_minors", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "minor_id",   limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

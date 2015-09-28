@@ -22,6 +22,25 @@ class MajorsController < ApplicationController
       	redirect_to '/majors'
 	end
 
+	def show
+		@major = Major.find(params[:id])
+	end
+
+	def edit
+		@major = Major.find(params[:id])
+	end
+
+	def update
+		@major = Major.find(params[:id])
+
+	    if @major.update_attributes(major_params)
+
+	      redirect_to :action => 'show', :id => @major
+
+	    end
+	end
+
+	private
 	def major_params
 		params.require(:major).permit(:name, :total_hours)
 	end

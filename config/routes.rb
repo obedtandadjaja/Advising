@@ -11,8 +11,6 @@ Rails.application.routes.draw do
 
   # get the view for the sign up
   get '/signup' => 'users#new'
-  # post method of the sign up
-  post '/users' => 'users#create'
 
   # get the view of welcome
   get '/welcome' => 'welcome#index'
@@ -21,9 +19,17 @@ Rails.application.routes.draw do
 
   resources :courses
   resources :majors
+  resources :minors
   resources :distributions
   resources :concentrations
   resources :users_courses
   resources :concentrations_courses
+  resources :distributions_courses
+  resources :majors_courses
+  resources :users_majors
+  resources :users_minors
+  resources :users_concentrations
+  resources :minors_courses
+  resources :users
   
 end

@@ -26,4 +26,22 @@ class DistributionsController < ApplicationController
 		params.require(:distribution).permit(:title)
 	end
 
+	def show
+		@distribution = Distribution.find(params[:id])
+	end
+
+	def edit
+		@distribution = Distribution.find(params[:id])
+	end
+
+	def update
+		@distribution = Distribution.find(params[:id])
+
+	    if @distribution.update_attributes(distribution_params)
+
+	      redirect_to :action => 'show', :id => @distribution
+
+	    end
+	end
+
 end

@@ -1,10 +1,16 @@
 class UsersCoursesController < ApplicationController
 
 	def index
-		@users = User.courses
+		@users = User.all
 	end
 
 	def show
+		@user = User.find(params[:id])
+
+		@total_hours = 0
+		@user.course.each do |course|
+			@total_hours += course.credit
+		end
 	end
 
 	def new
@@ -21,8 +27,14 @@ class UsersCoursesController < ApplicationController
 	end
 
 	def destroy
-		UsersCourse.find(params[:id]).destroy
-      	redirect_to '/users_courses/[:id]'
+		@user = User.find(params[:user_id])
+		@user_course = @user.course.find(params[:id])
+		
+		if @user_course
+			@user.course.delete(@user_course)
+		end
+
+      	redirect_to '/users_courses/'+params[:user_id]
 	end
 
 	def users_course_params

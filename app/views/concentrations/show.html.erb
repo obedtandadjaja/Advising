@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add A Concentration</div>
+                <div class="panel-body">
+
+                        <div class="col-md-12">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-8">
+                                <%= @concentration.name %>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="col-md-4 control-label">Total Hours</label>
+                            <div class="col-md-8">
+                                <%= @concentration.total_hours %>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="col-md-4 control-label">Major</label>
+                            <div class="col-md-8">
+                                <% if @concentration.major %>
+                                    <p><%= @concentration.major.name %></p>
+                                <% else %>
+                                    <p>Not Identified</p>
+                                <% end %>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-md-12">
+                            <div class="pull-right">
+                                <%= link_to "Edit Concentration", controller: "concentrations", action: "edit", id: @concentration.id, :class => "col-sm-2" %>
+                            </div>
+                        </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

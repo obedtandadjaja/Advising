@@ -5,8 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.integer :enrollment_time
-      t.references :major
-      t.references :concentration
+      t.integer :banner_id
 
       t.timestamps null: false
     end

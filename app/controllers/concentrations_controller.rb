@@ -1,8 +1,7 @@
 class ConcentrationsController < ApplicationController
 
 	def index
-		# @majors = Major.joins("LEFT OUTER JOIN concentrations ON concentrations.major_id = majors.id")
-		@majors = Major.joins(:concentration).group("majors.id")
+		@concentrations = Concentration.all
 	end
 
 	def new
@@ -23,6 +22,26 @@ class ConcentrationsController < ApplicationController
       	redirect_to '/concentrations'
 	end
 
+	def show
+		@concentration = Concentration.find(params[:id])
+	end
+
+	def edit
+		@concentration = Concentration.find(params[:id])
+		@major_id = @concentration.major_id
+	end
+
+	def update
+		@concentration = Concentration.find(params[:id])
+
+	    if @concentration.update_attributes(concentration_params)
+
+	      redirect_to :action => 'show', :id => @concentration
+
+	    end
+	end
+
+	private
 	def concentration_params
 		params.require(:concentration).permit(:name, :total_hours, :major_id)
 	end

@@ -1,7 +1,7 @@
 class ConcentrationsCoursesController < ApplicationController
 
 	def index
-		@concentrations_courses = ConcentrationsCourse.includes(:concentration, :course)
+		@concentrations = Concentration.all
 	end
 
 	def new

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add A Distribution</div>
+                <div class="panel-body">
+
+                        <div class="col-md-12">
+                            <label class="col-md-4 control-label">Title</label>
+                            <div class="col-md-8">
+                                <%= @distribution.title %>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-md-12">
+                            <div class="pull-right">
+                                <%= link_to "Edit Distribution", controller: "distributions", action: "edit", id: @distribution.id, :class => "col-sm-2" %>
+                            </div>
+                        </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

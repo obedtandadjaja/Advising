@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/users_majors/new"><button class="btn btn-default">Add A Major</button></a>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><%= @user.name %>'s Majors</div>
+                <div class="panel-body">
+                    <% @user.major.each do |user_major| %>
+                        <div class="panel panel-default col-md-4">
+                            <div class="panel-body">
+                                <div class="col-sm-10">
+                                    <p><%= user_major.name %></p>
+                                </div>
+                                <%= link_to users_major_path(:user_id => @user.id, :id => user_major.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                    <i class="fa fa-times"></i>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
