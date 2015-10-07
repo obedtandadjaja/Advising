@@ -1,7 +1,84 @@
-<div class="col-md-12 text-center">
-	<h1>
-		Sorry! Page Under Construction!
-		<br/>
-		Advising Web App Coming Soon!
-	</h1>
+<!-- app/views/welcome/index.html.erb -->
+
+<% content_for :script do %>
+    <%= javascript_include_tag "welcome/index/" %>
+<% end %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">Plan</div>
+                <div class="panel-body">
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                        <div class="panel-heading">Freshman Fall</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                        <div class="panel-heading">Freshman Spring</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                        <div class="panel-heading">Sophomore Fall</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
+                        <div class="panel-heading">Sophomore Spring</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
+                        <div class="panel-heading">Junior Fall</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
+                        <div class="panel-heading">Junior Spring</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
+                        <div class="panel-heading">Senior Fall</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
+                        <div class="panel-heading">Senior Spring</div>
+                        <div class="panel-body board"></div>
+                        <div class="panel-footer text-right">Total Hours:</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">Courses To Take</div>
+                <div class="panel-body">
+                    <% @distributions.each do |distribution| %>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-target="#distribution_<%= distribution.id %>">
+                                    <%= distribution.title %> Distribution
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
+                                <div class="panel-body">
+                                    <% distribution.course.each do |course| %>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
+                                            <div class="panel-body" style="padding: 10px 0 10px 0">
+                                                <p class="col-md-10"><%= course.title %></p>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
