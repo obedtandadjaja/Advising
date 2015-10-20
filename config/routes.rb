@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/home' => 'home#index'
 
+  put '/advising_ajax/:id' => 'welcome#advising_ajax'
+
   resources :courses
   resources :majors
   resources :minors

@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+
+
 	function handleDragStart(e)
 	{
 		this.style.opacity = '0.7';
@@ -24,40 +26,65 @@ $(document).ready(function()
 
 	function handleDrop(e)
 	{
-		if (e.stopPropagation) e.stopPropagation();
-	    var element = document.getElementById(e.dataTransfer.getData('Text'));
-        e.target.appendChild(element);
-        e.target.classList.remove('over');
-        e.preventDefault();
-
-        $.ajax({
-		    url: '/images/8',
-		    type: 'PUT',
-		    data: { course: course_id },
-		    success: function (response) {
-		    },
-		    error: function (response) {
-		    }
-		});
-
-	    return false;
+		if(e.stopPropagation) e.stopPropagation();
+		if(e.target.getAttribute('class') == "panel-body board")
+		{
+		    var element = document.getElementById(e.dataTransfer.getData('Text'));
+	        e.target.appendChild(element);
+	        var id = e.dataTransfer.getData('Text');
+	        $.ajax({
+			    url: '/advising_ajax/' + id,
+			    type: 'PUT',
+			    data: { course: id },
+			    dataType: "json",
+			    success: function (response) {
+			    	console.log("Success");
+			    },
+			    error: function (response) {
+			    	console.log("Failed");
+			    }
+			});
+    	}
+    	else if(e.target.getAttribute('class') == "panel-body")
+    	{
+    		var element = document.getElementById(e.dataTransfer.getData('Text'));
+	        e.target.appendChild(element);
+    	}
+    	e.preventDefault();
+    	e.target.classList.remove('over');
+	    return true;
 	}
 
 	function handleDragEnd(e)
 	{
 		this.style.opacity = '1';
+		var id = e.dataTransfer.getData('Text');
 	}
 
-	var links = document.getElementsByClassName('item');
+	var items = document.getElementsByClassName('item');
 	element = null;
-	for (var i = 0; i < links.length; i++)
+	for (var i = 0; i < items.length; i++)
 	{
-		element = links[i];
+		element = items[i];
 
 		element.setAttribute('draggable', 'true');
 
 		element.addEventListener('dragstart', handleDragStart, false);
 		element.addEventListener('dragend', handleDragEnd, false);
+	}
+
+	var groups = document.getElementsByClassName('item_group');
+	element = null;
+	for (var i = 0; i < groups.length; i++)
+	{
+		element = groups[i];
+
+		element.setAttribute('droppable', 'true');
+
+		element.addEventListener('dragleave', handleDragLeave, false);
+		element.addEventListener('dragenter', handleDragEnter, false);
+		element.addEventListener('dragover', handleDragOver, false);
+		element.addEventListener('drop', handleDrop, true);
 	}
 
 	var boards = document.getElementsByClassName('board');
@@ -66,9 +93,11 @@ $(document).ready(function()
 	{
 		element = boards[i];
 
+		element.setAttribute('droppable', 'true');
+
 		element.addEventListener('dragleave', handleDragLeave, false);
 		element.addEventListener('dragenter', handleDragEnter, false);
 		element.addEventListener('dragover', handleDragOver, false);
-		element.addEventListener('drop', handleDrop, false);
+		element.addEventListener('drop', handleDrop, true);
 	}
 });

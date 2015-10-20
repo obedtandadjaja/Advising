@@ -1,7 +1,7 @@
 <!-- app/views/welcome/index.html.erb -->
 
 <% content_for :script do %>
-    <%= javascript_include_tag "welcome/index/" %>
+    <%= javascript_include_tag "welcome/index/main" %>
 <% end %>
 
 <div class="container-fluid">
@@ -10,12 +10,20 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Plan</div>
                 <div class="panel-body">
-                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                    <div class="panel panel-default col-md-12" style="padding: 0 0 0 0">
                         <div class="panel-heading">Freshman Fall</div>
-                        <div class="panel-body board"></div>
-                        <div class="panel-footer text-right">Total Hours:</div>
+                        <div class="panel-body board" id="freshman_fall">
+                            <% @courses.each do |course| %>
+                                <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
+                                    <div class="panel-body" style="padding: 10px 0 10px 0">
+                                        <p class="col-md-10"><%= course.title %></p>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="panel-footer text-right" id="hours">Total Hours: <%= @hours %></div>
                     </div>
-                    <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                    <!-- <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
                         <div class="panel-heading">Freshman Spring</div>
                         <div class="panel-body board"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
@@ -49,7 +57,7 @@
                         <div class="panel-heading">Senior Spring</div>
                         <div class="panel-body board"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -57,6 +65,46 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Courses To Take</div>
                 <div class="panel-body">
+                    <% @majors.each do |major| %>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-target="#major_<%= major.id %>">
+                                    <%= major.name %> Major
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
+                                <div class="panel-body">
+                                    <% major.course.each do |course| %>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
+                                            <div class="panel-body" style="padding: 10px 0 10px 0">
+                                                <p class="col-md-10"><%= course.title %></p>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                    <% @minors.each do |minor| %>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-target="#minor_<%= minor.id %>">
+                                    <%= minor.name %> Major
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
+                                <div class="panel-body">
+                                    <% minor.course.each do |course| %>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
+                                            <div class="panel-body" style="padding: 10px 0 10px 0">
+                                                <p class="col-md-10"><%= course.title %></p>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                     <% @distributions.each do |distribution| %>
                         <div class="panel panel-default">
                             <div class="panel-heading">
