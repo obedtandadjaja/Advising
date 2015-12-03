@@ -1,0 +1,77 @@
+<!-- app/views/users/new.html.erb -->
+
+<% content_for :script do %>
+    <%= javascript_include_tag "majors_concentration/main" %>
+<% end %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Register</div>
+                <div class="panel-body">
+
+                    <%= form_for :user, url: '/users', html:{class: "form-horizontal"} do |f| %>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <%= f.text_field :name, class: 'form-control' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <%= f.email_field :email, class: 'form-control' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <%= f.password_field :password, class: 'form-control' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <%= f.password_field :password_confirmation, class: 'form-control' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Major</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:user, :major_id, Major.order(:name), :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true, :id => 'major_select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Minor</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:user, :minor_id, Minor.order(:name), :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Concentration</label>
+                            <div class="col-md-6">
+                                <%= grouped_collection_select(:user, :concentration_id, Major.order(:name), :concentration, :name, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true, :id => 'concentration_select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <%= f.submit "Submit", class: "btn btn-default" %>
+                            </div>
+                        </div>
+
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/distributions/new"><button class="btn btn-default">Add A Distribution</button></a>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Distributions</div>
+                <div class="panel-body">
+
+                    <% @distributions.each do |distribution| %>
+                        <%= link_to distribution_path(:id => distribution.id), :method => :get do %>
+                            <div class="panel panel-default col-md-4">
+                                <div class="panel-body">
+                                    <p class="col-sm-10"><%= distribution.title %></p>
+                                    <%= link_to distribution_path(:id => distribution.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                        <i class="fa fa-times"></i>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

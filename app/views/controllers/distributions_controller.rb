@@ -8,8 +8,8 @@ class DistributionsController < ApplicationController
 	end
 
 	def create
-		distribution = Distribution.new(distribution_params)
-		if distribution.save 
+		distribution = Distribution.new(distribution_params) #added @, did nothing
+		if distribution.save #added @ here, too, did nothing
 			redirect_to '/distributions'
 		else
 			flash[:notice] = "The form you submitted is invalid."

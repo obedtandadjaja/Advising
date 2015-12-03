@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/majors/new"><button class="btn btn-default">Add A Major</button></a>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Majors</div>
+                <div class="panel-body">
+
+                    <% @majors.each do |major| %>
+                        <%= link_to major_path(:id => major.id), :method => :get do %>
+                            <div class="panel panel-default col-md-4">
+                                <div class="panel-body">
+                                    <div class="col-sm-10">
+                                        <p><%= major.name %></p>
+                                        <p>Total Hours: <%= major.total_hours %></p>
+                                    </div>
+                                    <%= link_to major_path(:id => major.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                        <i class="fa fa-times"></i>
+                                    <% end %>
+
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add A Distribution's Course</div>
+                <div class="panel-body">
+
+                    <%= form_for :distributions_course, url: '/distributions_courses', html:{class: "form-horizontal"} do |f| %>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Distribution</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:distributions_course, :distribution_id, Distribution.all, :id, :title, {:prompt => true}, {:class => 'form-control chosen-select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Course</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:distributions_course, :course_id, Course.all, :id, :title, {:prompt => true}, {:class => 'form-control chosen-select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <%= f.submit "Submit", class: "btn btn-default" %>
+                            </div>
+                        </div>
+
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

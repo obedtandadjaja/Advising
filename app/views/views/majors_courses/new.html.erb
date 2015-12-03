@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add A Major's Course</div>
+                <div class="panel-body">
+
+                    <%= form_for :majors_course, url: '/majors_courses', html:{class: "form-horizontal"} do |f| %>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Major</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:majors_course, :major_id, Major.all, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Course</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:majors_course, :course_id, Course.all, :id, :title, {:prompt => true}, {:class => 'form-control chosen-select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <%= f.submit "Submit", class: "btn btn-default" %>
+                            </div>
+                        </div>
+
+                    <% end %>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

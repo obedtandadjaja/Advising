@@ -20,11 +20,11 @@ class Course < ActiveRecord::Base
 	validates :title, :presence => true
 	validates :hr_low, :presence => true
 	validates :dateOffered, :presence => true
-  	#validates :crn, :presence => true, :uniqueness => true
+  	validates :crn, :presence => true, :uniqueness => true
 
   	validates_numericality_of :course_number
   	validates_numericality_of :hr_low
-  	#validates_numericality_of :crn
+  	validates_numericality_of :crn
 
 end
 

@@ -1,0 +1,74 @@
+<!-- app/views/users/new.html.erb -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><%= @user.name %></div>
+                <div class="panel-body">
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Name</label>
+                        <div class="col-md-6">
+                            <p><%= @user.name %></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="col-md-6">
+                            <p><%= @user.email %></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Major</label>
+                        <div class="col-md-6">
+                            <% if @user.major.any? %>
+                                <% @user.major.each do |major| %>
+                                    <p><%= major.name %></p>
+                                <% end %>
+                            <% else %>
+                                <p>Undecided</p>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Minor</label>
+                        <div class="col-md-6">
+                            <% if @user.minor.any? %>
+                                <% @user.minor.each do |minor| %>
+                                    <p><%= minor.name %></p>
+                                <% end %>
+                            <% else %>
+                                <p>Undecided</p>
+                            <% end %>
+
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Concentration</label>
+                        <div class="col-md-6">
+                            <% if @user.concentration.any? %>
+                                <% @user.concentration.each do |concentration| %>
+                                    <p><%= concentration.name %></p>
+                                <% end %>
+                            <% else %>
+                                <p>Undecided</p>
+                            <% end %>
+
+                        </div>
+                    </div>
+
+                    <div class="content col-md-12">
+                        <div class="pull-right">
+                            <%= link_to "Edit Profile", controller: "users", action: "edit", id: @user.id, :class => "col-sm-2" %>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
