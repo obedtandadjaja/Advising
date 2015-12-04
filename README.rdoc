@@ -26,7 +26,7 @@ How to get the application running:
 * How to run the test suite
     To run the RoR application, do the following:
     - go to the directory of the project
-    - bundle install
+    - run command "bundle install"
     - to start the RoR server, simply type: "rails server"
     - look at the port listed on your command line and go to your browser, type in: "http://localhost:_port_/" - replace _port_ with the port listed in your command line
     
