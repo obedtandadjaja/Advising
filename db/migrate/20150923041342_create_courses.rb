@@ -9,8 +9,7 @@ class CreateCourses < ActiveRecord::Migration
     	t.integer :hr_low
 		t.integer :hr_high
 		t.string :department_desc
-    	#t.date :date_offered
-    	#t.integer :crn
+    	t.date :date_offered
 
       t.timestamps null: false
     end

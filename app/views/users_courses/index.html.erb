@@ -12,7 +12,7 @@
                         <% user.course.each do |course| %>
                         <div class="panel-body">
                             <div class="col-sm-10">
-                                <p><%= course.subject %> <%= course.number %> - <%= course.credit %></p>
+                                <p><%= course.subject %> <%= course.number %> - <%= course.hr_low %></p>
                                 <p><%= course.title %></p>
                             </div>
                             <%= link_to users_course_path(:user_id => user.id, :id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>

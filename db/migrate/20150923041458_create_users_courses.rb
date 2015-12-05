@@ -4,6 +4,7 @@ class CreateUsersCourses < ActiveRecord::Migration
     	t.references :user
     	t.references :course
     	t.date :taken_on
+		t.string :taken_planned
 
       t.timestamps null: false
     end
