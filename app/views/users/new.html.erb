@@ -61,6 +61,27 @@
                                 <%= grouped_collection_select(:user, :concentration_id, Major.order(:name), :concentration, :name, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true, :id => 'concentration_select'}) %>
                             </div>
                         </div>
+						
+						<div class="form-group">
+                            <label class="col-md-4 control-label">Second Major</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:user, :major_id, Major.order(:name), :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true, :id => 'major_select'}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Minor</label>
+                            <div class="col-md-6">
+                                <%= collection_select(:user, :minor_id, Minor.order(:name), :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true}) %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Concentration</label>
+                            <div class="col-md-6">
+                                <%= grouped_collection_select(:user, :concentration_id, Major.order(:name), :concentration, :name, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :multiple => true, :id => 'concentration_select'}) %>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
