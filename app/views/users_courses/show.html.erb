@@ -32,7 +32,7 @@
                         <div class="panel panel-default col-md-6">
                             <div class="panel-body">
                                 <div class="col-sm-10">
-                                    <p><%= user_course.subject %> <%= user_course.number %> - <%= user_course.credit %></p>
+                                    <p><%= user_course.subject %> <%= user_course.course_number %> - <%= user_course.hr_low %></p>
                                     <p><%= user_course.title %></p>
                                 </div>
                                 <%= link_to users_course_path(:user_id => @user.id, :id => user_course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>

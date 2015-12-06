@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150925030537) do
   end
 
   create_table "distributions", force: :cascade do |t|
-    t.integer  "major_id",   limit: 4
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

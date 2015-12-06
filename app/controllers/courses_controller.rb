@@ -90,11 +90,11 @@ class CoursesController < ApplicationController
 	end
 
 	def course_params
-		params.require(:course).permit(:title, :subject, :number, :credit, :dateOffered, :crn)
+		params.require(:course).permit(:title, :subject, :course_number, :credit, :dateOffered)
 	end
 
 	def course_params_update
-		params.require(:course).permit(:title, :subject, :number, :credit, :crn, :major_id, :minor_id, :concentration_id, :distribution_id)
+		params.require(:course).permit(:title, :subject, :course_number, :hr_low, :hr_high, :major_id, :minor_id, :concentration_id, :distribution_id)
 	end
 
 end
