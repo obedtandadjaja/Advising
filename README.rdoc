@@ -39,6 +39,15 @@ How to get the application running:
     
     To generate a controller
     - rails generate controller controller_name
+	
+	To load a table based on its model's name
+	- rake db:load_table[csv_file,model_name]
+	
+	To generate a report of a student's schedule organized by semester
+	- rake db:report[student_email,desired_filename.txt]
+	
+	To generate a report of a student's schedule organized by major/minor/etc.
+	- rake db:report_by_major[student_email,desired_filename.txt]
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
