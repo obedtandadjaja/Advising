@@ -6,4 +6,50 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name: 'test', email: 'test@test.com', password: 'testing')
+User.create(name: 'linda', email: 'linda@test.com', password: 'notthereyo', enrollment_time: '2015')
+User.create(name: 'lee', email: 'lee@test.com', password: 'helloworld')
+
+UsersCourse.create(user_id: 1, course_id: 18, taken_planned: '2015f', taken_on: '2015-09-27')
+UsersCourse.create(user_id: 1, course_id: 19, taken_planned: '2015s', taken_on: '2015-03-13')
+UsersCourse.create(user_id: 1, course_id: 21, taken_planned: '2016s')
+UsersCourse.create(user_id: 1, course_id: 23, taken_planned: '2015f')
+UsersCourse.create(user_id: 1, course_id: 270, taken_planned: '2017f')
+UsersCourse.create(user_id: 1, course_id: 271, taken_planned: '2017f')
+UsersCourse.create(user_id: 1, course_id: 273)
+UsersCourse.create(user_id: 1, course_id: 400)
+
+UsersMajor.create(user_id: 1, major_id: 1)
+UsersMajor.create(user_id: 1, major_id: 2)
+UsersMinor.create(user_id: 1, minor_id: 1)
+
+MinorsCourse.create(minor_id: 1, course_id: 400)
+
+MajorsCourse.create(major_id: 1, course_id: 18)
+MajorsCourse.create(major_id: 1, course_id: 19)
+MajorsCourse.create(major_id: 1, course_id: 20)
+MajorsCourse.create(major_id: 1, course_id: 21)
+MajorsCourse.create(major_id: 1, course_id: 23)
+MajorsCourse.create(major_id: 1, course_id: 100)
+
+MajorsCourse.create(major_id: 2, course_id: 270)
+MajorsCourse.create(major_id: 2, course_id: 271)
+MajorsCourse.create(major_id: 1, course_id: 273)
+MajorsCourse.create(major_id: 2, course_id: 500)
+
+Major.create(name: "Art", total_hours: 120)
+Major.create(name: "Computer Science", total_hours: 120)
+
+Minor.create(name: "Biblical Languages", total_hours: 60)
+
+Concentration.create(name: "Security", major_id: 2)
+ConcentrationsCourse.create(concentration_id: "1", course_id: 300)
+UsersConcentration.create(user_id: 1, concentration_id: 1)
+UsersCourse.create(user_id: 1, course_id: 300)
+
+Distribution.create(title: "Humanities")
+Distribution.create(title: "Fine Arts")
+DistributionsCourse.create(distribution_id: 2, course_id: 21)
+
+
+
+

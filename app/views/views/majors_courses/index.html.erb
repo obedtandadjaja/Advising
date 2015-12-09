@@ -1,0 +1,53 @@
+<%
+=begin comment
+%> 
+
+ Copyright 2015 Amy Dewaal and Obed Tandadjaja
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+<%
+=end
+%>
+
+<div class="container-fluid">
+    <div class="row col-md-12">
+        <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
+            <a href="/majors_courses/new"><button class="btn btn-default">Add A Major's Course</button></a>
+        </div>
+
+        <% @majors.each do |major| %>
+            <div class="panel panel-default col-md-4" style="padding: 0 0 0 0; margin: 10px">
+                <div class="panel-heading">
+                    <%= major.name %>
+                </div>
+
+                <% major.course.each do |course| %>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-sm-10">
+                                <p><%= course.subject %> <%= course.number %> - <%= course.credit %></p>
+                                <p><%= course.title %></p>
+                            </div>
+                            <%= link_to majors_course_path(:major_id => major.id, :id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                <i class="fa fa-times"></i>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+                
+
+        </div>
+    </div>
+</div>
