@@ -17,7 +17,7 @@
 class MinorsController < ApplicationController
 
 	def index
-		@minors = Minor.all
+		@minors = Minor.order(:name)
 	end
 
 	def new
