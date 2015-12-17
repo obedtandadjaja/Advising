@@ -28,23 +28,34 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Concentrations</div>
                 <div class="panel-body">
-
-                
-                    <% @concentrations.each do |concentration| %>
-                        <%= link_to concentration_path(:id => concentration.id), :method => :get do %>
-                        <div class="panel panel-default col-md-6" style="padding-left: 0px; padding-right: 0px;">
-                            <div class="panel-body">
-                                <div class="col-sm-11">
-                                    <p><%= concentration.name %></p>
-                                </div>
-                                <%= link_to concentration_path(:id => concentration.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-1" do %>
-                                    <i class="fa fa-times"></i>
-                                <% end %>
-                            </div>
-                        </div>
-                        <% end %>
-                    <% end %>
-
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Concentration</th>
+                        <th>Major</th>
+                        <th>Total Hours:</th>
+                        <th><i class="fa fa-times" style="display:none"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @concentrations.each do |concentration| %>
+                        <tr>
+                            <td>
+                              <%= link_to major_path(:id => concentration.id), :method => :get do %>
+                                <%= concentration.name %>
+                              <% end %>
+                            </td>
+                            <td><%= concentration.major.name %></td>
+                            <td><%= concentration.total_hours %></td>
+                          <td>
+                            <%= link_to major_path(:id => concentration.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                              <i class="fa fa-times"></i>
+                            <% end %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>
