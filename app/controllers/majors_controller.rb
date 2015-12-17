@@ -17,7 +17,7 @@
 class MajorsController < ApplicationController
 
 	def index
-		@majors = Major.all
+		@majors = Major.order(:name)
 	end
 
 	def new

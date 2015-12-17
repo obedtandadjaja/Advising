@@ -17,7 +17,7 @@
 class ConcentrationsController < ApplicationController
 
 	def index
-		@concentrations = Concentration.all
+		@concentrations = Concentration.order(:name)
 	end
 
 	def new
@@ -49,11 +49,8 @@ class ConcentrationsController < ApplicationController
 
 	def update
 		@concentration = Concentration.find(params[:id])
-
 	    if @concentration.update_attributes(concentration_params)
-
 	      redirect_to :action => 'show', :id => @concentration
-
 	    end
 	end
 
