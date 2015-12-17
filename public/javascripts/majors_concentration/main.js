@@ -14,7 +14,11 @@
 //   limitations under the License.
 $(document).ready(function()
 {
+	$('.chosen-select').chosen();
+
+	// hide concentration at first
 	$('#concentration_select').parent().parent().hide();
+
 	var concentrations = $('#concentration_select').html();
 	$('#major_select').change(function()
 	{
@@ -24,11 +28,15 @@ $(document).ready(function()
 		{
 			majors.push($(this).html());
 		});
+
+		// for every major get the available concentrations for it and append to array
 		array = new Array();
 		for(i = 0; i < majors.length; i++)
 		{
 			array.push($(concentrations).filter("optgroup[label='"+majors[i]+"']").html());
 		};
+
+		// show concentrations if array is not empty
 		if(array.length > 0)
 		{
 			$('#concentration_select').parent().parent().show();

@@ -16,7 +16,6 @@
 
 class WelcomeController < ApplicationController
 
-<<<<<<< HEAD
 	before_filter :authorize, :set_courses, :set_hours
 	respond_to :js, :json, :html
 
@@ -28,10 +27,8 @@ class WelcomeController < ApplicationController
 		@hours = 0
 	end
 
-=======
 	before_filter :authorize
 	
->>>>>>> origin/db_branch
 	def index
 		@user = User.find(session[:user_id])
 		@distributions = Distribution.order(:title)
@@ -42,7 +39,6 @@ class WelcomeController < ApplicationController
 	end
 	
 	def advising_ajax
-<<<<<<< HEAD
 		@user = User.find(session[:user_id])
 		@course = Course.find(params[:id])
 		@courses << @course
@@ -55,9 +51,6 @@ class WelcomeController < ApplicationController
 	        render 'welcome/update_hours'
 	      }
 	    end
-=======
-	
->>>>>>> origin/db_branch
 	end
 	
 end
