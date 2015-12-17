@@ -17,7 +17,7 @@
 class DistributionsController < ApplicationController
 
 	def index
-		@distributions = Distribution.all
+		@distributions = Distribution.order(:title)
 	end
 
 	def new

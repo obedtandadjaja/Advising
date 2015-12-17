@@ -28,20 +28,30 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Distributions</div>
                 <div class="panel-body">
-
-                    <% @distributions.each do |distribution| %>
-                        <%= link_to distribution_path(:id => distribution.id), :method => :get do %>
-                            <div class="panel panel-default col-md-4">
-                                <div class="panel-body">
-                                    <p class="col-sm-10"><%= distribution.title %></p>
-                                    <%= link_to distribution_path(:id => distribution.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
-                                        <i class="fa fa-times"></i>
-                                    <% end %>
-                                </div>
-                            </div>
-                        <% end %>
-                    <% end %>
-                
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Concentration</th>
+                        <th><i class="fa fa-times" style="display:none"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @distributions.each do |distribution| %>
+                        <tr>
+                            <td>
+                              <%= link_to major_path(:id => distribution.id), :method => :get do %>
+                                <%= distribution.title %>
+                              <% end %>
+                            </td>
+                          <td>
+                            <%= link_to major_path(:id => distribution.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                              <i class="fa fa-times"></i>
+                            <% end %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>
