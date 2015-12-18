@@ -14,18 +14,37 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#usage: rake db:load_table[csv_filename,table_name]
+#usage: rake db:load_courses
 #caveat: first row of csv file must be table row names in lowercase letters
 
 require 'csv'
 desc "Imports a CSV file into an ActiveRecord table"
-namespace :db do   
-task :load_table, [:arg1, :arg2] => :environment do |t,args|
-		csv_text = File.read(args[:arg1])
+namespace :db do
+task :load_courses, [] => :environment do |t|
+		csv_text = File.read("courses.csv")
 		csv = CSV.parse(csv_text, :headers => true)
-		model = args[:arg2].classify.constantize
+		courses_table = "courses".classify.constantize
+
 		csv.each do |row|
-		model.create!(row.to_hash)  
+
+			# order is the same
+			courses_table.create!(row.to_hash)
+			
+			# unique by name
+			Major.find_or_create_by(
+				:name => row[0],
+				:department => row[7],
+				:total_hours => 126
+			)
+
+			# unique by name
+			Minor.create_with(
+				:department => row[7],
+				:total_hours => 52
+			)
+			.find_or_create_by(
+				:name => row[0]
+			)
 		end
 	end
 end

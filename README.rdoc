@@ -40,9 +40,9 @@ How to get the application running:
     To generate a controller
     - rails generate controller controller_name
     
-    To load a table based on its model's name
-    - rake db:load_table[csv_file,model_name]
-    - e.g. rake db:load_table[courses.csv,courses]
+    To load the courses.csv to courses, majors, and minors table
+    - rake db:load_courses
+    - e.g. rake db:load_courses
     
     To generate a report of a student's schedule organized by semester
     - rake db:report[student_email,desired_filename.txt]
