@@ -58,7 +58,7 @@ class MinorsController < ApplicationController
 
 	private
 	def minor_params
-		params.require(:minor).permit(:name, :total_hours)
+		params.require(:minor).permit(:name, :department, :total_hours)
 	end
 
 end

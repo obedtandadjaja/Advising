@@ -30,7 +30,8 @@
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Concentration</th>
+                        <th>Minor</th>
+                        <th>Department</th>
                         <th>Total Hours:</th>
                         <th><i class="fa fa-times" style="display:none"></i></th>
                       </tr>
@@ -42,6 +43,9 @@
                               <%= link_to major_path(:id => minor.id), :method => :get do %>
                                 <%= minor.name %>
                               <% end %>
+                            </td>
+                            <td>
+                              <%= minor.department %>
                             </td>
                             <td><%= minor.total_hours %></td>
                           <td>
