@@ -40,7 +40,7 @@ How to get the application running:
     To generate a controller
     - rails generate controller controller_name
 	
-	To load a table based on its model's name
+    To load a table based on its model's name
 	- rake db:load_table[csv_file,model_name]
 	- e.g. rake db:load_table[courses.csv,courses]
 	
