@@ -39,7 +39,7 @@ class MinorsController < ApplicationController
 	end
 
 	def show
-		@minor = Minor.find(params[:id])
+		@minor = Major.find(params[:id])
 	end
 
 	def edit

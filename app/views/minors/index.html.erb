@@ -40,7 +40,7 @@
                       <% @minors.each do |minor| %>
                         <tr>
                             <td>
-                              <%= link_to major_path(:id => minor.id), :method => :get do %>
+                              <%= link_to minor_path(:id => minor.id), :method => :get do %>
                                 <%= minor.name %>
                               <% end %>
                             </td>

@@ -23,6 +23,11 @@ class MinorsCoursesController < ApplicationController
 	def new
 	end
 
+	def show
+		@minor = Major.find(params[:id])
+		@minor_courses = MajorsCourse.where(major_id: params[:id])
+	end
+
 	def create
 		minors_course = MinorsCourse.new(minors_course_params)
 		if minors_course.save
