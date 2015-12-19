@@ -30,16 +30,27 @@
                         <div class="panel-heading">
                             <%= link_to users_minor_path(:id => user.id), :method => :get do %><%= user.name %><% end %>
                         </div>
-                        <% user.minor.each do |minor| %>
                         <div class="panel-body">
-                            <div class="col-sm-10">
-                                <p><%= minor.name %></p>
-                            </div>
-                            <%= link_to users_minor_path(:user_id => user.id, :id => minor.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
-                                    <i class="fa fa-times"></i>
-                                <% end %>
+                          <table class="table table-hover">
+                            <thead>
+                              <th>Major</th>
+                              <th>Department</th>
+                              <th><i class="fa fa-times" style="display:none"></i></th>
+                            </thead>
+                            <tbody>
+                              <% user.minor.order(:name).each do |minor| %>
+                                  <tr>
+                                    <td>
+                                      <%= link_to minor_path(:id => minor.id), :method => :get do %>
+                                        <%= minor.name %>
+                                      <% end %>
+                                    </td>
+                                    <td><%= minor.department %></td>
+                                  </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
                         </div>
-                        <% end %>
                     </div>
                 <% end %>
 
