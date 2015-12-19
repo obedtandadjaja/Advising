@@ -49,7 +49,7 @@
                             </td>
                             <td><%= minor.total_hours %></td>
                           <td>
-                            <%= link_to major_path(:id => minor.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                            <%= link_to minor_path(:id => minor.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
                               <i class="fa fa-times"></i>
                             <% end %>
                           </td>

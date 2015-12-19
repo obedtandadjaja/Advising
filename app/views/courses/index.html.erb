@@ -35,8 +35,7 @@
                             <div class="panel-body">
                                 <div class="col-sm-10">
                                     <p><%= course.subject %> <%= course.course_number %> - <%= course.title %></p>
-                                    <p>Credit: <%= course.hr_low %> <%= course.hr_high></p>
-                                    <p>CRN: <%= course.crn %></p>
+                                    <p>Credit: <%= course.hr_low %> <%= course.hr_high%></p>
                                 </div>
                                 <%= link_to course_path(:id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
                                     <i class="fa fa-times"></i>

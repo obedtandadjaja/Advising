@@ -17,7 +17,7 @@
 class UsersCoursesController < ApplicationController
 
 	def index
-		@users = User.all
+		@users = User.order(:name)
 	end
 
 	def show
@@ -25,7 +25,7 @@ class UsersCoursesController < ApplicationController
 
 		@total_hours = 0
 		@user.course.each do |course|
-			@total_hours += course.credit
+			@total_hours += course.hr_low
 		end
 	end
 

@@ -28,19 +28,28 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><%= @user.name %>'s Courses</div>
                 <div class="panel-body">
-                    <% @user.course.each do |user_course| %>
-                        <div class="panel panel-default col-md-6">
-                            <div class="panel-body">
-                                <div class="col-sm-10">
-                                    <p><%= user_course.subject %> <%= user_course.course_number %> - <%= user_course.hr_low %></p>
-                                    <p><%= user_course.title %></p>
-                                </div>
-                                <%= link_to users_course_path(:user_id => @user.id, :id => user_course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
-                                    <i class="fa fa-times"></i>
-                                <% end %>
-                            </div>
-                        </div>
-                    <% end %>
+                  <table class="table table-hover">
+                    <thead>
+                      <th>Course</th>
+                      <th>Name</th>
+                      <th>Credit</th>
+                      <th><i class="fa fa-times" style="display:none"></i></th>
+                    </thead>
+                    <tbody>
+                      <% @user.course.order(:title).each do |course| %>
+                          <tr>
+                            <td><%= course.subject %> <%= course.course_number %></td>
+                            <td><%= course.title %></td>
+                            <td><%= course.hr_low %><% if course.hr_high? then course.hr_high %><% end %></td>
+                            <td>
+                              <%= link_to users_course_path(:user_id => @user.id, :id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                <i class="fa fa-times"></i>
+                              <% end %>
+                            </td>
+                          </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
                 </div>
             </div>
             <div class="panel-footer">Total Hours: <%= @total_hours %></div>
