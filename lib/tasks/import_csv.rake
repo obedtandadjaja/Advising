@@ -20,7 +20,7 @@
 require 'csv'
 desc "Imports a CSV file into an ActiveRecord table"
 namespace :db do
-task :load_courses, [] => :environment do |t|
+	task :load_courses, [] => :environment do |t|
 		csv_text = File.read("courses.csv")
 		csv = CSV.parse(csv_text, :headers => true)
 		courses_table = "courses".classify.constantize
