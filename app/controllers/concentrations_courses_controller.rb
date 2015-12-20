@@ -23,6 +23,11 @@ class ConcentrationsCoursesController < ApplicationController
 	def new
 	end
 
+	def show
+		@concentration = Concentration.find(params[:id])
+		@concentration_courses = ConcentrationsCourse.where(concentration_id: params[:id])
+	end
+
 	def create
 		concentrations_course = ConcentrationsCourse.new(concentrations_course_params)
 		if concentrations_course.save

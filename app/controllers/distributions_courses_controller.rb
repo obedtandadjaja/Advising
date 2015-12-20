@@ -23,6 +23,11 @@ class DistributionsCoursesController < ApplicationController
 	def new
 	end
 
+	def show
+		@distribution = Distribution.find(params[:id])
+		@distribution_courses = DistributionsCourse.where(distribution_id: params[:id])
+	end
+
 	def create
 		distributions_course = DistributionsCourse.new(distributions_course_params)
 		if distributions_course.save
