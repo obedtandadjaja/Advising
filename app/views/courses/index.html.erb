@@ -46,7 +46,7 @@
                             <td><%= course.title %></td>
                             <td><%= course.hr_low %><% if course.hr_high?%>-<%= course.hr_high %><% end %></td>
                             <td>
-                              <%= link_to course_path(:id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                              <%= link_to course_path(:id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?', :class => "col-sm-2"} do %>
                                     <i class="fa fa-times"></i>
                                 <% end %>
                             </td>
