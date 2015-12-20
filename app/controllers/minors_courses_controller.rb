@@ -24,8 +24,8 @@ class MinorsCoursesController < ApplicationController
 	end
 
 	def show
-		@minor = Major.find(params[:id])
-		@minor_courses = MajorsCourse.where(major_id: params[:id])
+		@minor = Minor.find(params[:id])
+		@minor_courses = MinorsCourse.where(minor_id: params[:id])
 	end
 
 	def create
