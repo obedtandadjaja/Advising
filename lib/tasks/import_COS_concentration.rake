@@ -34,10 +34,23 @@ namespace :db do
 				:name => row[2],
 			)
 
+			# make concentration-course relation
 			ConcentrationsCourse.find_or_create_by(
 				:course_id => Course.where(subject: row[0], course_number: row[1]).first.id,
 				:concentration_id => Concentration.where(name: row[2]).first.id
 			)
+
+			# delete the major-course relation
+			MajorsCourse.where(
+				course_id: Course.where(subject: row[0], course_number: row[1]).first.id,
+				major_id: Major.where(name: row[3]).first.id
+			).first.destroy
+
+			# delete the minor-course relation
+			MinorsCourse.where(
+				course_id: Course.where(subject: row[0], course_number: row[1]).first.id,
+				minor_id: Minor.where(name: row[3]).first.id
+			).first.destroy
 
 		end
 	end
