@@ -41,7 +41,7 @@
                       <% @concentrations.each do |concentration| %>
                         <tr>
                             <td>
-                              <%= link_to major_path(:id => concentration.id), :method => :get do %>
+                              <%= link_to concentration_path(:id => concentration.id), :method => :get do %>
                                 <%= concentration.name %>
                               <% end %>
                             </td>

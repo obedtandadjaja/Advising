@@ -39,12 +39,12 @@
                       <% @distributions.each do |distribution| %>
                         <tr>
                             <td>
-                              <%= link_to major_path(:id => distribution.id), :method => :get do %>
+                              <%= link_to distribution_path(:id => distribution.id), :method => :get do %>
                                 <%= distribution.title %>
                               <% end %>
                             </td>
                           <td>
-                            <%= link_to major_path(:id => distribution.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                            <%= link_to distribution_path(:id => distribution.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
                               <i class="fa fa-times"></i>
                             <% end %>
                           </td>
