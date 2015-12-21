@@ -1,0 +1,89 @@
+subject,course_number,distribution
+BIB,111,CORE
+BIB,142,CORE
+BIB,277,CORE
+BIB,278,CORE
+COR,100,CORE
+COR,225,CORE
+COR,226,CORE
+COR,325,CORE
+COR,337,CORE
+COR,340,CORE
+ENG,111,CORE
+HIS,325,CORE
+PSE,151,CORE
+PSE,152,CORE
+ART,100,Fine Art
+ART,110,Fine Art
+ART,270,Fine Art
+ENG,266,Fine Art
+MUS,161,Fine Art
+MUS,171,Fine Art
+MUS,245,Fine Art
+MUS,370,Fine Art
+THT,202,Fine Art
+THT,235,Fine Art
+THT,250,Fine Art
+THT,251,Fine Art
+ARA,201,Humanities
+ARA,202,Humanities
+BIB,302,Humanities
+BIB,303,Humanities
+ENG,201,Humanities
+ENG,203,Humanities
+ENG,204,Humanities
+ENG,210,Humanities
+ENG,211,Humanities
+ENG,240,Humanities
+ENG,275,Humanities
+ENG,276,Humanities
+FRE,201,Humanities
+FRE,202,Humanities
+GER,201,Humanities
+GER,202,Humanities
+HIS,111,Humanities
+HIS,112,Humanities
+HIS,213,Humanities
+HIS,214,Humanities
+HIS,225,Humanities
+HIS,241,Humanities
+HIS,250,Humanities
+HIS,351,Humanities
+HIS,352,Humanities
+ISL,220,Humanities
+LIN,100,Humanities
+PHI,101,Humanities
+PHI,102,Humanities
+PHI,130,Humanities
+SPA,201,Humanities
+SPA,202,Humanities
+THT,220,Humanities
+CHE,103,Natural Science Lab
+NSC,105,Natural Science Lab
+NSC,106,Natural Science Lab
+NSC,107,Natural Science Lab
+NSC,108,Natural Science Lab
+NSC,110,Natural Science Lab
+NSC,112,Natural Science Lab
+NSC,115,Natural Science Lab
+PHY,231,Natural Science Lab
+COS,117,Social Science
+ECO,202,Social Science
+FIN,210,Social Science
+HIS,218,Social Science
+LIN,150,Social Science
+POL,105,Social Science
+POL,200,Social Science
+POL,202,Social Science
+POL,210,Social Science
+POL,217,Social Science
+PSY,100,Social Science
+PSY,303,Social Science
+PSY,333,Social Science
+SOC,141,Social Science
+SOC,201,Social Science
+SOC,229,Social Science
+SOC,241,Social Science
+SOC,244,Social Science
+SOC,246,Social Science
+SOC,341,Social Science
