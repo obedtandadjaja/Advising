@@ -82,6 +82,7 @@ $(document).ready(function()
 		element = items[i];
 
 		element.setAttribute('draggable', 'true');
+		element.setAttribute('droppable', 'false');
 
 		element.addEventListener('dragstart', handleDragStart, false);
 		element.addEventListener('dragend', handleDragEnd, false);
