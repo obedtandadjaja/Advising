@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
       redirect_to '/welcome'
     else
       # If user's login doesn't work, send them back to the login form.
-      flash[:notice] = "The email/password you entered is incorrect. Please try again."
+      flash[:danger] = "The email/password you entered is incorrect. Please try again."
       redirect_to '/login'
     end
   end
