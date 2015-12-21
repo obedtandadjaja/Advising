@@ -39,7 +39,7 @@ class MajorsCoursesController < ApplicationController
 	end
 
 	def destroy
-		MajorsCourse.find(params[:id]).destroy
+		MajorsCourse.where(course_id: params[:id]).first.destroy
       	redirect_to '/majors_courses'
 	end
 
