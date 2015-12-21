@@ -34,6 +34,7 @@ class WelcomeController < ApplicationController
 		@distributions = Distribution.order(:title)
 		@majors = @user.major
 		@minors = @user.minor
+		@concentration = @user.concentration
 		@courses = @user.course
 		puts @hours
 	end
