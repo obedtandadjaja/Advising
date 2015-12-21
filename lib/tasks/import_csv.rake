@@ -28,7 +28,7 @@ namespace :db do
 		csv.each do |row|
 
 			# order is the same
-			courses_table.create!(row.to_hash)
+			courses_table.find_or_create_by!(row.to_hash)
 			
 			# unique by name
 			Major.find_or_create_by(
@@ -44,6 +44,18 @@ namespace :db do
 			)
 			.find_or_create_by(
 				:name => row[0]
+			)
+
+			# add the major-course relation
+			MajorsCourse.find_or_create_by(
+				:major_id => Major.where(name: row[0]).first.id,
+				:course_id => Course.where(subject: row[0], course_number: row[1]).first.id
+			)
+
+			# add the minor-course relation
+			MinorsCourse.find_or_create_by(
+				:minor_id => Minor.where(name: row[0]).first.id,
+				:course_id => Course.where(subject: row[0], course_number: row[1]).first.id
 			)
 		end
 	end
