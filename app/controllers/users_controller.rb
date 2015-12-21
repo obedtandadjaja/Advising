@@ -48,10 +48,10 @@ class UsersController < ApplicationController
         end
       end
 
-      flash[:notice] = "You have successfully registered!"
+      flash[:success] = "You have successfully registered!"
       redirect_to '/login'
     else
-      flash[:notice] = "The form you submitted is invalid."
+      flash[:danger] = "The form you submitted is invalid."
       redirect_to '/signup'
     end
   end
