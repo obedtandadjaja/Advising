@@ -25,7 +25,6 @@ class MinorsCoursesController < ApplicationController
 
 	def show
 		@minor = Minor.find(params[:id])
-		@minor_courses = MinorsCourse.where(minor_id: params[:id])
 	end
 
 	def create
@@ -39,7 +38,7 @@ class MinorsCoursesController < ApplicationController
 	end
 
 	def destroy
-		MinorsCourse.find(params[:id]).destroy
+		MinorsCourse.where(course_id: params[:id]).first.destroy
       	redirect_to '/minors_courses'
 	end
 

@@ -25,7 +25,6 @@ class DistributionsCoursesController < ApplicationController
 
 	def show
 		@distribution = Distribution.find(params[:id])
-		@distribution_courses = DistributionsCourse.where(distribution_id: params[:id])
 	end
 
 	def create
@@ -39,7 +38,7 @@ class DistributionsCoursesController < ApplicationController
 	end
 
 	def destroy
-		DistributionsCourse.find(params[:id]).destroy
+		DistributionsCourse.where(course_id: params[:id]).first.destroy
       	redirect_to '/distributions_courses'
 	end
 

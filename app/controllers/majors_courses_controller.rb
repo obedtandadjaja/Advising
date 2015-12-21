@@ -25,7 +25,6 @@ class MajorsCoursesController < ApplicationController
 
 	def show
 		@major = Major.find(params[:id])
-		@major_courses = MajorsCourse.where(major_id: params[:id])
 	end
 
 	def create

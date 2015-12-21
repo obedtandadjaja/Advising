@@ -25,7 +25,6 @@ class ConcentrationsCoursesController < ApplicationController
 
 	def show
 		@concentration = Concentration.find(params[:id])
-		@concentration_courses = ConcentrationsCourse.where(concentration_id: params[:id])
 	end
 
 	def create
@@ -39,7 +38,7 @@ class ConcentrationsCoursesController < ApplicationController
 	end
 
 	def destroy
-		ConcentrationsCourse.find(params[:id]).destroy
+		ConcentrationsCourse.where(course_id: params[:id]).first.destroy
       	redirect_to '/concentrations_courses'
 	end
 
