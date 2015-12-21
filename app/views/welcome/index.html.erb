@@ -36,7 +36,9 @@
                             <% @courses.each do |course| %>
                                 <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
                                     <div class="panel-body" style="padding: 10px 0 10px 0">
-                                        <p class="col-md-10"><%= course.title %></p>
+                                        <p class="col-md-10">
+                                        <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                        </p>
                                     </div>
                                 </div>
                             <% end %>
@@ -93,11 +95,13 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body">
+                                <div class="panel-body board">
                                     <% major.course.each do |course| %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
-                                            <div class="panel-body" style="padding: 10px 0 10px 0">
-                                                <p class="col-md-10"><%= course.title %></p>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                            <div class="panel-body" style="padding: 0">
+                                                <p class="col-md-10">
+                                                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                                </p>
                                             </div>
                                         </div>
                                     <% end %>
@@ -109,15 +113,39 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <a data-toggle="collapse" data-target="#minor_<%= minor.id %>">
-                                    <%= minor.name %> Major
+                                    <%= minor.name %> Minor
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body">
+                                <div class="panel-body board">
                                     <% minor.course.each do |course| %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
-                                            <div class="panel-body" style="padding: 10px 0 10px 0">
-                                                <p class="col-md-10"><%= course.title %></p>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                            <div class="panel-body" style="padding: 0">
+                                                <p class="col-md-10">
+                                                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                    <% @concentration.each do |concentration| %>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a data-toggle="collapse" data-target="#concentration_<%= concentration.id %>">
+                                    <%= concentration.name %> Concentration
+                                </a>
+                            </div>
+                            <div class="panel-collapse collapse out item_group" id="concentration_<%= concentration.id %>" style="padding: 0; margin: 0">
+                                <div class="panel-body board">
+                                    <% concentration.course.each do |course| %>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                            <div class="panel-body" style="padding: 0">
+                                                <p class="col-md-10">
+                                                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                                </p>
                                             </div>
                                         </div>
                                     <% end %>
@@ -133,11 +161,13 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body">
+                                <div class="panel-body board">
                                     <% distribution.course.each do |course| %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
-                                            <div class="panel-body" style="padding: 10px 0 10px 0">
-                                                <p class="col-md-10"><%= course.title %></p>
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                            <div class="panel-body" style="padding: 0">
+                                                <p class="col-md-10">
+                                                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                                </p>
                                             </div>
                                         </div>
                                     <% end %>
