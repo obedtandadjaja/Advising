@@ -48,7 +48,7 @@
                             <td><%= concentration.major.name %></td>
                             <td><%= concentration.total_hours %></td>
                           <td>
-                            <%= link_to major_path(:id => concentration.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                            <%= link_to concentration_path(:id => concentration.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
                               <i class="fa fa-times"></i>
                             <% end %>
                           </td>
