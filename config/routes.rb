@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   resources :users_concentrations
   resources :minors_courses
   resources :users
+  resources :course_prerequisites
   
 end
