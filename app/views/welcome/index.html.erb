@@ -32,10 +32,10 @@
                 <div class="panel-body">
                     <div class="panel panel-default col-md-12" style="padding: 0 0 0 0">
                         <div class="panel-heading">Freshman Fall</div>
-                        <div class="panel-body board" id="freshman_fall">
+                        <div class="panel-body board" id="2015f">
                             <% @courses.each do |course| %>
-                                <div class="panel panel-default col-md-12 item" id=<%= course.id %>>
-                                    <div class="panel-body" style="padding: 10px 0 10px 0">
+                                <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                    <div class="panel-body" style="padding: 0">
                                         <p class="col-md-10">
                                         <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                         </p>
@@ -47,37 +47,37 @@
                     </div>
                     <!-- <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
                         <div class="panel-heading">Freshman Spring</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2016s"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
                         <div class="panel-heading">Sophomore Fall</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2016f"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
                         <div class="panel-heading">Sophomore Spring</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2017s"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
                         <div class="panel-heading">Junior Fall</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2017f"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
                         <div class="panel-heading">Junior Spring</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2018s"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
                         <div class="panel-heading">Senior Fall</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2018f"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0 0 0 0" >
                         <div class="panel-heading">Senior Spring</div>
-                        <div class="panel-body board"></div>
+                        <div class="panel-body board" id="2019f"></div>
                         <div class="panel-footer text-right">Total Hours:</div>
                     </div> -->
                 </div>
@@ -95,7 +95,7 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board">
+                                <div class="panel-body board nope">
                                     <% major.course.each do |course| %>
                                         <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
                                             <div class="panel-body" style="padding: 0">
@@ -117,7 +117,7 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board">
+                                <div class="panel-body board nope">
                                     <% minor.course.each do |course| %>
                                         <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
                                             <div class="panel-body" style="padding: 0">
@@ -139,7 +139,7 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="concentration_<%= concentration.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board">
+                                <div class="panel-body board nope">
                                     <% concentration.course.each do |course| %>
                                         <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
                                             <div class="panel-body" style="padding: 0">
@@ -161,7 +161,7 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board">
+                                <div class="panel-body board nope">
                                     <% distribution.course.each do |course| %>
                                         <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
                                             <div class="panel-body" style="padding: 0">
