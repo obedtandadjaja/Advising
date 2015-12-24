@@ -14,7 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#usage: rake db:load_courses
+#usage: rake db:load_cos_concentrations
 #caveat: first row of csv file must be table row names in lowercase letters
 
 require 'csv'
