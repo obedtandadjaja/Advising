@@ -21,7 +21,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.integer :enrollment_time
-      t.integer :banner_id
+      t.integer :graduation_time
+      t.string :banner_id
 
       t.timestamps null: false
     end
