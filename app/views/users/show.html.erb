@@ -42,6 +42,27 @@
                     </div>
 
                     <div class="content">
+                        <label class="col-md-4 control-label">Banner ID</label>
+                        <div class="col-md-6">
+                            <p><%= @user.banner_id %></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Enrollment Year</label>
+                        <div class="col-md-6">
+                            <p><%= @user.enrollment_time %></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <label class="col-md-4 control-label">Expected Graduation Year</label>
+                        <div class="col-md-6">
+                            <p><%= @user.graduation_time %></p>
+                        </div>
+                    </div>
+
+                    <div class="content">
                         <label class="col-md-4 control-label">Major</label>
                         <div class="col-md-6">
                             <% if @user.major.any? %>
