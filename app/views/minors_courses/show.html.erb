@@ -34,13 +34,13 @@
               <th><i class="fa fa-times" style="display:none"></i></th>
             </thead>
             <tbody>
-              <% @@minor.course.each do |course| %>
+              <% @minor.course.each do |course| %>
                   <tr>
                     <td><%= course.subject %> <%= course.course_number %></td>
                     <td><%= course.title %></td>
                     <td><%= course.hr_low %><% if course.hr_high? %>-<%= course.hr_high %><% end %></td>
                     <td>
-                      <%= link_to minors_course_path(:id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                      <%= link_to minors_course_path(:course_id => course.id, :minor_id => @minor.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
                         <i class="fa fa-times"></i>
                       <% end %>
                     </td>

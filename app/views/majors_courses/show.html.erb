@@ -40,7 +40,7 @@
                     <td><%= course.title %></td>
                     <td><%= course.hr_low %><% if course.hr_high? %>-<%= course.hr_high %><% end %></td>
                     <td>
-                      <%= link_to majors_course_path(:id => course.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
+                      <%= link_to majors_course_path(:id => course.id, :major_id => @major.id), :method => :delete, :data => {:confirm => 'Are you sure?'} do %>
                         <i class="fa fa-times"></i>
                       <% end %>
                     </td>

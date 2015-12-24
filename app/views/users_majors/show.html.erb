@@ -44,7 +44,7 @@
                               </td>
                               <td><%= major.department %></td>
                               <td>
-                                <%= link_to major_path(:id => major.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
+                                <%= link_to users_major_path(:id => major.id, :user_id => @user.id), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => "col-sm-2" do %>
                                       <i class="fa fa-times"></i>
                                   <% end %>
                               </td>
