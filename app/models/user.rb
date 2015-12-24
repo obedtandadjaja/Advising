@@ -30,10 +30,12 @@ class User < ActiveRecord::Base
 
   	has_secure_password
 
+  	email_regex = /\A[\w+\-.]+@covenant\.edu\z/i
+
   	validates :password, :presence => true,
     	:confirmation => true,
     	:length => {:within => 6..40},
     	:on => :create, :if => :password
-  	validates :email, :presence => true, :uniqueness => true
+  	validates :email, :presence => true, :uniqueness => true, :format => { :with => email_regex }
 
 end
