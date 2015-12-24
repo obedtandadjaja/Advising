@@ -47,19 +47,21 @@ $(document).ready(function()
 	        e.target.appendChild(element);
 	        var id = e.dataTransfer.getData('Text');
 	        $.ajax({
-			    url: '/advising_ajax/' + id,
+			    url: '/advising_ajax/'+id,
 			    type: 'PUT',
-			    data: { course: id },
+			    data: { date: e.target.id },
 			    dataType: "json",
 			    success: function (response) {
-			    	console.log("Success");
+			    	// console.log("Success");
+			    	alert("success");
 			    },
 			    error: function (response) {
-			    	console.log("Failed");
+			    	// console.log("Failed");
+			    	alert("failed");
 			    }
 			});
     	}
-    	else if(e.target.getAttribute('class') == "panel-body")
+    	else if(e.target.getAttribute('class') == "panel-body board nope")
     	{
     		var element = document.getElementById(e.dataTransfer.getData('Text'));
 	        e.target.appendChild(element);
