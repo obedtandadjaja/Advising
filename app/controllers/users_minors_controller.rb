@@ -32,7 +32,7 @@ class UsersMinorsController < ApplicationController
 		if users_minor.save
 			redirect_to '/users_minors'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/users_minors/new'
 		end
 	end
@@ -44,7 +44,7 @@ class UsersMinorsController < ApplicationController
 		if @user_minor
 			@user.minor.delete(@user_minor)
 		end
-
+		flash[:success] = "Successfully deleted"
       	redirect_to '/users_minors/'+params[:user_id]
 	end
 

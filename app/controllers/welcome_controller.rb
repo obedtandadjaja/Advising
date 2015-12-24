@@ -36,14 +36,17 @@ class WelcomeController < ApplicationController
 		@minors = @user.minor
 		@concentration = @user.concentration
 		@courses = @user.course
-		puts @hours
+		@courses.each do |course|
+			@hours += course.hr_low
+		end
 	end
 	
 	def advising_ajax
 		@user = User.find(session[:user_id])
 		@course = Course.find(params[:id])
-		@courses << @course
-		@hours = @hours + @course.credit
+		@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
+		@user_course.save
+		@hours = @hours + @course.hr_low
 
 		respond_to do |format|
 	      format.html { redirect_to :back }

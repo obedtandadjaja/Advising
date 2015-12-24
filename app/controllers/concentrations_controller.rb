@@ -28,13 +28,14 @@ class ConcentrationsController < ApplicationController
 		if concentration.save
 			redirect_to '/concentrations'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/concentrations/new'
 		end
 	end
 
 	def destroy
 		Concentration.find(params[:id]).destroy
+		flash[:success] = "Successfully deleted"
       	redirect_to '/concentrations'
 	end
 
@@ -50,7 +51,8 @@ class ConcentrationsController < ApplicationController
 	def update
 		@concentration = Concentration.find(params[:id])
 	    if @concentration.update_attributes(concentration_params)
-	      redirect_to :action => 'show', :id => @concentration
+	    	flash[:success] = "Successfully updated"
+	    	redirect_to :action => 'show', :id => @concentration
 	    end
 	end
 

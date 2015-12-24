@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
 		if course.save
 			redirect_to '/courses'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/courses/new'
 		end
 	end
@@ -79,6 +79,7 @@ class CoursesController < ApplicationController
 	        end
 	      end
 
+	      flash[:success] = "Successfully updated"
 	      redirect_to :action => 'show', :id => @course
 
 	    end
@@ -86,6 +87,7 @@ class CoursesController < ApplicationController
 
 	def destroy
 		Course.find(params[:id]).destroy
+		flash[:success] = "Successfully deleted"
       	redirect_to '/courses'
 	end
 

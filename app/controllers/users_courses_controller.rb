@@ -37,7 +37,7 @@ class UsersCoursesController < ApplicationController
 		if users_course.save
 			redirect_to '/users_courses'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/users_courses/new'
 		end
 	end
@@ -49,7 +49,7 @@ class UsersCoursesController < ApplicationController
 		if @user_course
 			@user.course.delete(@user_course)
 		end
-
+		flash[:success] = "Successfully deleted"
       	redirect_to '/users_courses/'+params[:user_id]
 	end
 

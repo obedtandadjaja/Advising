@@ -32,7 +32,7 @@ class UsersConcentrationsController < ApplicationController
 		if users_concentration.save
 			redirect_to '/users_concentrations'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/users_concentrations/new'
 		end
 	end
@@ -44,7 +44,7 @@ class UsersConcentrationsController < ApplicationController
 		if @user_concentration
 			@user.concentration.delete(@user_concentration)
 		end
-
+		flash[:success] = "Successfully deleted"
       	redirect_to '/users_concentrations/'+params[:user_id]
 	end
 

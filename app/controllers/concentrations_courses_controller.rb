@@ -32,13 +32,14 @@ class ConcentrationsCoursesController < ApplicationController
 		if concentrations_course.save
 			redirect_to '/concentrations_courses'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/concentrations_courses/new'
 		end
 	end
 
 	def destroy
-		ConcentrationsCourse.where(course_id: params[:id]).first.destroy
+		ConcentrationsCourse.where(course_id: params[:id], concentration_id: params[:concentration_id]).first.destroy
+		flash[:success] = "Successfully deleted"
       	redirect_to '/concentrations_courses'
 	end
 

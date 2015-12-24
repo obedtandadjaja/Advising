@@ -32,7 +32,7 @@ class UsersMajorsController < ApplicationController
 		if users_major.save
 			redirect_to '/users_majors'
 		else
-			flash[:notice] = "The form you submitted is invalid."
+			flash[:danger] = "The form you submitted is invalid."
 			redirect_to '/users_majors/new'
 		end
 	end
@@ -44,7 +44,7 @@ class UsersMajorsController < ApplicationController
 		if @user_major
 			@user.major.delete(@user_major)
 		end
-
+		flash[:success] = "Successfully deleted"
       	redirect_to '/users_majors/'+params[:user_id]
 	end
 
