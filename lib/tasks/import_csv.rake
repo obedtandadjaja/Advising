@@ -40,23 +40,12 @@ namespace :db do
 			# unique by name
 			Minor.create_with(
 				:department => row[7],
-				:total_hours => 52
+				:total_hours => 20
 			)
 			.find_or_create_by(
 				:name => row[0]
 			)
 
-			# add the major-course relation
-			MajorsCourse.find_or_create_by(
-				:major_id => Major.where(name: row[0]).first.id,
-				:course_id => Course.where(subject: row[0], course_number: row[1]).first.id
-			)
-
-			# add the minor-course relation
-			MinorsCourse.find_or_create_by(
-				:minor_id => Minor.where(name: row[0]).first.id,
-				:course_id => Course.where(subject: row[0], course_number: row[1]).first.id
-			)
 		end
 	end
 end
