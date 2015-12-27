@@ -8,16 +8,16 @@ How to get the application running:
 
 * Ruby version - make sure you have the newest version of ruby
 
+* Installed Rails - if you haven't then go to this link http://railsapps.github.io/installing-rails.html and follow the instruction
+
 * System dependencies - as long as you have a running laptop
 
 * Configuration - none at this moment, the app is going to run under development state (ENV=develop)
 
-* Database creation + initialization:
-    For database creation, do the following:
+* Database creation + initialization: type rake db:drop db:seed db:build
     - rake db:drop -- drops the current database if exists
-    - rake db:create -- creates the database under the name of Advising_develop because it is in development state
-    - rake db:migrate -- migrates the tables
     - rake db:seed -- seeds the tables; right now the only seed is the test user (email: test@test.com, password: testing). Later on we need to seed in the courses, majors, minors, distributions and their connection to each other.
+    - rake db:build -- creates the database, migrates the tables, loads the courses, its prerequisites, majors and its courses, and minors and its courses.
 
     To access the database simply type "mysql -uroot" in the command line. However, make sure that mysql is installed on your computer to do this.
     -> once in mysql, type "use Advising_development;" to set a default database to be "operated" on
@@ -40,9 +40,17 @@ How to get the application running:
     To generate a controller
     - rails generate controller controller_name
     
-    To load the courses.csv to courses, majors, and minors table
-    - rake db:load_courses
-    - e.g. rake db:load_courses
+    Shortcut to running the many rake tasks we have
+    - rake db:build
+    - right now db:build encompasses the following rake tasks in this order:
+        - db:create
+        - db:migrate
+        - db:load_courses
+        - db:load_cos_concentrations
+        - db:load_distributions
+        - db:load_cos_major
+        - db:load_cos_minor
+        - db:load_cos_prerequisites
     
     To generate a report of a student's schedule organized by semester
     - rake db:report[student_email,desired_filename.txt]
