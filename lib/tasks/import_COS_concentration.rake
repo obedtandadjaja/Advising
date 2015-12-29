@@ -41,16 +41,26 @@ namespace :db do
 			)
 
 			# delete the major-course relation
-			MajorsCourse.where(
+			major_course = MajorsCourse.where(
 				course_id: Course.where(subject: row[0], course_number: row[1]).first.id,
 				major_id: Major.where(name: row[3]).first.id
-			).first.destroy
+			)
+			if major_course
+				major_course.each do |course|
+					course.destroy
+				end
+			end
 
 			# delete the minor-course relation
-			MinorsCourse.where(
+			minor_course = MinorsCourse.where(
 				course_id: Course.where(subject: row[0], course_number: row[1]).first.id,
 				minor_id: Minor.where(name: row[3]).first.id
-			).first.destroy
+			)
+			if minor_course
+				minor_course.each do |course|
+					course.destroy
+				end
+			end
 
 		end
 	end
