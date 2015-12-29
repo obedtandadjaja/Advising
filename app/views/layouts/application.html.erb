@@ -84,8 +84,32 @@
         </div>
     </nav>
 
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert alert-"+name %>
+    <% if flash[:danger] %>
+        <div class="alert alert-danger">
+            <ul>
+            <% if flash[:danger].kind_of?(Array) %>
+                <% flash[:danger].each do |flash| %>
+                    <%= content_tag :li, flash %>
+                <% end %>
+            <% else %>
+                <%= content_tag :li, flash[:danger] %>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+            <ul>
+            <% if flash[:success].kind_of?(Array) %>
+                <% flash[:success].each do |flash| %>
+                    <%= content_tag :li, flash %>
+                <% end %>
+            <% else %>
+                <%= content_tag :li, flash[:success] %>
+            <% end %>
+            </ul>
+        </div>
     <% end %>
 
     <%= yield %>
