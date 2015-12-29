@@ -32,10 +32,28 @@ class User < ActiveRecord::Base
 
   	email_regex = /\A[\w+\-.]+@covenant\.edu\z/i
 
-  	validates :password, :presence => true,
-    	:confirmation => true,
+  	validates :password,
     	:length => {:within => 6..40},
-    	:on => :create, :if => :password
-  	validates :email, :presence => true, :uniqueness => true, :format => { :with => email_regex }
+    	:on => :create,
+    	:if => :password
+  	validates :email,
+  		:presence => true,
+  		:uniqueness => true,
+  		:format => { :with => email_regex, :message => ": Please enter your Covenant email address" }
+  	validates :name,
+  		:presence => true
+  	validates :banner_id,
+  		:presence => true,
+  		:uniqueness => true,
+  		:length => {:is => 8},
+  		:numericality => true
+  	validates :enrollment_time,
+  		:presence => true,
+  		:length => {:is => 4},
+  		inclusion: { in: Date.today.year-5..Date.today.year }
+  	validates :graduation_time,
+  		:presence => true,
+  		:length => {:is => 4},
+  		inclusion: { in: Date.today.year..Date.today.year+5}
 
 end
