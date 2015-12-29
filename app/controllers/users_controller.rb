@@ -30,19 +30,19 @@ class UsersController < ApplicationController
     if @user.save
 
       # draw links to the user
-      params[:user]["major_id"].each do |major_id|
+      params[:user]["major"].each do |major_id|
         if !major_id.empty?
           @user.major << Major.find(major_id)
         end
       end
 
-      params[:user]["minor_id"].each do |minor_id|
+      params[:user]["minor"].each do |minor_id|
         if !minor_id.empty?
           @user.minor << Minor.find(minor_id)
         end
       end
 
-      params[:user]["concentration_id"].each do |concentration_id|
+      params[:user]["concentration"].each do |concentration_id|
         if !concentration_id.empty?
           @user.concentration << Concentration.find(concentration_id)
         end
@@ -51,8 +51,12 @@ class UsersController < ApplicationController
       flash[:success] = "You have successfully registered!"
       redirect_to '/login'
     else
-      flash[:danger] = "The form you submitted is invalid."
-      redirect_to '/signup'
+      flash[:danger] = Array.new
+      @user.errors.full_messages.each do |error_message|
+        flash[:danger] << error_message
+      end
+      # flash[:danger] = "The form you submitted is invalid."
+      render 'new'
     end
   end
 
