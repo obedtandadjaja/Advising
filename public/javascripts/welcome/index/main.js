@@ -14,8 +14,6 @@
 //   limitations under the License.
 $(document).ready(function()
 {
-
-
 	function handleDragStart(e)
 	{
 		this.style.opacity = '0.7';
@@ -52,12 +50,19 @@ $(document).ready(function()
 			    data: { date: e.target.id },
 			    dataType: "json",
 			    success: function (response) {
-			    	// console.log("Success");
-			    	alert("success");
+			    	console.log(response);
+			    	$.each(response, function(key, value) {
+						$hours = 0;
+						$.each(value, function(key2, value2)
+						{
+							$hours += value2["hr_low"];
+						});
+						$('#'+key+'_hours').html("Total Hours: "+$hours);
+					});
+			    	// $('#'+e.target.id+'hours').html("Total Hours: "+response);
 			    },
 			    error: function (response) {
-			    	// console.log("Failed");
-			    	alert("failed");
+			    	alert("There seems to be an error");
 			    }
 			});
     	}
