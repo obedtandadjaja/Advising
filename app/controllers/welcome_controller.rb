@@ -36,6 +36,17 @@ class WelcomeController < ApplicationController
 		@minors = @user.minor
 		@concentration = @user.concentration
 		@courses = @user.course
+
+		@semesters = Array.new
+		counter = @user.enrollment_time
+		while counter <= @user.graduation_time do
+			@semesters << "#{counter}s"
+			@semesters << "#{counter}f"
+			counter = counter+1
+		end
+		@semesters.pop
+		@semesters.shift
+
 		@courses.each do |course|
 			@hours += course.hr_low
 		end
@@ -46,15 +57,21 @@ class WelcomeController < ApplicationController
 		@course = Course.find(params[:id])
 		@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 		@user_course.save
-		@hours = @hours + @course.hr_low
-
+		@user_courses = UsersCourse.where(user_id: @user.id)
+		@user_courses_hash = Hash.new
+		@user_courses.each do |course|
+			if(@user_courses_hash.has_key?(course.taken_planned))
+				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
+			else
+				@user_courses_hash["#{course.taken_planned}"] = Array.new
+				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
+			end
+		end
+		
 		respond_to do |format|
-	      format.html { redirect_to :back }
-	      format.json { head :no_content }
-	      format.js {
-	        render 'welcome/update_hours'
-	      }
+	      format.html
+	      format.json { render json: @user_courses_hash.to_json }
+	      format.js
 	    end
 	end
-	
 end
