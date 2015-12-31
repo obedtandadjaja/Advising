@@ -35,7 +35,7 @@ class Course < ActiveRecord::Base
 
 	# make sure that all the form inputs are filled in
 	validates :subject, :presence => true
-	validates :course_number, :presence => true, :numericality => true
+	validates :course_number, :presence => true
 	validates :title, :presence => true
 	validates :hr_low, :presence => true, :numericality => true
 
