@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
 	before_filter :authorize
 	
 	def index
-		@user = User.find(session[:user_id])
+		@user = @current_user
 		@distributions = Distribution.order(:title)
 		@majors = @user.major
 		@minors = @user.minor
@@ -53,7 +53,7 @@ class WelcomeController < ApplicationController
 	end
 	
 	def advising_ajax
-		@user = User.find(session[:user_id])
+		@user = @current_user
 		@course = Course.find(params[:id])
 		@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 		@user_course.save
