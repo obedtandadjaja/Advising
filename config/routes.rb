@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  default_url_options :host => "localhost:3000"
+
+  get 'password_resets/new'
 
   get '/' => 'sessions#new'
 
@@ -34,5 +37,6 @@ Rails.application.routes.draw do
   resources :minors_courses
   resources :users
   resources :course_prerequisites
+  resources :password_resets
   
 end
