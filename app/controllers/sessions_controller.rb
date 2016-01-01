@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   # end
   
   def new
-    if cookies.permanent[:auth_token]
+    if cookies.signed[:auth_token]
       redirect_to '/welcome'
     end
   end
@@ -45,9 +45,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       if params[:remember_me]
-        cookies.permanent[:auth_token] = user.auth_token
+        cookies.signed[:auth_token] = { value: user.auth_token, expires: 12.weeks.from_now }
       else
-        cookies[:auth_token] = user.auth_token
+        cookies.signed[:auth_token] = user.auth_token
       end
       redirect_to '/welcome'
     else
