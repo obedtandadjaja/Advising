@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   default_url_options :host => "localhost:3000"
-
-  get 'password_resets/new'
-
+  
   get '/' => 'sessions#new'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
