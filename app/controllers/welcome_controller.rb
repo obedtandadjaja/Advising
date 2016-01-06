@@ -16,19 +16,22 @@
 
 class WelcomeController < ApplicationController
 
-	before_filter :authorize, :set_courses, :set_hours
+	before_filter :authorize, :set_semesters
 	respond_to :js, :json, :html
 
-	def set_courses
-		@courses = []
+	def set_semesters
+	    @semesters = Array.new
+	    counter = @current_user.enrollment_time
+	    counter_limit = @current_user.graduation_time
+	    while counter <= counter_limit do
+	      @semesters << "#{counter}s"
+	      @semesters << "#{counter}f"
+	      counter = counter+1
+	    end
+	    @semesters.pop
+	    @semesters.shift
 	end
 
-	def set_hours
-		@hours = 0
-	end
-
-	before_filter :authorize
-	
 	def index
 		@user = @current_user
 		@distributions = Distribution.order(:title)
@@ -37,26 +40,51 @@ class WelcomeController < ApplicationController
 		@concentration = @user.concentration
 		@courses = @user.course
 
-		@semesters = Array.new
-		counter = @user.enrollment_time
-		while counter <= @user.graduation_time do
-			@semesters << "#{counter}s"
-			@semesters << "#{counter}f"
-			counter = counter+1
-		end
-		@semesters.pop
-		@semesters.shift
-
-		@courses.each do |course|
-			@hours += course.hr_low
-		end
+		@user_semester_hours = getSemesterHours
 	end
 	
 	def advising_ajax
 		@user = @current_user
 		@course = Course.find(params[:id])
-		@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
-		@user_course.save
+
+		checkPrerequisitesArray = checkPrerequisites(@user, @course)
+		if(checkPrerequisitesArray.count == 0)
+			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
+			@user_course.save
+			@user_courses_hash = getSemesterCourses
+
+			respond_to do |format|
+		    	format.html
+		    	format.json { render json: @user_courses_hash.to_json }
+		    	format.js
+		    end
+		else
+			respond_to do |format|
+				format.html
+				format.json { render json: { :error => true, :error_messages => checkPrerequisitesArray } }
+				format.js
+			end
+		end
+	end
+
+	def checkPrerequisites(user, course)
+		errors = Array.new
+		course.prerequisite.each do |prereq|
+			prerequisite = UsersCourse.where(user_id: user.id, course_id: prereq.id).first
+			if(prerequisite)
+				prerequisite_taken_on = @semesters.index(prerequisite.taken_planned)
+				course_taken_on = @semesters.index(params[:date])
+				if(prerequisite_taken_on > course_taken_on)
+					errors << "Prerequisite: #{prereq.subject} #{prereq.course_number} for #{course.subject} #{course.course_number} must be taken earlier"
+				end
+			else
+				errors << "Prerequisite: #{prereq.subject} #{prereq.course_number} for #{course.subject} #{course.course_number} not taken"
+			end
+		end
+		return errors
+	end
+
+	def getSemesterCourses
 		@user_courses = UsersCourse.where(user_id: @user.id)
 		@user_courses_hash = Hash.new
 		@user_courses.each do |course|
@@ -67,11 +95,19 @@ class WelcomeController < ApplicationController
 				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
 			end
 		end
-		
-		respond_to do |format|
-	      format.html
-	      format.json { render json: @user_courses_hash.to_json }
-	      format.js
-	    end
+		return @user_courses_hash
 	end
+
+	def getSemesterHours
+		@user_courses_hash = getSemesterCourses
+		@user_semester_hours = Hash.new
+		@user_courses_hash.each do |key, array|
+			@user_semester_hours["#{key}"] = 0
+			array.each do |course|
+				@user_semester_hours["#{key}"] += course.hr_low
+			end
+		end
+		return @user_semester_hours
+	end
+
 end
