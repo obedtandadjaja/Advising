@@ -30,38 +30,25 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Plan</div>
                 <div class="panel-body">
-                    <!-- <div class="panel panel-default col-md-12" style="padding: 0 0 0 0">
-                        <div class="panel-body board" id="2015f">
-                            <% @courses.each do |course| %>
-                                <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
-                                    <div class="panel-body" style="padding: 0">
-                                        <p class="col-md-10">
-                                        <%= course.subject %> <%= course.course_number %> - <%= course.title %>
-                                        </p>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-                        <div class="panel-footer text-right" id="hours">Total Hours: <%= @hours %></div> -->
-                        <% @semesters.each do |semester| %>
-                            <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
-                                <div class="panel-heading"><%= semester %></div>
-                                <div class="panel-body board" id="<%= semester %>">
-                                    <% @courses.each do |course| %>
-                                        <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
-                                            <div class="panel-body" style="padding: 0">
-                                                <p class="col-md-10">
-                                                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
-                                                </p>
-                                            </div>
+                    <% @semesters.each do |semester| %>
+                        <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                            <div class="panel-heading"><%= semester %></div>
+                            <div class="panel-body board" id="<%= semester %>">
+                                <% @courses.each do |course| %>
+                                    <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester %>
+                                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                        <div class="panel-body" style="padding: 0">
+                                            <p class="col-md-10">
+                                            <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                                            </p>
                                         </div>
-                                        <% end %>
+                                    </div>
                                     <% end %>
-                                </div>
-                                <div class="panel-footer text-right" id="<%= semester %>_hours">Total Hours: <%= @hours %></div>
+                                <% end %>
                             </div>
-                        <% end %>
+                            <div class="panel-footer text-right" id="<%= semester %>_hours">Total Hours: <%= @user_semester_hours["#{semester}"] ? @user_semester_hours["#{semester}"] : 0 %></div>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
