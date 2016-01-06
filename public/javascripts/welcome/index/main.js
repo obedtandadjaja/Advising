@@ -41,9 +41,8 @@ $(document).ready(function()
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board")
 		{
-		    var element = document.getElementById(e.dataTransfer.getData('Text'));
-	        e.target.appendChild(element);
-	        var id = e.dataTransfer.getData('Text');
+			var element = document.getElementById(e.dataTransfer.getData('Text'));
+			var id = e.dataTransfer.getData('Text');
 	        $.ajax({
 			    url: '/advising_ajax/'+id,
 			    type: 'PUT',
@@ -51,18 +50,26 @@ $(document).ready(function()
 			    dataType: "json",
 			    success: function (response) {
 			    	console.log(response);
-			    	$.each(response, function(key, value) {
-						$hours = 0;
-						$.each(value, function(key2, value2)
-						{
-							$hours += value2["hr_low"];
+			    	if(response.error_messages)
+			    	{
+			    		// TODO change from alert to modal
+			    		alert(response.error_messages[0]);
+			    	}
+			    	else
+			    	{
+			    		$.each(response, function(key, value) {
+							$hours = 0;
+							$.each(value, function(key2, value2)
+							{
+								$hours += value2["hr_low"];
+							});
+							$('#'+key+'_hours').html("Total Hours: "+$hours);
 						});
-						$('#'+key+'_hours').html("Total Hours: "+$hours);
-					});
-			    	// $('#'+e.target.id+'hours').html("Total Hours: "+response);
+				        e.target.appendChild(element);
+			    	}
 			    },
 			    error: function (response) {
-			    	alert("There seems to be an error");
+			    	alert("Something appears to be wrong");
 			    }
 			});
     	}
