@@ -53,7 +53,19 @@ $(document).ready(function()
 			    	if(response.error_messages)
 			    	{
 			    		// TODO change from alert to modal
-			    		alert(response.error_messages[0]);
+			    		// alert(response.error_messages[0]);
+			    		$('.modal-title').text('Invalid Schedule');
+			    		$('.modal-body').empty();
+			    		var modal_text = "<ul>";
+			    		$.each(response.error_messages, function(key, message)
+			    		{
+			    			modal_text += "<li>";
+			    			modal_text += message;
+			    			modal_text += "</li>";
+			    		});
+			    		modal_text += "</ul>";
+			    		$('.modal-body').append(modal_text);
+			    		$('#myModal').modal('show');
 			    	}
 			    	else
 			    	{
