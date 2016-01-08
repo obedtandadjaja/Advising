@@ -69,13 +69,27 @@ $(document).ready(function()
 			    	}
 			    	else
 			    	{
-			    		$.each(response, function(key, value) {
+			    		$.each(response.user_courses, function(key, value) {
 							$hours = 0;
 							$.each(value, function(key2, value2)
 							{
 								$hours += value2["hr_low"];
 							});
 							$('#'+key+'_hours').html("Total Hours: "+$hours);
+						});
+						$.each(response.completion, function(key, value)
+						{
+							$.each(value, function(key2, value2)
+							{
+								if(value2)
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'completed');
+								}
+								else
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+								}
+							});
 						});
 				        e.target.appendChild(element);
 			    	}
