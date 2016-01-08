@@ -6235,3 +6235,11 @@ label,
 .board.over {
   border: 2px dashed #000;
 }
+
+#not_completed {
+  background-color: #ffb3af;
+}
+
+#completed {
+  background-color: #bcf5bc;
+}
