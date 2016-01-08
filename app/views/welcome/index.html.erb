@@ -24,6 +24,8 @@
     <%= javascript_include_tag "welcome/index/main" %>
 <% end %>
 
+<%= @user_concentration %>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-7">
@@ -58,7 +60,7 @@
                 <div class="panel-body">
                     <% @majors.each do |major| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading completion_major_<%= major.id %>" id="<%= @completion_hash["major"][major.id] ? "completed" : "not_completed" %>">
                                 <a data-toggle="collapse" data-target="#major_<%= major.id %>">
                                     <%= major.name %> Major
                                 </a>
@@ -82,7 +84,7 @@
                     <% end %>
                     <% @minors.each do |minor| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading completion_minor_<%= minor.id %>" id="<%= @completion_hash["minor"][minor.id] ? "completed" : "not_completed" %>">
                                 <a data-toggle="collapse" data-target="#minor_<%= minor.id %>">
                                     <%= minor.name %> Minor
                                 </a>
@@ -106,7 +108,7 @@
                     <% end %>
                     <% @concentration.each do |concentration| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading completion_concentration_<%= concentration.id %>" id="<%= @completion_hash["concentration"][concentration.id] ? "completed" : "not_completed" %>">
                                 <a data-toggle="collapse" data-target="#concentration_<%= concentration.id %>">
                                     <%= concentration.name %> Concentration
                                 </a>
@@ -130,7 +132,7 @@
                     <% end %>
                     <% @distributions.each do |distribution| %>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading completion_distribution_<%= distribution.id %>" id="<%= @completion_hash["distribution"][distribution.id] ? "completed" : "not_completed" %>">
                                 <a data-toggle="collapse" data-target="#distribution_<%= distribution.id %>">
                                     <%= distribution.title %> Distribution
                                 </a>
