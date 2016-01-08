@@ -41,6 +41,8 @@ class WelcomeController < ApplicationController
 		@courses = @user.course
 
 		@user_semester_hours = getSemesterHours
+
+		@completion_hash = checkCompletion(@user)
 	end
 	
 	def advising_ajax
@@ -52,10 +54,15 @@ class WelcomeController < ApplicationController
 			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 			@user_course.save
 			@user_courses_hash = getSemesterCourses
+			@completion_hash = checkCompletion(@user)
+
+			@json_response = Hash.new
+			@json_response["user_courses"] = @user_courses_hash
+			@json_response["completion"] = @completion_hash
 
 			respond_to do |format|
 		    	format.html
-		    	format.json { render json: @user_courses_hash.to_json }
+		    	format.json { render json: @json_response.to_json }
 		    	format.js
 		    end
 		else
@@ -65,6 +72,73 @@ class WelcomeController < ApplicationController
 				format.js
 			end
 		end
+	end
+
+	def checkCompletion(user)
+		completion_hash = Hash.new
+
+		completion_hash["major"] = Hash.new
+		user.major.each do |major|
+			completion_hash["major"][major.id] = true
+			major.course.each do |major_course|
+				user_course = UsersCourse.where(user_id: user.id, course_id: major_course.id).first
+				if(!user_course)
+					completion_hash["major"][major.id] = false
+					break
+				end
+			end
+		end
+
+		completion_hash["minor"] = Hash.new
+		user.minor.each do |minor|
+			completion_hash["minor"][minor.id] = true
+			minor.course.each do |minor_course|
+				user_course = UsersCourse.where(user_id: user.id, course_id: minor_course.id).first
+				if(!user_course)
+					completion_hash["minor"][minor.id] = false
+					break
+				end
+			end
+		end
+
+		completion_hash["concentration"] = Hash.new
+		user.concentration.each do |concentration|
+			completion_hash["concentration"][concentration.id] = true
+			concentration.course.each do |concentration_course|
+				user_course = UsersCourse.where(user_id: user.id, course_id: concentration_course.id).first
+				if(!user_course)
+					completion_hash["concentration"][concentration.id] = false
+					break
+				end
+			end
+		end
+
+		completion_hash["distribution"] = Hash.new
+		Distribution.find_each do |distribution|
+			if(distribution.title == "CORE")
+				# must complete every courses in this distribution
+				completion_hash["distribution"][distribution.id] = true
+				distribution.course.each do |distribution_course|
+					user_course = UsersCourse.where(user_id: user.id, course_id: distribution_course.id).first
+					if(!user_course)
+						completion_hash["distribution"][distribution.id] = false
+						break
+					end
+				end
+			else
+				# must complete at least one course in every other distributions
+				distribution.course.each do |distribution_course|
+					completion_hash["distribution"][distribution.id] = false
+					user_course = UsersCourse.where(user_id: user.id, course_id: distribution_course.id).first
+					if(user_course)
+						completion_hash["distribution"][distribution.id] = true
+						break
+					end
+				end
+			end
+		end
+
+		return completion_hash
 	end
 
 	def checkPrerequisites(user, course)
