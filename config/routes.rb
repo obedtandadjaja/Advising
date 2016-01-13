@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   put '/advising_ajax/:id' => 'welcome#advising_ajax'
 
+  put '/advising_ajax_delete/:id' => 'welcome#advising_ajax_delete'
+
   resources :courses
   resources :majors
   resources :minors
