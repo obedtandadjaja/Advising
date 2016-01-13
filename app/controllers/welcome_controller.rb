@@ -44,6 +44,37 @@ class WelcomeController < ApplicationController
 
 		@completion_hash = checkCompletion(@user)
 	end
+
+	def advising_ajax_delete
+		@user = @current_user
+		@user_course = Course.find(params[:id])
+
+		error_messages = Array.new
+		if @user_course
+			@user.course.each do |course|
+				if course.id != @user_course.id
+					course.prerequisite.each do |prereq|
+						if prereq.id == @user_course.id
+							error_messages << "Cannot remove course: #{@user_course.subject} #{@user_course.course_number} is a prerequisite for #{course.subject} #{course.course_number}"
+							break
+						end
+					end
+				end
+			end
+		end
+
+		if error_messages.length == 0
+			@user.course.delete(@user_course)
+			@json_response = getUserCoursesAndCompletionJSON(@user)
+			respond_to do |format|
+				format.json { render json: @json_response }
+			end
+		else
+			respond_to do |format|
+				format.json { render json: { :error => true, :error_messages => error_messages } }
+			end
+		end
+	end
 	
 	def advising_ajax
 		@user = @current_user
@@ -53,16 +84,12 @@ class WelcomeController < ApplicationController
 		if(checkPrerequisitesArray.count == 0)
 			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 			@user_course.save
-			@user_courses_hash = getSemesterCourses
-			@completion_hash = checkCompletion(@user)
-
-			@json_response = Hash.new
-			@json_response["user_courses"] = @user_courses_hash
-			@json_response["completion"] = @completion_hash
+			
+			@json_response = getUserCoursesAndCompletionJSON(@user)
 
 			respond_to do |format|
 		    	format.html
-		    	format.json { render json: @json_response.to_json }
+		    	format.json { render json: @json_response }
 		    	format.js
 		    end
 		else
@@ -72,6 +99,17 @@ class WelcomeController < ApplicationController
 				format.js
 			end
 		end
+	end
+
+	def getUserCoursesAndCompletionJSON(user)
+		@user_courses_hash = getSemesterCourses
+		@completion_hash = checkCompletion(user)
+
+		@json_response = Hash.new
+		@json_response["user_courses"] = @user_courses_hash
+		@json_response["completion"] = @completion_hash
+
+		return @json_response.to_json
 	end
 
 	def checkCompletion(user)
@@ -92,12 +130,19 @@ class WelcomeController < ApplicationController
 		completion_hash["minor"] = Hash.new
 		user.minor.each do |minor|
 			completion_hash["minor"][minor.id] = true
+			course_hours = 0
 			minor.course.each do |minor_course|
 				user_course = UsersCourse.where(user_id: user.id, course_id: minor_course.id).first
 				if(!user_course)
 					completion_hash["minor"][minor.id] = false
 					break
+				else
+					course_hours += minor_course.hr_low
 				end
+			end
+			# if student has fulfilled the required hours for the minor then he/she has completed the minor
+			if(course_hours >= minor.total_hours)
+				completion_hash["minor"][minor.id] = true
 			end
 		end
 
@@ -161,11 +206,11 @@ class WelcomeController < ApplicationController
 	def getSemesterCourses
 		@user_courses = UsersCourse.where(user_id: @user.id)
 		@user_courses_hash = Hash.new
+		@semesters.each do |semester|
+			@user_courses_hash["#{semester}"] = Array.new
+		end
 		@user_courses.each do |course|
 			if(@user_courses_hash.has_key?(course.taken_planned))
-				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
-			else
-				@user_courses_hash["#{course.taken_planned}"] = Array.new
 				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
 			end
 		end
