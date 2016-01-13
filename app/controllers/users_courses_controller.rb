@@ -45,12 +45,28 @@ class UsersCoursesController < ApplicationController
 	def destroy
 		@user = User.find(params[:user_id])
 		@user_course = @user.course.find(params[:id])
-		
+
+		error_messages = Array.new
 		if @user_course
-			@user.course.delete(@user_course)
+			@user.course.each do |course|
+				if course.id != @user_course.id
+					course.prerequisite.each do |prereq|
+						if prereq.id == @user_course.id
+							error_messages << "Cannot remove course: #{@user_course.subject} #{@user_course.course_number} is a prerequisite for #{course.subject} #{course.course_number}"
+							break
+						end
+					end
+				end
+			end
 		end
-		flash[:success] = "Successfully deleted"
-      	redirect_to '/users_courses/'+params[:user_id]
+
+		if error_messages.length == 0
+			@user.course.delete(@user_course)
+			redirect_to :back
+		else
+			flash[:danger] = error_messages.first
+			redirect_to :back
+		end
 	end
 
 	def users_course_params
