@@ -33,16 +33,19 @@
                 <div class="panel-heading">Plan</div>
                 <div class="panel-body">
                     <% @semesters.each do |semester| %>
-                        <div class="panel panel-default col-md-6" style="padding: 0 0 0 0">
+                        <div class="panel panel-default col-md-12" style="padding: 0 0 0 0">
                             <div class="panel-heading"><%= semester %></div>
                             <div class="panel-body board" id="<%= semester %>">
                                 <% @courses.each do |course| %>
                                     <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester %>
-                                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
-                                            <p class="col-md-10">
+                                            <p class="col-md-10 col-sm-10">
                                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                             </p>
+                                            <button class="pull-right remove_button" id=<%= course.id %>>
+                                                <i class="fa fa-times"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <% end %>
@@ -66,14 +69,17 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board nope">
+                                <div class="panel-body board nope" id="major__<%= major.id %>">
                                     <% major.course.each do |course| %>
                                         <% if !@courses.include?(course) %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
                                             <div class="panel-body" style="padding: 0">
-                                                <p class="col-md-10">
+                                                <p class="col-md-10 col-sm-10">
                                                 <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                                 </p>
+                                                <div class="pull-right" style="display: none">
+                                                    <i class="fa fa-times remove_button" id=<%= course.id %>></i>
+                                                </div>
                                             </div>
                                         </div>
                                         <% end %>
@@ -90,12 +96,12 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board nope">
+                                <div class="panel-body board nope" id="minor__<%= minor.id %>">
                                     <% minor.course.each do |course| %>
                                         <% if !@courses.include?(course) %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
                                             <div class="panel-body" style="padding: 0">
-                                                <p class="col-md-10">
+                                                <p class="col-md-10 col-sm-10">
                                                 <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                                 </p>
                                             </div>
@@ -114,12 +120,12 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="concentration_<%= concentration.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board nope">
+                                <div class="panel-body board nope" id="concentration__<%= concentration.id %>">
                                     <% concentration.course.each do |course| %>
                                         <% if !@courses.include?(course) %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
                                             <div class="panel-body" style="padding: 0">
-                                                <p class="col-md-10">
+                                                <p class="col-md-10 col-sm-10">
                                                 <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                                 </p>
                                             </div>
@@ -138,12 +144,12 @@
                                 </a>
                             </div>
                             <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
-                                <div class="panel-body board nope">
+                                <div class="panel-body board nope" id="distribution__<%= distribution.id %>">
                                     <% distribution.course.each do |course| %>
                                         <% if !@courses.include?(course) %>
-                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0">
+                                        <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
                                             <div class="panel-body" style="padding: 0">
-                                                <p class="col-md-10">
+                                                <p class="col-md-10 col-sm-10">
                                                 <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                                 </p>
                                             </div>
