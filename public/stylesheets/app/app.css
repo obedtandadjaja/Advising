@@ -1080,7 +1080,11 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 5px 0 5px;
+}
+i {
+  display: inline;
+  margin: 5px 0 5px;
 }
 .lead {
   margin-bottom: 20px;
@@ -6237,9 +6241,9 @@ label,
 }
 
 #not_completed {
-  background-color: #ffb3af;
+  background-color: #f2dede;
 }
 
 #completed {
-  background-color: #bcf5bc;
+  background-color: #dff0d8;
 }
