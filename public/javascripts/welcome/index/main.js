@@ -14,10 +14,11 @@
 //   limitations under the License.
 $(document).ready(function()
 {
+	// drag and drop
 	function handleDragStart(e)
 	{
 		this.style.opacity = '0.7';
-      	e.dataTransfer.setData("Text", e.target.getAttribute('id'));
+      	e.dataTransfer.setData("element_id", e.target.getAttribute('id'));
 	}
 
 	function handleDragOver(e)
@@ -38,11 +39,12 @@ $(document).ready(function()
 
 	function handleDrop(e)
 	{
+		var element = document.getElementById(e.dataTransfer.getData('element_id'));
+		var id = e.dataTransfer.getData('element_id');
+
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board")
 		{
-			var element = document.getElementById(e.dataTransfer.getData('Text'));
-			var id = e.dataTransfer.getData('Text');
 	        $.ajax({
 			    url: '/advising_ajax/'+id,
 			    type: 'PUT',
@@ -101,18 +103,18 @@ $(document).ready(function()
     	}
     	else if(e.target.getAttribute('class') == "panel-body board nope")
     	{
-    		var element = document.getElementById(e.dataTransfer.getData('Text'));
 	        e.target.appendChild(element);
     	}
     	e.preventDefault();
     	e.target.classList.remove('over');
+    	e.classList.add('hello_there');
 	    return true;
 	}
 
 	function handleDragEnd(e)
 	{
 		this.style.opacity = '1';
-		var id = e.dataTransfer.getData('Text');
+		var id = e.dataTransfer.getData('element_id');
 	}
 
 	var items = document.getElementsByClassName('item');
@@ -155,4 +157,64 @@ $(document).ready(function()
 		element.addEventListener('dragover', handleDragOver, false);
 		element.addEventListener('drop', handleDrop, true);
 	}
+
+	// ajax for delete
+	$('.remove_button').click(function()
+	{
+		var id = this.getAttribute('id');
+		var element = this;
+		$.ajax({
+		    url: '/advising_ajax_delete/'+id,
+		    type: 'PUT',
+		    data: { course_id: id },
+		    dataType: "json",
+		    success: function (response) {
+		    	console.log(response);
+		    	if(response.error_messages)
+		    	{
+		    		$('.modal-title').text('Invalid Removal');
+		    		$('.modal-body').empty();
+		    		var modal_text = "<ul>";
+		    		$.each(response.error_messages, function(key, message)
+		    		{
+		    			modal_text += "<li>";
+		    			modal_text += message;
+		    			modal_text += "</li>";
+		    		});
+		    		modal_text += "</ul>";
+		    		$('.modal-body').append(modal_text);
+		    		$('#myModal').modal('show');
+		    	}
+		    	else
+		    	{
+		    		element.parentNode.parentNode.remove();
+		    		$.each(response.user_courses, function(key, value) {
+						$hours = 0;
+						$.each(value, function(key2, value2)
+						{
+							$hours += value2["hr_low"];
+						});
+						$('#'+key+'_hours').html("Total Hours: "+$hours);
+					});
+					$.each(response.completion, function(key, value)
+					{
+						$.each(value, function(key2, value2)
+						{
+							if(value2)
+							{
+								$('.completion_'+key+'_'+key2).attr('id', 'completed');
+							}
+							else
+							{
+								$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+							}
+						});
+					});
+		    	}
+		    },
+		    error: function (response) {
+		    	alert("Something appears to be wrong");
+		    }
+		});
+	});
 });
