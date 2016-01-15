@@ -44,49 +44,23 @@ class WelcomeController < ApplicationController
 
 		@completion_hash = checkCompletion(@user)
 	end
-
-	def advising_ajax_delete
-		@user = @current_user
-		@user_course = Course.find(params[:id])
-
-		error_messages = Array.new
-		if @user_course
-			@user.course.each do |course|
-				if course.id != @user_course.id
-					course.prerequisite.each do |prereq|
-						if prereq.id == @user_course.id
-							error_messages << "Cannot remove course: #{@user_course.subject} #{@user_course.course_number} is a prerequisite for #{course.subject} #{course.course_number}"
-							break
-						end
-					end
-				end
-			end
-		end
-
-		if error_messages.length == 0
-			@user.course.delete(@user_course)
-			@json_response = getUserCoursesAndCompletionJSON(@user)
-			respond_to do |format|
-				format.json { render json: @json_response }
-			end
-		else
-			respond_to do |format|
-				format.json { render json: { :error => true, :error_messages => error_messages } }
-			end
-		end
-	end
 	
 	def advising_ajax
 		@user = @current_user
 		@course = Course.find(params[:id])
 
+		# TODO handle this in the ajax instead, directly link it to advising_ajax_transfer function via routes
+		@user_course = UsersCourse.where(user_id: @user.id, course_id: @course.id).first
+		if @user_course
+			advising_ajax_transfer
+			return
+		end
+
 		checkPrerequisitesArray = checkPrerequisites(@user, @course)
 		if(checkPrerequisitesArray.count == 0)
 			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 			@user_course.save
-			
 			@json_response = getUserCoursesAndCompletionJSON(@user)
-
 			respond_to do |format|
 		    	format.html
 		    	format.json { render json: @json_response }
@@ -97,6 +71,49 @@ class WelcomeController < ApplicationController
 				format.html
 				format.json { render json: { :error => true, :error_messages => checkPrerequisitesArray } }
 				format.js
+			end
+		end
+	end
+
+	def advising_ajax_transfer
+		@user = @current_user
+		@course = Course.find(params[:id])
+
+		error_messages = checkPrerequisiteOnChange(@user, @course, 'move')
+
+		if error_messages.length == 0
+			@user_course =  UsersCourse.where(user_id: @user.id, course_id: @course.id).first
+			@user_course.update_attributes(:taken_planned => params[:date])
+			@json_response = getUserCoursesAndCompletionJSON(@user)
+			respond_to do |format|
+		    	format.html
+		    	format.json { render json: @json_response }
+		    	format.js
+		    end
+		else
+			respond_to do |format|
+				format.html
+				format.json { render json: { :error => true, :error_messages => error_messages } }
+				format.js
+			end
+		end
+	end
+
+	def advising_ajax_delete
+		@user = @current_user
+		@course = Course.find(params[:id])
+
+		error_messages = checkPrerequisiteOnChange(@user, @course, 'remove')
+
+		if error_messages.length == 0
+			@user.course.delete(@course)
+			@json_response = getUserCoursesAndCompletionJSON(@user)
+			respond_to do |format|
+				format.json { render json: @json_response }
+			end
+		else
+			respond_to do |format|
+				format.json { render json: { :error => true, :error_messages => error_messages } }
 			end
 		end
 	end
@@ -193,14 +210,32 @@ class WelcomeController < ApplicationController
 			if(prerequisite)
 				prerequisite_taken_on = @semesters.index(prerequisite.taken_planned)
 				course_taken_on = @semesters.index(params[:date])
-				if(prerequisite_taken_on > course_taken_on)
-					errors << "Prerequisite: #{prereq.subject} #{prereq.course_number} for #{course.subject} #{course.course_number} must be taken earlier"
+				if(prerequisite_taken_on >= course_taken_on)
+					errors << "Prerequisite error for #{course.subject} #{course.course_number}: #{prereq.subject} #{prereq.course_number} must be taken earlier"
 				end
 			else
-				errors << "Prerequisite: #{prereq.subject} #{prereq.course_number} for #{course.subject} #{course.course_number} not taken"
+				errors << "Prerequisite error for #{course.subject} #{course.course_number}: #{prereq.subject} #{prereq.course_number} not taken yet"
 			end
 		end
 		return errors
+	end
+
+	def checkPrerequisiteOnChange(user, course, string)
+		error_messages = Array.new
+		if course
+			user.course.each do |user_course|
+				if user_course.id != course.id
+					user_course.prerequisite.each do |prereq|
+						if prereq.id == course.id
+							error_messages << "Cannot #{string} course: #{course.subject} #{course.course_number} is a prerequisite for #{user_course.subject} #{user_course.course_number}"
+							break
+						end
+					end
+				end
+			end
+		end
+
+		return error_messages
 	end
 
 	def getSemesterCourses
