@@ -41,5 +41,9 @@ class Course < ActiveRecord::Base
 
   	validates_numericality_of :hr_low
 
+  	def fullCourseName
+  		"#{subject} #{course_number} - #{title}"
+  	end
+
 end
 
