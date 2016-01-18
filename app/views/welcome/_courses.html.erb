@@ -1,0 +1,108 @@
+<% @majors.each do |major| %>
+    <div class="panel panel-default">
+        <div class="panel-heading completion_major_<%= major.id %>" id="<%= @completion_hash["major"][major.id] ? "completed" : "not_completed" %>">
+            <a data-toggle="collapse" data-target="#major_<%= major.id %>">
+                <%= major.name %> Major
+            </a>
+        </div>
+        <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
+            <div class="panel-body board nope" id="major__<%= major.id %>">
+                <% major.course.each do |course| %>
+                    <% if !@courses.include?(course) %>
+                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
+                        <div class="panel-body" style="padding: 0">
+                            <p class="col-md-10 col-sm-10">
+                            <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                            </p>
+                            <button class="pull-right remove_button" style="display: none">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+<% @minors.each do |minor| %>
+    <div class="panel panel-default">
+        <div class="panel-heading completion_minor_<%= minor.id %>" id="<%= @completion_hash["minor"][minor.id] ? "completed" : "not_completed" %>">
+            <a data-toggle="collapse" data-target="#minor_<%= minor.id %>">
+                <%= minor.name %> Minor
+            </a>
+        </div>
+        <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
+            <div class="panel-body board nope" id="minor__<%= minor.id %>">
+                <% minor.course.each do |course| %>
+                    <% if !@courses.include?(course) %>
+                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
+                        <div class="panel-body" style="padding: 0">
+                            <p class="col-md-10 col-sm-10">
+                            <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                            </p>
+                            <button class="pull-right remove_button" style="display: none">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+<% @concentration.each do |concentration| %>
+    <div class="panel panel-default">
+        <div class="panel-heading completion_concentration_<%= concentration.id %>" id="<%= @completion_hash["concentration"][concentration.id] ? "completed" : "not_completed" %>">
+            <a data-toggle="collapse" data-target="#concentration_<%= concentration.id %>">
+                <%= concentration.name %> Concentration
+            </a>
+        </div>
+        <div class="panel-collapse collapse out item_group" id="concentration_<%= concentration.id %>" style="padding: 0; margin: 0">
+            <div class="panel-body board nope" id="concentration__<%= concentration.id %>">
+                <% concentration.course.each do |course| %>
+                    <% if !@courses.include?(course) %>
+                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
+                        <div class="panel-body" style="padding: 0">
+                            <p class="col-md-10 col-sm-10">
+                            <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                            </p>
+                            <button class="pull-right remove_button" style="display: none">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+<% @distributions.each do |distribution| %>
+    <div class="panel panel-default">
+        <div class="panel-heading completion_distribution_<%= distribution.id %>" id="<%= @completion_hash["distribution"][distribution.id] ? "completed" : "not_completed" %>">
+            <a data-toggle="collapse" data-target="#distribution_<%= distribution.id %>">
+                <%= distribution.title %> Distribution
+            </a>
+        </div>
+        <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
+            <div class="panel-body board nope" id="distribution__<%= distribution.id %>">
+                <% distribution.course.each do |course| %>
+                    <% if !@courses.include?(course) %>
+                    <div class="panel panel-default col-md-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
+                        <div class="panel-body" style="padding: 0">
+                            <p class="col-md-10 col-sm-10">
+                            <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+                            </p>
+                            <button class="pull-right remove_button" style="display: none">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
