@@ -236,13 +236,13 @@ $(document).ready(function()
 		});
 	});
 
-	$('#generate_course').click(function()
+	$('#generate_course').unbind('click').bind('click', function()
 	{
-		var course_id = $('.add_course').val();
+		var course_id = $('#add_course').val();
 		if(course_id)
 		{
-			var course_full_name = $('.add_course option:selected').html()
-			$('#other_courses').find('.other_courses_list').append(
+			var course_full_name = $('#add_course option:selected').html()
+			var new_course =
 				'<div class="panel panel-default col-md-12 item" id="'+course_id+'" style="margin: 0; padding: 0">'+
 	                '<div class="panel-body" style="padding: 0">'+
 	                    '<p class="col-md-10 col-sm-10">'+
@@ -252,8 +252,19 @@ $(document).ready(function()
 	                        '<i class="fa fa-times"></i>'+
 	                    '</button>'+
 	                '</div>'+
-	            '</div>'
-			);
+	            '</div>';
+			$('#other_courses').find('.other_courses_list').append(new_course);
+
+			var items = document.getElementsByClassName('item');
+			element = null;
+			for (var i = 0; i < items.length; i++)
+			{
+				element = items[i];
+				element.setAttribute('draggable', 'true');
+				element.setAttribute('droppable', 'false');
+				element.addEventListener('dragstart', handleDragStart, false);
+				element.addEventListener('dragend', handleDragEnd, false);
+			}
 		}
 	});
 });
