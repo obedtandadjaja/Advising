@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   # get the view for the sign up
   get '/signup' => 'users#new'
 
-  # get the view of welcome
-  get '/welcome' => 'welcome#index'
+  # get the view of advising
+  get '/advising' => 'advising#index'
 
   get '/home' => 'home#index'
 
-  put '/advising_ajax/:id' => 'welcome#advising_ajax'
+  put '/advising_ajax/:id' => 'advising#advising_ajax'
 
-  put '/advising_ajax_delete/:id' => 'welcome#advising_ajax_delete'
+  put '/advising_ajax_delete/:id' => 'advising#advising_ajax_delete'
 
   resources :courses
   resources :majors

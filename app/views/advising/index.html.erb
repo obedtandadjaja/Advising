@@ -88,7 +88,7 @@
                         Required Courses
                     </a>
                 </div>
-                <div class="panel-collapse collapse out" id="required_courses">
+                <div class="panel-collapse collapse in" id="required_courses">
                     <div class="panel-body dynamic">
                         <%= render partial: "courses", user: @user %>
                     </div>
@@ -102,12 +102,7 @@
                 </div>
                 <div class="panel-collapse collapse in" id="other_courses">
                     <div class="panel-body other_courses_list">
-                        <div class="form-group col-md-10">
-                            <div class="col-md-12">
-                                <%= collection_select(:course, :id, Course.all, :id, :fullCourseName, {:prompt => true}, {:class => 'form-control chosen-select add_course'}) %>
-                            </div>
-                        </div>
-                        <button class="col-md-2 btn btn-primary" id="generate_course">Generate</button>
+                        <%= render partial: "other_courses" %>
                     </div>
                 </div>
             </div>

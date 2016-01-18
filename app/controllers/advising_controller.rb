@@ -14,7 +14,7 @@
 #   limitations under the License.
 #
 
-class WelcomeController < ApplicationController
+class AdvisingController < ApplicationController
 
 	before_filter :authorize, :set_semesters
 	respond_to :js, :json, :html
