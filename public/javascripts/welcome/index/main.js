@@ -168,7 +168,7 @@ $(document).ready(function()
 	// ajax for delete
 	$('.remove_button').click(function()
 	{
-		var id = this.getAttribute('id');
+		var id = this.parentNode.parentNode.getAttribute('id');
 		var element = this;
 		$.ajax({
 		    url: '/advising_ajax_delete/'+id,
@@ -195,40 +195,65 @@ $(document).ready(function()
 		    	else
 		    	{
 		    		element.parentNode.parentNode.remove();
-		    		$.each(response.user_courses, function(key, value) {
-						$hours = 0;
-						$.each(value, function(key2, value2)
-						{
-							$hours += value2["hr_low"];
-						});
-						if(($hours < 12 || $hours > 18) && ($hours != 0))
-						{
-							$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
-						}
-						else
-						{
-							$('#'+key+'_hours').html("Total Hours: "+$hours);
-						}
-					});
-					$.each(response.completion, function(key, value)
-					{
-						$.each(value, function(key2, value2)
-						{
-							if(value2)
-							{
-								$('.completion_'+key+'_'+key2).attr('id', 'completed');
-							}
-							else
-							{
-								$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
-							}
-						});
-					});
+
+		    		// TODO find a better way of restoring deleted course to its original position
+		    		location.reload();
+
+		   //  		$.each(response.user_courses, function(key, value) {
+					// 	$hours = 0;
+					// 	$.each(value, function(key2, value2)
+					// 	{
+					// 		$hours += value2["hr_low"];
+					// 	});
+					// 	if(($hours < 12 || $hours > 18) && ($hours != 0))
+					// 	{
+					// 		$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+					// 	}
+					// 	else
+					// 	{
+					// 		$('#'+key+'_hours').html("Total Hours: "+$hours);
+					// 	}
+					// });
+					// $.each(response.completion, function(key, value)
+					// {
+					// 	$.each(value, function(key2, value2)
+					// 	{
+					// 		if(value2)
+					// 		{
+					// 			$('.completion_'+key+'_'+key2).attr('id', 'completed');
+					// 		}
+					// 		else
+					// 		{
+					// 			$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+					// 		}
+					// 	});
+					// });
 		    	}
 		    },
 		    error: function (response) {
 		    	alert("Something appears to be wrong");
 		    }
 		});
+	});
+
+	$('#generate_course').click(function()
+	{
+		var course_id = $('.add_course').val();
+		if(course_id)
+		{
+			var course_full_name = $('.add_course option:selected').html()
+			$('#other_courses').find('.other_courses_list').append(
+				'<div class="panel panel-default col-md-12 item" id="'+course_id+'" style="margin: 0; padding: 0">'+
+	                '<div class="panel-body" style="padding: 0">'+
+	                    '<p class="col-md-10 col-sm-10">'+
+	                    course_full_name+
+	                    '</p>'+
+	                    '<button class="pull-right remove_button" style="display: none">'+
+	                        '<i class="fa fa-times"></i>'+
+	                    '</button>'+
+	                '</div>'+
+	            '</div>'
+			);
+		}
 	});
 });
