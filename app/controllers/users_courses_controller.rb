@@ -16,10 +16,12 @@
 
 class UsersCoursesController < ApplicationController
 
+	# displays all users and its corresponding courses
 	def index
 		@users = User.order(:name)
 	end
 
+	# displays a particular user and its courses
 	def show
 		@user = User.find(params[:id])
 
@@ -29,9 +31,11 @@ class UsersCoursesController < ApplicationController
 		end
 	end
 
+	# displays form for creating new user-course relation
 	def new
 	end
 
+	# handles post method from new
 	def create
 		users_course = UsersCourse.new(users_course_params)
 		if users_course.save
@@ -42,6 +46,7 @@ class UsersCoursesController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		@user = User.find(params[:user_id])
 		@user_course = @user.course.find(params[:id])
@@ -69,6 +74,8 @@ class UsersCoursesController < ApplicationController
 		end
 	end
 
+	private
+	# strong params
 	def users_course_params
 		params.require(:users_course).permit(:user_id, :course_id, :taken_on)
 	end

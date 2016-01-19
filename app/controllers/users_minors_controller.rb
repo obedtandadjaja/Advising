@@ -16,17 +16,21 @@
 
 class UsersMinorsController < ApplicationController
 
+	# displays all users and their minors
 	def index
 		@users = User.all
 	end
 
+	# display a particular user and his/her minor(s)
 	def show
 		@user = User.find(params[:id])
 	end
 
+	# displays form for creating new user-minor relation
 	def new
 	end
 
+	# handles post from new
 	def create
 		users_minor = UsersMinor.new(users_minor_params)
 		if users_minor.save
@@ -37,6 +41,7 @@ class UsersMinorsController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		@user = User.find(params[:user_id])
 		@user_minor = @user.minor.find(params[:id])
@@ -48,6 +53,8 @@ class UsersMinorsController < ApplicationController
       	redirect_to '/users_minors/'+params[:user_id]
 	end
 
+	private
+	# strong params
 	def users_minor_params
 		params.require(:users_minor).permit(:user_id, :minor_id)
 	end

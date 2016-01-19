@@ -16,32 +16,33 @@
 
 class SessionsController < ApplicationController
 
-  
-  def new
-    if cookies.signed[:auth_token]
-      redirect_to '/advising'
+    # check a session exists or not
+    def new
+        if cookies.signed[:auth_token]
+            redirect_to '/advising'
+        end
     end
-  end
 
-  def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      if params[:remember_me]
-        cookies.signed[:auth_token] = { value: user.auth_token, expires: 12.weeks.from_now }
-      else
-        cookies.signed[:auth_token] = user.auth_token
-      end
-      redirect_to '/advising'
-    else
-      flash[:danger] = "The email/password you entered is incorrect. Please try again."
-      redirect_to '/login'
+    # handles post from login form
+    def create
+        user = User.find_by_email(params[:email])
+        if user && user.authenticate(params[:password])
+            if params[:remember_me]
+                cookies.signed[:auth_token] = { value: user.auth_token, expires: 12.weeks.from_now }
+            else
+                cookies.signed[:auth_token] = user.auth_token
+            end
+            redirect_to '/advising'
+        else
+            flash[:danger] = "The email/password you entered is incorrect. Please try again."
+            redirect_to '/login'
+        end
     end
-  end
 
-  # Log out
-  def destroy
-    cookies.delete(:auth_token)
-    redirect_to '/login'
-  end
+    # Log out
+    def destroy
+        cookies.delete(:auth_token)
+        redirect_to '/login'
+    end
 
 end

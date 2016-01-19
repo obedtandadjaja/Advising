@@ -16,17 +16,21 @@
 
 class UsersConcentrationsController < ApplicationController
 
+	# displays all users and their concentrations
 	def index
 		@users = User.all
 	end
 
+	# displays a particular user and his/her concentration(s)
 	def show
 		@user = User.find(params[:id])
 	end
 
+	# display the form for creating new user-concentration relation
 	def new
 	end
 
+	# handles creates
 	def create
 		users_concentration = UsersConcentration.new(users_concentration_params)
 		if users_concentration.save
@@ -37,6 +41,7 @@ class UsersConcentrationsController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		@user = User.find(params[:user_id])
 		@user_concentration = @user.concentration.find(params[:id])
@@ -48,6 +53,8 @@ class UsersConcentrationsController < ApplicationController
       	redirect_to '/users_concentrations/'+params[:user_id]
 	end
 
+	private
+	# strong params
 	def users_concentration_params
 		params.require(:users_concentration).permit(:user_id, :concentration_id)
 	end

@@ -16,13 +16,16 @@
 
 class MinorsController < ApplicationController
 
+	# displays all minors
 	def index
 		@minors = Minor.order(:name)
 	end
 
+	# displays form for creating new minor
 	def new
 	end
 
+	# handles post method from new minor form
 	def create
 		minor = Minor.new(minor_params)
 		if minor.save
@@ -33,19 +36,23 @@ class MinorsController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		Minor.find(params[:id]).destroy
       	redirect_to '/minors'
 	end
 
+	# displays a particular minor
 	def show
 		@minor = Major.find(params[:id])
 	end
 
+	# displays minor update form
 	def edit
 		@minor = Minor.find(params[:id])
 	end
 
+	# handles updates
 	def update
 		@minor = Minor.find(params[:id])
 
@@ -57,6 +64,7 @@ class MinorsController < ApplicationController
 	end
 
 	private
+	# strong params
 	def minor_params
 		params.require(:minor).permit(:name, :department, :total_hours)
 	end

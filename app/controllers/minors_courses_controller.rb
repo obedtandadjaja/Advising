@@ -16,17 +16,21 @@
 
 class MinorsCoursesController < ApplicationController
 
+	# displays all minors and its corresponding courses
 	def index
 		@minors = Minor.all
 	end
 
+	# displays the form for creating new minor-course relation
 	def new
 	end
 
+	# display a particular minor and its courses
 	def show
 		@minor = Minor.find(params[:id])
 	end
 
+	# handles post method from new minor-course form
 	def create
 		minors_course = MinorsCourse.new(minors_course_params)
 		if minors_course.save
@@ -37,12 +41,15 @@ class MinorsCoursesController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		MinorsCourse.where(course_id: params[:id], minor_id: params[:minor_id]).first.destroy
 		flash[:success] = "Successfully deleted"
       	redirect_to '/minors_courses'
 	end
 
+	private
+	# strong params
 	def minors_course_params
 		params.require(:minors_course).permit(:minor_id, :course_id)
 	end

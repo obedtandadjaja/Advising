@@ -16,103 +16,107 @@
 
 class UsersController < ApplicationController
 
-  def new
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
-  def create
-
-    @user = User.new(user_params)
-
-    if @user.save
-
-      # draw links to the user
-      params[:user]["major"].each do |major_id|
-        if !major_id.empty?
-          @user.major << Major.find(major_id)
-        end
-      end
-
-      params[:user]["minor"].each do |minor_id|
-        if !minor_id.empty?
-          @user.minor << Minor.find(minor_id)
-        end
-      end
-
-      params[:user]["concentration"].each do |concentration_id|
-        if !concentration_id.empty?
-          @user.concentration << Concentration.find(concentration_id)
-        end
-      end
-
-      flash[:success] = "You have successfully registered!"
-      redirect_to '/login'
-    else
-      flash[:danger] = Array.new
-      @user.errors.full_messages.each do |error_message|
-        flash[:danger] << error_message
-      end
-      # flash[:danger] = "The form you submitted is invalid."
-      render 'new'
+    # display form for signing up
+    def new
     end
-  end
 
-  def edit
-    @user = User.find(params[:id])
-    @majors = @user.major
-    @minors = @user.minor
-    @concentrations = @user.concentration
-  end
-
-  def update
-    @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params_update)
-
-      @user.major.clear
-      @user.minor.clear
-      @user.concentration.clear
-
-      params[:user]["major_id"].each do |major_id|
-        if !major_id.empty?
-          @user.major << Major.find(major_id)
-        end
-      end
-
-      params[:user]["minor_id"].each do |minor_id|
-        if !minor_id.empty?
-          @user.minor << Minor.find(minor_id)
-        end
-      end
-
-      params[:user]["concentration_id"].each do |concentration_id|
-        if !concentration_id.empty?
-          @user.concentration << Concentration.find(concentration_id)
-        end
-      end
-
-      redirect_to :action => 'show', :id => @user
-
+    # displays a particular user
+    def show
+        @user = User.find(params[:id])
     end
-  end
 
-  def destroy
-      User.find(params[:id]).destroy
-      redirect_to '/users'
-  end
+    # handles user creation
+    def create
+        @user = User.new(user_params)
+        if @user.save
+            # draw links to the user
+            params[:user]["major"].each do |major_id|
+                if !major_id.empty?
+                    @user.major << Major.find(major_id)
+                end
+            end
 
-  private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :banner_id,
-     :enrollment_time, :graduation_time)
-  end
+            params[:user]["minor"].each do |minor_id|
+                if !minor_id.empty?
+                    @user.minor << Minor.find(minor_id)
+                end
+            end
 
-  private
-  def user_params_update
-    params.require(:user).permit(:name, :email, :banner_id, :enrollment_time, :graduation_time)
-  end
+            params[:user]["concentration"].each do |concentration_id|
+                if !concentration_id.empty?
+                    @user.concentration << Concentration.find(concentration_id)
+                end
+            end
+
+            flash[:success] = "You have successfully registered!"
+            redirect_to '/login'
+          else
+            flash[:danger] = Array.new
+            @user.errors.full_messages.each do |error_message|
+                flash[:danger] << error_message
+            end
+            render 'new'
+        end
+    end
+
+    # displays edit form
+    def edit
+        @user = User.find(params[:id])
+        @majors = @user.major
+        @minors = @user.minor
+        @concentrations = @user.concentration
+    end
+
+    # handles user information update
+    def update
+        @user = User.find(params[:id])
+
+        if @user.update_attributes(user_params_update)
+
+            @user.major.clear
+            @user.minor.clear
+            @user.concentration.clear
+
+            params[:user]["major_id"].each do |major_id|
+                if !major_id.empty?
+                    @user.major << Major.find(major_id)
+                end
+            end
+
+            params[:user]["minor_id"].each do |minor_id|
+                if !minor_id.empty?
+                    @user.minor << Minor.find(minor_id)
+                end
+            end
+
+            params[:user]["concentration_id"].each do |concentration_id|
+                if !concentration_id.empty?
+                    @user.concentration << Concentration.find(concentration_id)
+                end
+            end
+
+            redirect_to :action => 'show', :id => @user
+
+        end
+    end
+
+    # handles user deletion
+    def destroy
+        User.find(params[:id]).destroy
+        redirect_to '/users'
+    end
+
+    private
+    # strong params for sign up
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :banner_id,
+       :enrollment_time, :graduation_time)
+    end
+
+    private
+    # strong params for edit profile
+    def user_params_update
+      params.require(:user).permit(:name, :email, :banner_id, :enrollment_time, :graduation_time)
+    end
 
 end

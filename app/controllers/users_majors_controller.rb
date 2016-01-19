@@ -16,17 +16,21 @@
 
 class UsersMajorsController < ApplicationController
 
+	# displays all users and their majors
 	def index
 		@users = User.all
 	end
 
+	# displays a particular student and his/her major(s)
 	def show
 		@user = User.find(params[:id])
 	end
 
+	# displays form for creating new user-major relation
 	def new
 	end
 
+	# handles post from new
 	def create
 		users_major = UsersMajor.new(users_major_params)
 		if users_major.save
@@ -37,6 +41,7 @@ class UsersMajorsController < ApplicationController
 		end
 	end
 
+	# handles delete
 	def destroy
 		@user = User.find(params[:user_id])
 		@user_major = @user.major.find(params[:id])
@@ -48,6 +53,8 @@ class UsersMajorsController < ApplicationController
       	redirect_to '/users_majors/'+params[:user_id]
 	end
 
+	private
+	# strong params
 	def users_major_params
 		params.require(:users_major).permit(:user_id, :major_id)
 	end
