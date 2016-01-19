@@ -16,17 +16,21 @@
 
 class DistributionsCoursesController < ApplicationController
 
+	# displas all distributions along with its courses
 	def index
 		@distributions = Distribution.all
 	end
 
+	# displays form for creating new distribution-course relation
 	def new
 	end
 
+	# displays a particular distribution and its corresponding courses
 	def show
 		@distribution = Distribution.find(params[:id])
 	end
 
+	# handles post from distribution-course new form
 	def create
 		distributions_course = DistributionsCourse.new(distributions_course_params)
 		if distributions_course.save
@@ -37,12 +41,15 @@ class DistributionsCoursesController < ApplicationController
 		end
 	end
 
+	# handles delete
 	def destroy
 		DistributionsCourse.where(course_id: params[:id], distribution_id: params[:id]).first.destroy
 		flash[:success] = "Successfully deleted"
       	redirect_to '/distributions_courses'
 	end
 
+	private
+	# strong params
 	def distributions_course_params
 		params.require(:distributions_course).permit(:distribution_id, :course_id)
 	end

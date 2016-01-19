@@ -16,16 +16,19 @@
 
 class DistributionsController < ApplicationController
 
+	# displays all distributions
 	def index
 		@distributions = Distribution.order(:title)
 	end
 
+	# displays the form for creating new distribution
 	def new
 	end
 
+	# handles post from distribution new form
 	def create
 		distribution = Distribution.new(distribution_params)
-		if distribution.save 
+		if distribution.save
 			redirect_to '/distributions'
 		else
 			flash[:notice] = "The form you submitted is invalid."
@@ -33,23 +36,23 @@ class DistributionsController < ApplicationController
 		end
 	end
 
+	# handles delete
 	def destroy
 		Distribution.find(params[:id]).destroy
       	redirect_to '/distributions'
 	end
 
-	def distribution_params
-		params.require(:distribution).permit(:title)
-	end
-
+	# displays a particular distribution
 	def show
 		@distribution = Distribution.find(params[:id])
 	end
 
+	# displays the update form for a particular distribution
 	def edit
 		@distribution = Distribution.find(params[:id])
 	end
 
+	# handles distribution information update
 	def update
 		@distribution = Distribution.find(params[:id])
 
@@ -58,6 +61,11 @@ class DistributionsController < ApplicationController
 	      redirect_to :action => 'show', :id => @distribution
 
 	    end
+	end
+
+	private
+	def distribution_params
+		params.require(:distribution).permit(:title)
 	end
 
 end

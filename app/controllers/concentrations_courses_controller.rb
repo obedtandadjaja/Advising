@@ -14,19 +14,24 @@
 #   limitations under the License.
 #
 
+# This controller handles the relationship between concentration model and course model
 class ConcentrationsCoursesController < ApplicationController
 
+	# displays all concentrations and its corresponding courses
 	def index
 		@concentrations = Concentration.all
 	end
 
+	# displays the form for creating new concentration-course relation
 	def new
 	end
 
+	# displays a particular concentration and its corresponding courses
 	def show
 		@concentration = Concentration.find(params[:id])
 	end
 
+	# handles post from new concentration-course form
 	def create
 		concentrations_course = ConcentrationsCourse.new(concentrations_course_params)
 		if concentrations_course.save
@@ -37,12 +42,15 @@ class ConcentrationsCoursesController < ApplicationController
 		end
 	end
 
+	# handles delete form method
 	def destroy
 		ConcentrationsCourse.where(course_id: params[:id], concentration_id: params[:concentration_id]).first.destroy
 		flash[:success] = "Successfully deleted"
       	redirect_to '/concentrations_courses'
 	end
 
+	private
+	# strong params
 	def concentrations_course_params
 		params.require(:concentrations_course).permit(:concentration_id, :course_id)
 	end

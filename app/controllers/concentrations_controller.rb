@@ -16,14 +16,18 @@
 
 class ConcentrationsController < ApplicationController
 
+	# displays all of the concentrations
 	def index
 		@concentrations = Concentration.order(:name)
 	end
 
+	# displays the form to make a new concentration
 	def new
 	end
 
+	# handles the post method from the new concentration form
 	def create
+		# creates the new concentration with a pre-defined params
 		concentration = Concentration.new(concentration_params)
 		if concentration.save
 			redirect_to '/concentrations'
@@ -33,21 +37,25 @@ class ConcentrationsController < ApplicationController
 		end
 	end
 
+	# handles delete form method
 	def destroy
 		Concentration.find(params[:id]).destroy
 		flash[:success] = "Successfully deleted"
       	redirect_to '/concentrations'
 	end
 
+	# displays the information for a particular concentration
 	def show
 		@concentration = Concentration.find(params[:id])
 	end
 
+	# displays the form for updating the concentration
 	def edit
 		@concentration = Concentration.find(params[:id])
 		@major_id = @concentration.major_id
 	end
 
+	# handles patch|put form method from concentrations.edit
 	def update
 		@concentration = Concentration.find(params[:id])
 	    if @concentration.update_attributes(concentration_params)
@@ -57,6 +65,7 @@ class ConcentrationsController < ApplicationController
 	end
 
 	private
+	# strong parameters to prevent user from submitting form data that we do not expect
 	def concentration_params
 		params.require(:concentration).permit(:name, :total_hours, :major_id)
 	end

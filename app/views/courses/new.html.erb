@@ -57,6 +57,34 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">Major</label>
+                            <div class="col-md-6">
+                                <%= f.collection_select :major_id, Major.all, :id, :name, {include_blank: true}, { class: 'form-control chosen-select', multiple: true} %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Minor</label>
+                            <div class="col-md-6">
+                                <%= f.collection_select :minor_id, Minor.all, :id, :name, {include_blank: true}, { class: 'form-control chosen-select', multiple: true} %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Concentration</label>
+                            <div class="col-md-6">
+                                <%= f.collection_select :concentration_id, Concentration.all, :id, :name, {include_blank: true}, { class: 'form-control chosen-select', multiple: true} %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Distribution</label>
+                            <div class="col-md-6">
+                                <%= f.collection_select :distribution_id, Distribution.all, :id, :title, {include_blank: true}, { class: 'form-control chosen-select', multiple: true} %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <%= f.submit "Submit", class: "btn btn-default" %>
                             </div>

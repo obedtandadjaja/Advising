@@ -16,13 +16,16 @@
 
 class MajorsController < ApplicationController
 
+	# displays all majors
 	def index
 		@majors = Major.order(:name)
 	end
 
+	# displays form for creating new majors
 	def new
 	end
 
+	# handles post from new major form
 	def create
 		major = Major.new(major_params)
 		if major.save
@@ -33,19 +36,23 @@ class MajorsController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		Major.find(params[:id]).destroy
       	redirect_to '/majors'
 	end
 
+	# displays particular major
 	def show
 		@major = Major.find(params[:id])
 	end
 
+	# displays the form for updating a major
 	def edit
 		@major = Major.find(params[:id])
 	end
 
+	# handles update for a particular major
 	def update
 		@major = Major.find(params[:id])
 
@@ -57,6 +64,7 @@ class MajorsController < ApplicationController
 	end
 
 	private
+	# strong params
 	def major_params
 		params.require(:major).permit(:name, :department, :total_hours)
 	end

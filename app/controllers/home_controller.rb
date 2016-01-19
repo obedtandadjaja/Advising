@@ -14,6 +14,7 @@
 #   limitations under the License.
 #
 
+# currently not used
 class HomeController < ApplicationController
 
 	def index

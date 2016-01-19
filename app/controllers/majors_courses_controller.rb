@@ -16,17 +16,21 @@
 
 class MajorsCoursesController < ApplicationController
 
+	# displays all majors along with its corresponding courses
 	def index
 		@majors = Major.all
 	end
 
+	# displays form for creating new major-course relation
 	def new
 	end
 
+	# display a particular major and its courses
 	def show
 		@major = Major.find(params[:id])
 	end
 
+	# handles post method from major-course new form
 	def create
 		majors_course = MajorsCourse.new(majors_course_params)
 		if majors_course.save
@@ -37,12 +41,15 @@ class MajorsCoursesController < ApplicationController
 		end
 	end
 
+	# handles deletes
 	def destroy
 		MajorsCourse.where(course_id: params[:id], major_id: params[:major_id]).first.destroy
 		flash[:success] = "Successfully deleted"
       	redirect_to '/majors_courses'
 	end
 
+	private
+	# strong params
 	def majors_course_params
 		params.require(:majors_course).permit(:major_id, :course_id)
 	end
