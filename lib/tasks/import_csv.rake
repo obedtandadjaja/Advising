@@ -15,38 +15,25 @@
 #   limitations under the License.
 #
 #usage: rake db:load_courses
-#caveat: first row of csv file must be table row names in lowercase letters
+#caveat: first record of csv file must be table record names in lowercase letters
 
 require 'csv'
 desc "Imports a CSV file into an ActiveRecord table"
 namespace :db do
-	task :load_courses, [] => :environment do |t|
-		csv_text = File.read("courses.csv")
-		csv = CSV.parse(csv_text, :headers => true)
-		courses_table = "courses".classify.constantize
+	# speed up bulk import with transaction, multiple inserts, and handling uniqueness from model
+	task load_courses: :environment do |t|
+	  	require 'csv'
+	  	require 'active_record'
+		require 'activerecord-import'
 
-		csv.each do |row|
+		csv = CSV.read("courses.csv")
+    	# ignores the csv header
+    	csv.shift
 
-			# order is the same
-			courses_table.find_or_create_by!(row.to_hash)
-			
-			# unique by name
-			Major.find_or_create_by(
-				:name => row[0],
-				:department => row[7],
-				:total_hours => 126
-			)
-
-			# unique by name
-			Minor.create_with(
-				:department => row[7],
-				:total_hours => 20
-			)
-			.find_or_create_by(
-				:name => row[0]
-			)
-
-		end
+	  	Course.transaction do
+	    	course_columns = [:subject,:course_number,:title,:department_code,:cipc_code,:hr_low,:hr_high,:department_desc]
+	    	Course.import course_columns, csv, validate: true
+	  	end
 	end
 end
 
