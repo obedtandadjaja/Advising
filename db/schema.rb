@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20151231034702) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "courses", ["subject", "course_number"], name: "index_courses_on_subject_and_course_number", unique: true, using: :btree
+
   create_table "distributions", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false

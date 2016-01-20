@@ -20,15 +20,17 @@ class CreateCourses < ActiveRecord::Migration
     	t.string :subject
     	t.integer :course_number
     	t.string :title
-		t.string :department_code
-		t.integer :cipc_code
+		  t.string :department_code
+		  t.integer :cipc_code
     	t.integer :hr_low
-		t.integer :hr_high
-		t.string :department_desc
+		  t.integer :hr_high
+		  t.string :department_desc
     	t.date :date_offered
 
       t.timestamps null: false
     end
+
+    add_index :courses, [:subject, :course_number], :unique => true
   end
 end
 
