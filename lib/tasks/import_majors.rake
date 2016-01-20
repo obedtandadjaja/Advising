@@ -1,4 +1,4 @@
-#lib/tasks/build.rake
+#lib/tasks/import_majors.rake
 #
 #   Copyright 2015 Amy Dewaal and Obed Tandadjaja
 #
@@ -14,21 +14,23 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#usage: rake db:build
+#usage: rake db:load_majors
+#caveat: first record of csv file must be table record names in lowercase letters
 
+require 'csv'
+desc "Imports a CSV file into an ActiveRecord table"
 namespace :db do
-	task :build, [] => :environment do |t|
+	task :load_majors, [] => :environment do |t|
+		csv_text = File.read("courses.csv")
+		csv = CSV.parse(csv_text, :headers => true)
 
-		Rake::Task["db:create"].invoke
-		Rake::Task["db:migrate"].invoke
-		Rake::Task["db:load_courses"].invoke
-		Rake::Task["db:load_majors"].invoke
-		Rake::Task["db:load_minors"].invoke
-		Rake::Task["db:load_cos_concentrations"].invoke
-		Rake::Task["db:load_distributions"].invoke
-		Rake::Task["db:load_cos_major"].invoke
-		Rake::Task["db:load_cos_minor"].invoke
-		Rake::Task["db:load_cos_prerequisites"].invoke
-
+		csv.each do |record|
+			Major.find_or_create_by(
+				:name => record[0],
+				:department => record[7],
+				:total_hours => 126
+			)
+		end
 	end
 end
+

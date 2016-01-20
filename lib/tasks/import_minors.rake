@@ -1,4 +1,4 @@
-#lib/tasks/build.rake
+#lib/tasks/import_minors.rake
 #
 #   Copyright 2015 Amy Dewaal and Obed Tandadjaja
 #
@@ -14,21 +14,23 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#usage: rake db:build
+#usage: rake db:load_minors
+#caveat: first record of csv file must be table record names in lowercase letters
 
+require 'csv'
+desc "Imports a CSV file into an ActiveRecord table"
 namespace :db do
-	task :build, [] => :environment do |t|
+	task :load_minors, [] => :environment do |t|
+		csv_text = File.read("courses.csv")
+		csv = CSV.parse(csv_text, :headers => true)
 
-		Rake::Task["db:create"].invoke
-		Rake::Task["db:migrate"].invoke
-		Rake::Task["db:load_courses"].invoke
-		Rake::Task["db:load_majors"].invoke
-		Rake::Task["db:load_minors"].invoke
-		Rake::Task["db:load_cos_concentrations"].invoke
-		Rake::Task["db:load_distributions"].invoke
-		Rake::Task["db:load_cos_major"].invoke
-		Rake::Task["db:load_cos_minor"].invoke
-		Rake::Task["db:load_cos_prerequisites"].invoke
-
+		csv.each do |record|
+			Minor.find_or_create_by(
+				:name => record[0],
+				:department => record[7],
+				:total_hours => 20
+			)
+		end
 	end
 end
+
