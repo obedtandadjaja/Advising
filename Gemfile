@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Add TZInfo gem for Windows users
 gem 'tzinfo-data'
 
+gem 'activerecord-import'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
