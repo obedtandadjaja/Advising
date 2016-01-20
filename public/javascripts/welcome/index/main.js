@@ -18,7 +18,10 @@ $(document).ready(function()
 	function handleDragStart(e)
 	{
 		this.style.opacity = '0.7';
-      	e.dataTransfer.setData("element_id", e.target.getAttribute('id'));
+      	var source = $('#'+e.target.getAttribute('id')).parent()[0];
+      	var id = e.target.getAttribute('id');
+      	e.dataTransfer.setData("element_id", id);
+      	e.dataTransfer.setData("element_source_id", source.getAttribute('id'));
 	}
 
 	function handleDragOver(e)
@@ -39,9 +42,9 @@ $(document).ready(function()
 
 	function handleDrop(e)
 	{
+		var source = document.getElementById(e.dataTransfer.getData('element_source_id'));
 		var element = document.getElementById(e.dataTransfer.getData('element_id'));
 		var id = e.dataTransfer.getData('element_id');
-		$('#'+id).find("button").css("display", "inline");
 
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board")
@@ -101,7 +104,9 @@ $(document).ready(function()
 								}
 							});
 						});
-				        e.target.appendChild(element);
+						e.target.appendChild(element.cloneNode(true));
+						$('#'+id).find("button").css("display", "inline");
+						element.style.display = "none";
 			    	}
 			    },
 			    error: function (response) {
@@ -165,9 +170,9 @@ $(document).ready(function()
 		element.addEventListener('drop', handleDrop, true);
 	}
 
-	// ajax for delete
-	$('.remove_button').click(function()
+	$(document).on('click','.remove_button', function(e)
 	{
+		e.stopImmediatePropagation(); // to stop firing twice
 		var id = this.parentNode.parentNode.getAttribute('id');
 		var element = this;
 		$.ajax({
@@ -195,39 +200,37 @@ $(document).ready(function()
 		    	else
 		    	{
 		    		element.parentNode.parentNode.remove();
+		    		$('#'+id).show();
 
-		    		// TODO find a better way of restoring deleted course to its original position
-		    		location.reload();
-
-		   //  		$.each(response.user_courses, function(key, value) {
-					// 	$hours = 0;
-					// 	$.each(value, function(key2, value2)
-					// 	{
-					// 		$hours += value2["hr_low"];
-					// 	});
-					// 	if(($hours < 12 || $hours > 18) && ($hours != 0))
-					// 	{
-					// 		$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
-					// 	}
-					// 	else
-					// 	{
-					// 		$('#'+key+'_hours').html("Total Hours: "+$hours);
-					// 	}
-					// });
-					// $.each(response.completion, function(key, value)
-					// {
-					// 	$.each(value, function(key2, value2)
-					// 	{
-					// 		if(value2)
-					// 		{
-					// 			$('.completion_'+key+'_'+key2).attr('id', 'completed');
-					// 		}
-					// 		else
-					// 		{
-					// 			$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
-					// 		}
-					// 	});
-					// });
+		    		$.each(response.user_courses, function(key, value) {
+						$hours = 0;
+						$.each(value, function(key2, value2)
+						{
+							$hours += value2["hr_low"];
+						});
+						if(($hours < 12 || $hours > 18) && ($hours != 0))
+						{
+							$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+						}
+						else
+						{
+							$('#'+key+'_hours').html("Total Hours: "+$hours);
+						}
+					});
+					$.each(response.completion, function(key, value)
+					{
+						$.each(value, function(key2, value2)
+						{
+							if(value2)
+							{
+								$('.completion_'+key+'_'+key2).attr('id', 'completed');
+							}
+							else
+							{
+								$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+							}
+						});
+					});
 		    	}
 		    },
 		    error: function (response) {
