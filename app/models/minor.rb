@@ -21,4 +21,9 @@ class Minor < ActiveRecord::Base
 	
 	has_many :users_minor
 
+	validates :name, :presence => true, :uniqueness => true
+	validates :total_hours, :presence => true
+
+  	validates_numericality_of :total_hours
+
 end
