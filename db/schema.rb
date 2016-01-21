@@ -106,8 +106,9 @@ ActiveRecord::Schema.define(version: 20151231034702) do
     t.integer  "enrollment_time",        limit: 4
     t.integer  "graduation_time",        limit: 4
     t.string   "banner_id",              limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "role",                   limit: 4,   default: 0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "auth_token",             limit: 255
     t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"

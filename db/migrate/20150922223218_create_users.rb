@@ -23,6 +23,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :enrollment_time
       t.integer :graduation_time
       t.string :banner_id
+      t.integer :role, default: 0
 
       t.timestamps null: false
     end
