@@ -15,6 +15,7 @@
 #
 
 class UsersController < ApplicationController
+    before_filter :authorize, :except => [:new, :create]
 
     # display form for signing up
     def new
@@ -50,12 +51,12 @@ class UsersController < ApplicationController
 
             flash[:success] = "You have successfully registered!"
             redirect_to '/login'
-          else
+        else
             flash[:danger] = Array.new
             @user.errors.full_messages.each do |error_message|
                 flash[:danger] << error_message
             end
-            render 'new'
+            redirect_to '/signup'
         end
     end
 
