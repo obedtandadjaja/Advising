@@ -31,4 +31,9 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  # if user is admin
+  def is_admin
+    redirect_to '/' unless ["teacher", "admin"].include? current_user.role
+  end
+
 end
