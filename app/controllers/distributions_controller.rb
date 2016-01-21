@@ -15,7 +15,8 @@
 #
 
 class DistributionsController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displays all distributions
 	def index
 		@distributions = Distribution.order(:title)

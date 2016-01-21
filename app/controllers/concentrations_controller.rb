@@ -15,6 +15,7 @@
 #
 
 class ConcentrationsController < ApplicationController
+	before_filter :authorize, :is_admin
 
 	# displays all of the concentrations
 	def index

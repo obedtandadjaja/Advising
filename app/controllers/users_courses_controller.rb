@@ -15,7 +15,8 @@
 #
 
 class UsersCoursesController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displays all users and its corresponding courses
 	def index
 		@users = User.order(:name)

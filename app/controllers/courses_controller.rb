@@ -15,7 +15,8 @@
 #
 
 class CoursesController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# display all courses
 	def index
 		@courses = Course.all

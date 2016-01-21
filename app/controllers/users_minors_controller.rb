@@ -15,7 +15,8 @@
 #
 
 class UsersMinorsController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displays all users and their minors
 	def index
 		@users = User.all

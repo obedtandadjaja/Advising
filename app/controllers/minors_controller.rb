@@ -15,7 +15,8 @@
 #
 
 class MinorsController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displays all minors
 	def index
 		@minors = Minor.order(:name)

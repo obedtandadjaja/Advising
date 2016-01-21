@@ -15,7 +15,8 @@
 #
 
 class DistributionsCoursesController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displas all distributions along with its courses
 	def index
 		@distributions = Distribution.all

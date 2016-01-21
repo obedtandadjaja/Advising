@@ -15,7 +15,8 @@
 #
 
 class MajorsCoursesController < ApplicationController
-
+	before_filter :authorize, :is_admin
+	
 	# displays all majors along with its corresponding courses
 	def index
 		@majors = Major.all
