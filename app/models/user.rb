@@ -16,6 +16,8 @@
 
 class User < ActiveRecord::Base
 
+	enum role: [ :student, :admin, :teacher ]
+
 	has_many :users_course, dependent: :destroy
 	has_many :course, through: :users_course
 
@@ -32,42 +34,53 @@ class User < ActiveRecord::Base
 
 	email_regex = /\A[\w+\-.]+@covenant\.edu\z/i
 
-	validates :password,
-  	:length => {:within => 6..40},
-  	:if => :password
 	validates :email,
 		:presence => true,
 		:uniqueness => true,
 		:format => { :with => email_regex, :message => ": Please enter your Covenant email address" }
-	validates :name,
-		:presence => true
-	validates :banner_id,
-		:presence => true,
-		:uniqueness => true,
-		:length => {:is => 8},
-		:numericality => true
-	validates :enrollment_time,
-		:presence => true,
-		:length => {:is => 4},
-		inclusion: { in: Date.today.year-5..Date.today.year }
-	validates :graduation_time,
-		:presence => true,
-		:length => {:is => 4},
-		inclusion: { in: Date.today.year..Date.today.year+5}
+	validates :password,
+	  	:length => {:within => 6..40},
+	  	:if => :password
 
-  before_create { generate_token(:auth_token) }
+	with_options :if => :is_student? do |u|
+		u.validates :name,
+			:presence => true
+		u.validates :banner_id,
+			:presence => true,
+			:uniqueness => true,
+			:length => {:is => 8},
+			:numericality => true
+		u.validates :enrollment_time,
+			:presence => true,
+			:length => {:is => 4},
+			inclusion: { in: Date.today.year-5..Date.today.year }
+		u.validates :graduation_time,
+			:presence => true,
+			:length => {:is => 4},
+			inclusion: { in: Date.today.year..Date.today.year+5}
+	end
 
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
-  end
+  	before_create { generate_token(:auth_token) }
 
-  def send_password_reset
-    generate_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    save!
-    UserMailer.password_reset(self).deliver
-  end
+  	def is_student?
+  		self.role == "student"
+  	end
+
+  	def generate_token(column)
+    	begin
+      	self[column] = SecureRandom.urlsafe_base64
+    	end while User.exists?(column => self[column])
+  	end
+
+  	def send_password_reset
+    	generate_token(:password_reset_token)
+    	self.password_reset_sent_at = Time.zone.now
+    	save!
+    	UserMailer.password_reset(self).deliver
+  	end
+
+  	def send_invite
+  		UserMailer.invite(self).deliver
+  	end
 
 end
