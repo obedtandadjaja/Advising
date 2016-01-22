@@ -17,11 +17,12 @@ $(document).ready(function()
 	// drag and drop
 	function handleDragStart(e)
 	{
-		this.style.opacity = '0.7';
+		e.target.style.opacity = '0.7';
       	var source = $('#'+e.target.getAttribute('id')).parent()[0];
       	var id = e.target.getAttribute('id');
       	e.dataTransfer.setData("element_id", id);
       	e.dataTransfer.setData("element_source_id", source.getAttribute('id'));
+      	console.log(source.getAttribute('id'));
 	}
 
 	function handleDragOver(e)
@@ -42,10 +43,9 @@ $(document).ready(function()
 
 	function handleDrop(e)
 	{
-		var source = document.getElementById(e.dataTransfer.getData('element_source_id'));
 		var element = document.getElementById(e.dataTransfer.getData('element_id'));
 		var id = e.dataTransfer.getData('element_id');
-
+		var source_id = e.dataTransfer.getData('source_element_id');
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board")
 		{
@@ -58,8 +58,6 @@ $(document).ready(function()
 			    	console.log(response);
 			    	if(response.error_messages)
 			    	{
-			    		// TODO change from alert to modal
-			    		// alert(response.error_messages[0]);
 			    		$('.modal-title').text('Invalid Schedule');
 			    		$('.modal-body').empty();
 			    		var modal_text = "<ul>";
@@ -75,38 +73,82 @@ $(document).ready(function()
 			    	}
 			    	else
 			    	{
-			    		$.each(response.user_courses, function(key, value) {
-							$hours = 0;
-							$.each(value, function(key2, value2)
-							{
-								$hours += value2["hr_low"];
-							});
-							if(($hours < 12 || $hours > 18) && ($hours != 0))
-							{
-								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
-							}
-							else
-							{
-								$('#'+key+'_hours').html("Total Hours: "+$hours);
-							}
-						});
-						$.each(response.completion, function(key, value)
-						{
-							$.each(value, function(key2, value2)
-							{
-								if(value2)
+			    		if(source_id == "origin")
+			    		{
+			    			e.target.appendChild(element.cloneNode(true));
+							$('#'+id).find("button").css("display", "inline");
+							var item = document.getElementsByClassName('item')[0];
+							item.setAttribute('draggable', 'true');
+							item.setAttribute('droppable', 'false');
+							item.addEventListener('dragstart', handleDragStart, false);
+							item.addEventListener('dragend', handleDragEnd, false);
+				    		$.each(response.user_courses, function(key, value)
+				    		{
+								$hours = 0;
+								$.each(value, function(key2, value2)
 								{
-									$('.completion_'+key+'_'+key2).attr('id', 'completed');
+									$hours += value2["hr_low"];
+								});
+								if(($hours < 12 || $hours > 18) && ($hours != 0))
+								{
+									$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
 								}
 								else
 								{
-									$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+									$('#'+key+'_hours').html("Total Hours: "+$hours);
 								}
 							});
-						});
-						e.target.appendChild(element.cloneNode(true));
-						$('#'+id).find("button").css("display", "inline");
-						element.style.display = "none";
+							$.each(response.completion, function(key, value)
+							{
+								$.each(value, function(key2, value2)
+								{
+									if(value2)
+									{
+										$('.completion_'+key+'_'+key2).attr('id', 'completed');
+									}
+									else
+									{
+										$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+									}
+								});
+							});
+							element.style.display = "none";
+				    	}
+				    	else
+				    	{
+				    		$.each(response.user_courses, function(key, value)
+				    		{
+								$hours = 0;
+								$.each(value, function(key2, value2)
+								{
+									$hours += value2["hr_low"];
+								});
+								if(($hours < 12 || $hours > 18) && ($hours != 0))
+								{
+									$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+								}
+								else
+								{
+									$('#'+key+'_hours').html("Total Hours: "+$hours);
+								}
+							});
+							$.each(response.completion, function(key, value)
+							{
+								$.each(value, function(key2, value2)
+								{
+									if(value2)
+									{
+										$('.completion_'+key+'_'+key2).attr('id', 'completed');
+									}
+									else
+									{
+										$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+									}
+								});
+							});
+							e.target.appendChild(element);
+							$('#'+id).find("button").css("display", "inline");
+				    	}
 			    	}
 			    },
 			    error: function (response) {
@@ -258,16 +300,12 @@ $(document).ready(function()
 	            '</div>';
 			$('#other_courses').find('.other_courses_list').append(new_course);
 
-			var items = document.getElementsByClassName('item');
-			element = null;
-			for (var i = 0; i < items.length; i++)
-			{
-				element = items[i];
-				element.setAttribute('draggable', 'true');
-				element.setAttribute('droppable', 'false');
-				element.addEventListener('dragstart', handleDragStart, false);
-				element.addEventListener('dragend', handleDragEnd, false);
-			}
+			var item = document.getElementsByClassName('item');
+			item = item[item.length-1];
+			item.setAttribute('draggable', 'true');
+			item.setAttribute('droppable', 'false');
+			item.addEventListener('dragstart', handleDragStart, false);
+			item.addEventListener('dragend', handleDragEnd, false);
 		}
 	});
 });
