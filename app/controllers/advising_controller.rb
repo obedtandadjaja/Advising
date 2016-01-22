@@ -42,8 +42,8 @@ class AdvisingController < ApplicationController
 		@minors = @user.minor
 		@concentration = @user.concentration
 		@courses = @user.course
-		@user_semester_hours = getSemesterHours
-		@completion_hash = checkCompletion(@user)
+		@user_semester_hours = get_semesters_hours
+		@completion_hash = check_completion(@user)
 	end
 	
 	# drag and drop course ajax is handled here
@@ -51,21 +51,21 @@ class AdvisingController < ApplicationController
 		@user = @current_user
 		@course = Course.find(params[:id])
 
-		# if course has been taken then this is not adding but transferring, redirect to advising_ajax_transfer
-		# TODO handle this in the ajax instead, directly link it to advising_ajax_transfer function via routes
+		# if course has been taken then this is not adding but transferring, redirect to advising_ajax_move
+		# TODO handle this in the ajax instead, directly link it to advising_ajax_move function via routes
 		@user_course = UsersCourse.where(user_id: @user.id, course_id: @course.id).first
 		if @user_course
-			advising_ajax_transfer
+			advising_ajax_move
 			return
 		end
 
 		# check whether user has taken all the prerequisites for the course
-		checkPrerequisitesArray = checkPrerequisites(@user, @course)
+		check_prerequisitesArray = check_prerequisites(@user, @course)
 		# if there is no prerequisite error then save the course
-		if(checkPrerequisitesArray.count == 0)
+		if(check_prerequisitesArray.count == 0)
 			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
 			@user_course.save
-			@json_response = getUserCoursesAndCompletionJSON(@user)
+			@json_response = get_user_courses_completion_json(@user)
 			respond_to do |format|
 		    	format.html
 		    	format.json { render json: @json_response }
@@ -75,25 +75,25 @@ class AdvisingController < ApplicationController
 		else
 			respond_to do |format|
 				format.html
-				format.json { render json: { :error => true, :error_messages => checkPrerequisitesArray } }
+				format.json { render json: { :error => true, :error_messages => check_prerequisitesArray } }
 				format.js
 			end
 		end
 	end
 
 	# handles ajax for course transfers between semesters
-	def advising_ajax_transfer
+	def advising_ajax_move
 		@user = @current_user
 		@course = Course.find(params[:id])
 
 		# check prerequisites error upon the move
-		error_messages = checkPrerequisiteOnChange(@user, @course, 'move')
+		error_messages = check_prerequisites_on_change(@user, @course, 'move')
 
 		# if there is no prerequisite error then update the course to be taken at the new date
 		if error_messages.length == 0
 			@user_course =  UsersCourse.where(user_id: @user.id, course_id: @course.id).first
 			@user_course.update_attributes(:taken_planned => params[:date])
-			@json_response = getUserCoursesAndCompletionJSON(@user)
+			@json_response = get_user_courses_completion_json(@user)
 			respond_to do |format|
 		    	format.html
 		    	format.json { render json: @json_response }
@@ -115,12 +115,12 @@ class AdvisingController < ApplicationController
 		@course = Course.find(params[:id])
 
 		# check prerequisites error upon the remove
-		error_messages = checkPrerequisiteOnChange(@user, @course, 'remove')
+		error_messages = check_prerequisites_on_change(@user, @course, 'remove')
 
 		# if there is no prerequisite error then delete the course
 		if error_messages.length == 0
 			@user.course.delete(@course)
-			@json_response = getUserCoursesAndCompletionJSON(@user)
+			@json_response = get_user_courses_completion_json(@user)
 			respond_to do |format|
 				format.json { render json: @json_response }
 			end
@@ -132,10 +132,10 @@ class AdvisingController < ApplicationController
 		end
 	end
 
-	# pack hashes from getSemesterCourses and checkCompletion functions to json
-	def getUserCoursesAndCompletionJSON(user)
-		@user_courses_hash = getSemesterCourses
-		@completion_hash = checkCompletion(user)
+	# pack hashes from get_semesters_courses and check_completion functions to json
+	def get_user_courses_completion_json(user)
+		@user_courses_hash = get_semesters_courses
+		@completion_hash = check_completion(user)
 
 		@json_response = Hash.new
 		@json_response["user_courses"] = @user_courses_hash
@@ -145,7 +145,7 @@ class AdvisingController < ApplicationController
 	end
 
 	# check which major, minor, distribution, and concentration that the user has completed
-	def checkCompletion(user)
+	def check_completion(user)
 		completion_hash = Hash.new
 
 		# check the user's major(s), make sure the user has taken all the required courses
@@ -227,7 +227,7 @@ class AdvisingController < ApplicationController
 	end
 
 	# checks whether all prerequisites of a course has been taken
-	def checkPrerequisites(user, course)
+	def check_prerequisites(user, course)
 		errors = Array.new
 		course.prerequisite.each do |prereq|
 			prerequisite = UsersCourse.where(user_id: user.id, course_id: prereq.id).first
@@ -245,11 +245,11 @@ class AdvisingController < ApplicationController
 	end
 
 	# checks whether the change would cause prerequisite conflict
-	def checkPrerequisiteOnChange(user, course, string)
+	def check_prerequisites_on_change(user, course, string)
 		error_messages = Array.new
 
 		if string == "move"
-			error_messages = checkPrerequisites(user, course)
+			error_messages = check_prerequisites(user, course)
 			if error_messages.length != 0
 				return error_messages
 			end
@@ -273,7 +273,7 @@ class AdvisingController < ApplicationController
 	end
 
 	# get each semester's courses
-	def getSemesterCourses
+	def get_semesters_courses
 		@user_courses = UsersCourse.where(user_id: @user.id)
 		@user_courses_hash = Hash.new
 		@semesters.each do |semester|
@@ -288,8 +288,8 @@ class AdvisingController < ApplicationController
 	end
 
 	# get each semester's hours
-	def getSemesterHours
-		@user_courses_hash = getSemesterCourses
+	def get_semesters_hours
+		@user_courses_hash = get_semesters_courses
 		@user_semester_hours = Hash.new
 		@user_courses_hash.each do |key, array|
 			@user_semester_hours["#{key}"] = 0
