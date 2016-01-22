@@ -247,6 +247,14 @@ class AdvisingController < ApplicationController
 	# checks whether the change would cause prerequisite conflict
 	def checkPrerequisiteOnChange(user, course, string)
 		error_messages = Array.new
+
+		if string == "move"
+			error_messages = checkPrerequisites(user, course)
+			if error_messages.length != 0
+				return error_messages
+			end
+		end
+
 		if course
 			user.course.each do |user_course|
 				if user_course.id != course.id
