@@ -22,7 +22,6 @@ $(document).ready(function()
       	var id = e.target.getAttribute('id');
       	e.dataTransfer.setData("element_id", id);
       	e.dataTransfer.setData("element_source_id", source.getAttribute('id'));
-      	console.log(source.getAttribute('id'));
 	}
 
 	function handleDragOver(e)
@@ -45,7 +44,7 @@ $(document).ready(function()
 	{
 		var element = document.getElementById(e.dataTransfer.getData('element_id'));
 		var id = e.dataTransfer.getData('element_id');
-		var source_id = e.dataTransfer.getData('source_element_id');
+		var source_id = e.dataTransfer.getData('element_source_id');
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board")
 		{
@@ -77,7 +76,8 @@ $(document).ready(function()
 			    		{
 			    			e.target.appendChild(element.cloneNode(true));
 							$('#'+id).find("button").css("display", "inline");
-							var item = document.getElementsByClassName('item')[0];
+							element.style.display = "none";
+							var item = document.getElementsById(id)[0];
 							item.setAttribute('draggable', 'true');
 							item.setAttribute('droppable', 'false');
 							item.addEventListener('dragstart', handleDragStart, false);
@@ -112,7 +112,7 @@ $(document).ready(function()
 									}
 								});
 							});
-							element.style.display = "none";
+							
 				    	}
 				    	else
 				    	{
