@@ -158,7 +158,7 @@ $(document).ready(function()
     	}
     	else if(e.target.getAttribute('class') == "panel-body board nope")
     	{
-	        e.target.appendChild(element);
+    		alert("USE THE REMOVE BUTTON. CMON MAN");
     	}
     	e.preventDefault();
     	e.target.classList.remove('over');
