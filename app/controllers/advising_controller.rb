@@ -51,11 +51,16 @@ class AdvisingController < ApplicationController
 		@user = @current_user
 		@course = Course.find(params[:id])
 
-		# if course has been taken then this is not adding but transferring, redirect to advising_ajax_move
-		# TODO handle this in the ajax instead, directly link it to advising_ajax_move function via routes
+		# if course has been taken then show an error
 		@user_course = UsersCourse.where(user_id: @user.id, course_id: @course.id).first
 		if @user_course
-			advising_ajax_move
+			error_messages = Array.new
+			error_messages << "You have taken #{@course.name} before"
+			respond_to do |format|
+				format.html
+				format.json { render json: { :error => true, :error_messages => error_messages } }
+				format.js
+			end
 			return
 		end
 
