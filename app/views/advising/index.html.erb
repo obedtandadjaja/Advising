@@ -21,7 +21,7 @@
 %>
 
 <% content_for :script do %>
-    <%= javascript_include_tag "welcome/index/main" %>
+    <%= javascript_include_tag "advising/index/main" %>
 <% end %>
 
 <%= @user_concentration %>
@@ -101,7 +101,7 @@
                     </a>
                 </div>
                 <div class="panel-collapse collapse in" id="other_courses">
-                    <div class="panel-body other_courses_list">
+                    <div class="panel-body other_courses_list" id="origin">
                         <%= render partial: "other_courses" %>
                     </div>
                 </div>

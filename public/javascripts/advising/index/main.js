@@ -46,14 +46,15 @@ $(document).ready(function()
 		var id = e.dataTransfer.getData('element_id');
 		var source_id = e.dataTransfer.getData('element_source_id');
 		if(e.stopPropagation) e.stopPropagation();
-		if(e.target.getAttribute('class') == "panel-body board")
+		if(e.target.getAttribute('class') == "panel-body board over" && source_id == "origin")
 		{
 	        $.ajax({
 			    url: '/advising_ajax/'+id,
 			    type: 'PUT',
 			    data: { date: e.target.id },
 			    dataType: "json",
-			    success: function (response) {
+			    success: function (response)
+			    {
 			    	console.log(response);
 			    	if(response.error_messages)
 			    	{
@@ -72,90 +73,119 @@ $(document).ready(function()
 			    	}
 			    	else
 			    	{
-			    		if(source_id == "origin")
+		    			e.target.appendChild(element.cloneNode(true));
+						$('#'+id).find("button").css("display", "inline");
+						element.style.display = "none";
+						var item = document.getElementById(id);
+						item.setAttribute('draggable', 'true');
+						item.setAttribute('droppable', 'false');
+						item.addEventListener('dragstart', handleDragStart, false);
+						item.addEventListener('dragend', handleDragEnd, false);
+			    		$.each(response.user_courses, function(key, value)
 			    		{
-			    			e.target.appendChild(element.cloneNode(true));
-							$('#'+id).find("button").css("display", "inline");
-							element.style.display = "none";
-							var item = document.getElementsById(id)[0];
-							item.setAttribute('draggable', 'true');
-							item.setAttribute('droppable', 'false');
-							item.addEventListener('dragstart', handleDragStart, false);
-							item.addEventListener('dragend', handleDragEnd, false);
-				    		$.each(response.user_courses, function(key, value)
-				    		{
-								$hours = 0;
-								$.each(value, function(key2, value2)
+							$hours = 0;
+							$.each(value, function(key2, value2)
+							{
+								$hours += value2["hr_low"];
+							});
+							if(($hours < 12 || $hours > 18) && ($hours != 0))
+							{
+								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+							}
+							else
+							{
+								$('#'+key+'_hours').html("Total Hours: "+$hours);
+							}
+						});
+						$.each(response.completion, function(key, value)
+						{
+							$.each(value, function(key2, value2)
+							{
+								if(value2)
 								{
-									$hours += value2["hr_low"];
-								});
-								if(($hours < 12 || $hours > 18) && ($hours != 0))
-								{
-									$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+									$('.completion_'+key+'_'+key2).attr('id', 'completed');
 								}
 								else
 								{
-									$('#'+key+'_hours').html("Total Hours: "+$hours);
+									$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
 								}
 							});
-							$.each(response.completion, function(key, value)
-							{
-								$.each(value, function(key2, value2)
-								{
-									if(value2)
-									{
-										$('.completion_'+key+'_'+key2).attr('id', 'completed');
-									}
-									else
-									{
-										$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
-									}
-								});
-							});
-							
-				    	}
-				    	else
-				    	{
-				    		$.each(response.user_courses, function(key, value)
-				    		{
-								$hours = 0;
-								$.each(value, function(key2, value2)
-								{
-									$hours += value2["hr_low"];
-								});
-								if(($hours < 12 || $hours > 18) && ($hours != 0))
-								{
-									$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
-								}
-								else
-								{
-									$('#'+key+'_hours').html("Total Hours: "+$hours);
-								}
-							});
-							$.each(response.completion, function(key, value)
-							{
-								$.each(value, function(key2, value2)
-								{
-									if(value2)
-									{
-										$('.completion_'+key+'_'+key2).attr('id', 'completed');
-									}
-									else
-									{
-										$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
-									}
-								});
-							});
-							e.target.appendChild(element);
-							$('#'+id).find("button").css("display", "inline");
-				    	}
+						});
 			    	}
 			    },
-			    error: function (response) {
+			    error: function (response)
+			    {
 			    	alert("Something appears to be wrong");
 			    }
 			});
     	}
+    	else if(e.target.getAttribute('class') == "panel-body board over" && source_id != "origin")
+		{
+			$.ajax({
+			    url: '/advising_ajax_move/'+id,
+			    type: 'PUT',
+			    data: { date: e.target.id },
+			    dataType: "json",
+			    success: function (response)
+			    {
+			    	console.log(response);
+			    	if(response.error_messages)
+			    	{
+			    		$('.modal-title').text('Invalid Schedule');
+			    		$('.modal-body').empty();
+			    		var modal_text = "<ul>";
+			    		$.each(response.error_messages, function(key, message)
+			    		{
+			    			modal_text += "<li>";
+			    			modal_text += message;
+			    			modal_text += "</li>";
+			    		});
+			    		modal_text += "</ul>";
+			    		$('.modal-body').append(modal_text);
+			    		$('#myModal').modal('show');
+			    	}
+			    	else
+			    	{
+			    		$.each(response.user_courses, function(key, value)
+			    		{
+							$hours = 0;
+							$.each(value, function(key2, value2)
+							{
+								$hours += value2["hr_low"];
+							});
+							if(($hours < 12 || $hours > 18) && ($hours != 0))
+							{
+								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+							}
+							else
+							{
+								$('#'+key+'_hours').html("Total Hours: "+$hours);
+							}
+						});
+						$.each(response.completion, function(key, value)
+						{
+							$.each(value, function(key2, value2)
+							{
+								if(value2)
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'completed');
+								}
+								else
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+								}
+							});
+						});
+						e.target.appendChild(element);
+						$('#'+id).find("button").css("display", "inline");
+			    	}
+			    },
+		    	error: function (response)
+		    	{
+		    		alert("Something appears to be wrong");
+		    	}
+		    });
+		}
     	else if(e.target.getAttribute('class') == "panel-body board nope")
     	{
     		alert("USE THE REMOVE BUTTON. CMON MAN");
