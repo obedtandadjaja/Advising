@@ -1,6 +1,7 @@
 subject,course_number,title,department_code,cipc_code,hr_low,hr_high,department_desc
 ACC,201,Principles of Accounting I,BUS,520101,3,,Business
 ACC,202,Principles of Accounting II,BUS,520101,3,,Business
+ACC,211,Accounting Internship,BUS,520101,1,3,Business
 ACC,301,Intermediate Accounting I,BUS,520101,3,,Business
 ACC,302,Intermediate Accounting II,BUS,520101,3,,Business
 ACC,305,Cost Accounting,BUS,520101,3,,Business
@@ -12,61 +13,49 @@ ACC,490,Independent Study,BUS,520101,1,3,Business
 ACC,499,Selected Topics,BUS,520101,1,3,Business
 ARA,101,Modern Standard Arabic I,FL,,4,,Foreign Languages
 ARA,102,Modern Standard Arabic II,FL,,4,,Foreign Languages
-ARA,201,Inter. Modrn Standard Arabic I,FL,,3,,Foreign Languages
-ARA,202,Inter. Modern Arabic II,FL,,3,,Foreign Languages
-ARA,301,Adv Modern Standard Arabic,FL,,3,,Foreign Languages
-ARA,302,Adv Modern Standard Arabic II,FL,,3,,Foreign Languages
+ARA,201,Inter. Modern Standard Arabic I,FL,,3,,Foreign Languages
+ARA,202,Inter. Modern Standard Arabic II,FL,,3,,Foreign Languages
 ART,100,Introduction to Art,ART,,3,,Art
+ART,105,Introduction to Visual Culture,ART,,3,,Art
 ART,110,Drawing Principles,ART,,3,,Art
-ART,111,Introduction to Art,ART,,3,,Art
-ART,115,Drawing II,ART,,3,,Art
+ART,115,Drawing Concepts,ART,,3,,Art
 ART,120,2D Form and Concept,ART,,3,,Art
 ART,130,3D Form and Concept,ART,,3,,Art
-ART,201,Drawing I,ART,,3,,Art
-ART,202,Drawing II,ART,,3,,Art
-ART,210,Two-Dimensional Design,ART,,3,,Art
-ART,211,Three-Dimensional Design,ART,,3,,Art
+ART,211,Art Internship,ART,,1,3,Art
+ART,217,Printed Matter,ART,,3,,Art
+ART,219,Collage,ART,,3,,Art
 ART,220,Communication Design,ART,,3,,Art
-ART,222,Painting I,ART,,3,,Art
-ART,223,Painting on Paper,ART,,3,,Art
 ART,230,Sculpture,ART,,3,,Art
-ART,234,Ceramics I,ART,,3,,Art
 ART,235,Ceramics,ART,,3,,Art
-ART,237,Fibers,ART,,3,,Art
+ART,237,Fibers and Materials,ART,,3,,Art
 ART,239,Adornment,ART,,3,,Art
 ART,240,Darkroom Photography,ART,,3,,Art
 ART,250,Painting,ART,,3,,Art
+ART,255,Painting on Paper,ART,,3,,Art
 ART,270,Introduction to Art History,ART,,3,,Art
-ART,299,Special Studies,ART,,1,4,Art
-ART,301,Art History I,ART,,3,,Art
-ART,302,Art History II,ART,,3,,Art
+ART,280,Special Studies,ART,,1,3,Art
 ART,310,Figure Drawing,ART,,3,,Art
 ART,320,Publication Design,ART,,3,,Art
-ART,322,Painting II,ART,,3,,Art
-ART,330,Adv Fig Sculpt: Strct/Frm/Anat,ART,,3,,Art
+ART,325,Type Design,ART,,3,,Art
+ART,330,Adv Figure Sculpt: Struct/Form/Anat,ART,,3,,Art
 ART,331,Adv Figure Sculpt: Composition,ART,,3,,Art
-ART,334,Ceramics II,ART,,3,,Art
 ART,335,Advanced Ceramics,ART,,3,,Art
 ART,340,Digital Photography,ART,,3,,Art
-ART,350,Advanced Painting,ART,,3,,Art
-ART,355,Adv Painting: Space/Mat/Concpt,ART,,3,,Art
-ART,370,History&Theory of Photography,ART,,3,,Art
+ART,350,Adv Painting: Form/Mat/Concept,ART,,3,,Art
+ART,355,Adv Painting: Space/Mat/Concept,ART,,3,,Art
+ART,370,History & Theory of Photography,ART,,3,,Art
 ART,371,"Women, Art, and Culture",ART,,3,,Art
 ART,372,Global Modernisms,ART,,3,,Art
+ART,373,Art and the Church,ART,,3,,Art
 ART,380,Special Studies,ART,,1,3,Art
-ART,399,Special Studies,ART,,1,5,Art
-ART,410,Art/Criticism 1970 to Present,ART,,3,,Art
-ART,411,Art Internship,ART,,1,6,Art
+ART,411,Art Internship,ART,,1,3,Art
 ART,420,Interactive Design,ART,,3,,Art
-ART,422,Painting III,ART,,3,4,Art
 ART,425,Brand Design,ART,,3,,Art
-ART,434,Ceramics III,ART,,3,,Art
 ART,439,Mixed Media Materials,ART,,3,,Art
 ART,440,Adv Digital Photo: Documentary,ART,,3,,Art
-ART,443,Adv Dgtl Photo: Construct Imag,ART,,3,,Art
-ART,444,Ceramics III,ART,,3,,Art
-ART,445,Adv Darkroom Photo: Alt Procss,ART,,3,,Art
-ART,450,Sculpture III,ART,,3,,Art
+ART,443,Adv Digital Photo: Constructed Image,ART,,3,,Art
+ART,445,Adv Darkroom Photography,ART,,3,,Art
+ART,450,Contemporary Practices in Painting,ART,,3,,Art
 ART,470,Art & Criticism: 1970-Present,ART,,3,,Art
 ART,491,Senior Seminar,ART,,3,,Art
 ART,492,Senior Project,ART,,3,,Art
@@ -75,27 +64,21 @@ BIB,142,New Testament Introduction,BIB,390201,3,,Biblical & Theological Studies
 BIB,201,Current Issues in Biblical Stu,BIB,390201,3,,Biblical & Theological Studies
 BIB,211,Intro to Relat Yth Min,BIB,390201,3,,Biblical & Theological Studies
 BIB,212,Prep for Rel Yth Min Skills,BIB,390201,3,,Biblical & Theological Studies
-BIB,213,Youth Ministry Practicum,BIB,390201,3,,Biblical & Theological Studies
+BIB,213,Youth Ministry Practicum I,BIB,390201,3,,Biblical & Theological Studies
 BIB,214,Youth Ministry Practicum II,BIB,390201,3,,Biblical & Theological Studies
-BIB,250,Biblical Lit and Theology,OM,521003,3,,Organizational Management
-BIB,251,Biblical Literature,BIB,,3,,Biblical & Theological Studies
-BIB,252,Christian Doctrine,BIB,390201,3,,Biblical & Theological Studies
-BIB,253,Spirituality in the Workplace,OM,521003,3,,Organizational Management
 BIB,277,Christian Doctrine I,BIB,390201,3,,Biblical & Theological Studies
 BIB,278,Christian Doctrine II,BIB,390201,3,,Biblical & Theological Studies
-BIB,280,Theology & Ministry Conference,BIB,,1,,Biblical & Theological Studies
+BIB,301,Genesis in Hebrew,BIB,390201,3,,Biblical & Theological Studies
 BIB,297,Special Topics,BIB,390201,0,3,Biblical & Theological Studies
 BIB,302,Hist/Expansion Christianity I,BIB,,3,,Biblical & Theological Studies
 BIB,303,Hist/Expansion Christianity II,BIB,,3,,Biblical & Theological Studies
-BIB,311,Pent and Hist Studies,BIB,390201,3,,Biblical & Theological Studies
 BIB,322,Deuteronomy/OldTestamentEthics,BIB,390201,3,,Biblical & Theological Studies
 BIB,327,Psalms,BIB,390201,3,,Biblical & Theological Studies
 BIB,329,Prophets of Israel,BIB,390201,3,,Biblical & Theological Studies
-BIB,342,The Gospel and Acts,BIB,390201,3,,Biblical & Theological Studies
 BIB,346,Gospel of John,BIB,390201,3,,Biblical & Theological Studies
 BIB,348,Pauline Epistles,BIB,390201,3,,Biblical & Theological Studies
 BIB,349,Romans,BIB,390201,3,,Biblical & Theological Studies
-BIB,355,Ephesians & Colossians,BIB,,1,3,Biblical & Theological Studies
+BIB,355,"Ephesians, Colossians & Philemon",BIB,,1,3,Biblical & Theological Studies
 BIB,358,General Epistles,BIB,,3,,Biblical & Theological Studies
 BIB,360,Christian Spirituality,BIB,,3,,Biblical & Theological Studies
 BIB,362,Science and Theology,BIB,,3,,Biblical & Theological Studies
@@ -108,20 +91,15 @@ BIB,374,Global Theology,BIB,,3,,Biblical & Theological Studies
 BIB,375,New Testament Ethics,BIB,,3,,Biblical & Theological Studies
 BIB,376,Outreach to Contemp Culture,BIB,390201,3,,Biblical & Theological Studies
 BIB,377,Book Study in the Greek Text I,BIB,,3,,Biblical & Theological Studies
-BIB,378,Book Study in the Greek TextII,BIB,,3,,Biblical & Theological Studies
-BIB,380,Evangelism,BIB,390201,1,3,Biblical & Theological Studies
-BIB,383,Hist of the Christian Church,BIB,390201,3,,Biblical & Theological Studies
-BIB,384,History of the Early Church,BIB,,3,,Biblical & Theological Studies
+BIB,378,Book Study in the Greek Text II,BIB,,3,,Biblical & Theological Studies
 BIB,386,Renaissance and Reformation,BIB,390201,3,,Biblical & Theological Studies
 BIB,387,John Calvin & Reformed Trad.,BIB,390201,3,,Biblical & Theological Studies
-BIB,388,Awakenings in Christian Histor,BIB,,3,,Biblical & Theological Studies
+BIB,388,Awakenings in Christian History,BIB,,3,,Biblical & Theological Studies
 BIB,397,Special Topics,BIB,390201,0,3,Biblical & Theological Studies
 BIB,399,Independent Study,BIB,390201,1,3,Biblical & Theological Studies
 BIB,430,Isaiah,BIB,390201,3,,Biblical & Theological Studies
 BIB,432,Old Testament Theology,BIB,,3,,Biblical & Theological Studies
-BIB,449,Romans in the Greek Text,BIB,,4,,Biblical & Theological Studies
 BIB,450,Old Testament World,BIB,,3,,Biblical & Theological Studies
-BIB,458,General Epistles,BIB,390201,3,,Biblical & Theological Studies
 BIB,462,Theology of Scripture,BIB,,3,,Biblical & Theological Studies
 BIB,475,Wisdom Literature,BIB,,3,,Biblical & Theological Studies
 BIB,486,Trinitarian Theology,BIB,,3,,Biblical & Theological Studies
@@ -131,23 +109,19 @@ BIO,111,General Biology,BIO,,4,,Biology
 BIO,112,General Biology II,BIO,260101,4,,Biology
 BIO,112L,General Biology II Lab,BIO,260101,1,,Biology
 BIO,219,Nutrition,BIO,260101,3,,Biology
-BIO,220,Human Anatomy & Physio I,BIO,,3,4,Biology
+BIO,220,Human Anatomy & Physio I,BIO,,4,,Biology
+BIO,220L,Human Anatomy & Phys I Lab,BIO,260101,0,,Biology
 BIO,221,Human Anatomy & Physio II,BIO,,4,,Biology
-BIO,221L,Human Anatomy & Phys II Lab,BIO,260101,1,,Biology
-BIO,240,Microbiology,BIO,260101,4,,Biology
-BIO,240L,Microbiology Lab,BIO,260101,1,,Biology
-BIO,242,Cellular & Molecular Biology I,BIO,,4,,Biology
-BIO,243,Cellular & Molecular Bio II,BIO,260101,4,,Biology
-BIO,260,Ecology,BIO,,4,,Biology
+BIO,221L,Human Anatomy & Phys II Lab,BIO,260101,0,,Biology
+BIO,242,Cellular & Molecular Biology,BIO,,4,,Biology
+BIO,242L,Cellular & Molecular Biology Lab,BIO,260101,0,,Biology
 BIO,261,Ecology,BIO,,4,,Biology
 BIO,263,Natural Hist/Applchn Highlands,BIO,260101,3,,Biology
 BIO,291,Biological Perspectives,BIO,,3,,Biology
 BIO,299,Special Topics in Biology,BIO,,1,4,Biology
 BIO,311,Practicum in Biology,BIO,260101,0,3,Biology
-BIO,312,Practicum in Physical Therapy,BIO,260101,1,3,Biology
 BIO,313,Genetics,BIO,,4,,Biology
-BIO,315,Macroevolution & Microevolutn,BIO,260101,3,,Biology
-BIO,319,Nutrition,BIO,260101,3,,Biology
+BIO,313L,Genetics Lab,BIO,260101,0,,Biology
 BIO,320,Comparative Anatomy,BIO,260101,4,,Biology
 BIO,321,Comparative Animal Physiology,BIO,260101,3,,Biology
 BIO,323,Developmental Biology,BIO,260101,4,,Biology
@@ -163,21 +137,16 @@ BIO,361,Land Resources,BIO,260101,4,,Biology
 BIO,390,Special Topics in Biology,BIO,260101,1,4,Biology
 BIO,391,Research In Biology,BIO,300101,3,,Biology
 BIO,392,Directed Individual Study,BIO,260101,1,4,Biology
-BIO,413,Genetics,BIO,260101,4,,Biology
-BIO,478,Alpine Ecology,BIO,,4,,Biology
 BIO,490,Biology Seminar,BIO,260101,0,,Biology
-BIO,491,Biological Perspective,BIO,260101,2,,Biology
-BIO,492,Senior Integration Paper I,BIO,260101,2,,Biology
-BIO,493,Senior Integration Paper II,BIO,,1,,Biology
+BIO,492,Senior Integration Paper,BIO,260101,2,,Biology
+BIO,494,Senior Seminar,BIO,,2,,Biology
 BUS,205,Microsoft Excel: BUS&ECON apps,BUS,,1,,Business
+BUS,211,Business Internship,BUS,,1,3,Business
 BUS,250,Principles of Management,BUS,,3,,Business
 BUS,299,Special Topics,BUS,,1,3,Business
-BUS,310,Business Research Paper,BUS,,1,,Business
 BUS,320,Human Resource Management,BUS,520101,3,,Business
 BUS,322,Legal Environ of Employment,BUS,520101,3,,Business
-BUS,325,Negotiation/ConflictResolution,BUS,,3,,Business
 BUS,330,Small Business Management,BUS,520101,3,,Business
-BUS,333,Small Business Management,BUS,520101,3,,Business
 BUS,335,Entrepreneurship,BUS,520101,3,,Business
 BUS,344,Organizational Behavior,BUS,520101,3,,Business
 BUS,345,Business Law,BUS,520101,3,,Business
@@ -189,28 +158,19 @@ BUS,411,Business Internship,BUS,520101,1,3,Business
 BUS,490,Independent Study,BUS,520101,1,3,Business
 BUS,492,Senior Integration Paper,BUS,520101,2,,Business
 BUS,499,Selected Topics,BUS,520101,3,,Business
-CDV,201,Principles of Macroeconomics,CDV,450601,3,,Economics & Community Develop
-CDV,202,Principles of Microeconomics,CDV,450601,4,,Economics & Community Develop
 CDV,210,Theory of Community Developmnt,CDV,,3,,Economics & Community Develop
-CDV,275,Quant Research/Field Settings,CDV,,4,,Economics & Community Develop
 CDV,290,Special Topics,CDV,,1,3,Economics & Community Develop
 CDV,300,Liv/Work Multicultural Context,CDV,,3,,Economics & Community Develop
 CDV,310,Comm Dev Principles & Issues,CDV,450601,3,,Economics & Community Develop
 CDV,343,US Micro. Development Methods,CDV,,3,,Economics & Community Develop
 CDV,345,Agricultural Development,CDV,,3,,Economics & Community Develop
 CDV,390,Special Topics,CDV,,1,3,Economics & Community Develop
-CDV,411,Community Develpment Practicum,CDV,,1,2,Economics & Community Develop
-CDV,420,U.S. Urban Poverty,CDV,450601,3,,Economics & Community Develop
-CDV,448,Intern Microenterprise Dev I,CDV,450601,3,,Economics & Community Develop
-CDV,460,Cross-Cultural Soc Sci Res Mth,CDV,,4,,Economics & Community Develop
-CDV,465,Econometrics I,CDV,450601,3,,Economics & Community Develop
-CDV,466,Econometrics II,CDV,450601,3,,Economics & Community Develop
-CDV,480,U.S. Research Internship,CDV,,1,12,Economics & Community Develop
-CDV,481,International Res Internship,CDV,450601,1,12,Economics & Community Develop
+CDV,460,Social Science Research Methods,CDV,,4,,Economics & Community Develop
+CDV,480,U.S. Research Internship,CDV,,3,12,Economics & Community Develop
+CDV,481,International Res Internship,CDV,450601,3,12,Economics & Community Develop
 CDV,490,Senior Seminar,CDV,450601,3,,Economics & Community Develop
 CDV,492,Senior Integration Paper,CDV,450601,2,,Economics & Community Develop
 CDV,499,Independent Study,CDV,,3,,Economics & Community Develop
-CH,0,Chapel,COR,,0,,Core
 CHE,103,Introductory Chemistry I,CHE,400501,4,,Chemistry
 CHE,103L,Introductory Chemistry I Lab,CHE,400501,1,,Chemistry
 CHE,104,Introductory Chemistry II,CHE,400501,4,,Chemistry
@@ -220,7 +180,7 @@ CHE,121L,General Chemistry I Lab,CHE,400501,1,,Chemistry
 CHE,122,General Chemistry II,CHE,400501,3,,Chemistry
 CHE,122L,General Chemistry II Lab,CHE,400501,1,,Chemistry
 CHE,225,Analytical Chemistry,CHE,400501,4,,Chemistry
-CHE,299,Special Topics in Chemistry,CHE,,1,4,Chemistry
+CHE,299,Special Topics in Chemistry,CHE,,1,3,Chemistry
 CHE,323,Organic Chemistry I,CHE,400501,4,,Chemistry
 CHE,323L,Organic Chemistry I Lab,CHE,,1,,Chemistry
 CHE,324,Organic Chemistry II,CHE,400501,4,,Chemistry
@@ -240,46 +200,20 @@ CHE,426,Physical Chemistry II,CHE,400501,4,,Chemistry
 CHE,428,Inorganic Chemistry,CHE,400501,3,4,Chemistry
 CHE,491,Metachemistry & Sr Integ Paper,CHE,400501,2,,Chemistry
 CHE,492,Senior Integration Paper,CHE,400501,2,,Chemistry
-CHI,101,Elementary Mandarin Chinese,FL,,4,,Foreign Languages
-CHI,102,Elem. Mandarin Chinese II,FL,,4,,Foreign Languages
-COM,201,Theatre & Christian Worldview,ENG,230101,3,,English
-COM,202,Intro to Theatre,ENG,,3,,English
-COM,235,Acting I,ENG,,4,,English
-COM,250,Theatre History to 20thCentury,ENG,,3,,English
-COM,260,Basic Design for the Theatre,ENG,,3,,English
-COM,290,Production Practicum,ENG,230101,0,3,English
-COM,297,Voice And Diction,ENG,,3,,English
-COM,299,Special Topics,ENG,,0,3,English
-COM,302,Dramatc Arts&Christn Thought I,ENG,,3,,English
-COM,310,Playwriting,ENG,,3,,English
-COM,315,Screenwriting,ENG,,3,,English
-COM,335,Acting II,ENG,230101,3,4,English
-COM,350,Costume History,ENG,,3,,English
-COM,390,Production Practicum,ENG,,0,3,English
-COM,397,Accents and Dialects,ENG,,3,,English
-COM,402,Dramtc Arts&Christn Thought II,ENG,,3,,English
-COM,411,Internship,ENG,,1,3,English
 COR,100,The Christian Mind,COR,,2,,Core
-COR,101,The Christian Mind,COR,,0,,Core
-COR,116,Self in Society II,COR,,3,,Core
 COR,225,Cultural Herit of the West I,COR,,3,,Core
 COR,226,Cultural Herit of the West II,COR,,3,,Core
-COR,227,Cult Herit West - Art & Music,COR,,2,,Core
 COR,325,Global Trends in the 21st Cent,COR,,3,,Core
 COR,337,Intercultural Experience,COR,,0,3,Core
 COR,340,Christ and Culture Seminar,COR,,1,,Core
 COS,117,"Technology, Faith and Society",COS,,3,,Computer Science
 COS,130,Comp Programming Methodology,COS,,4,,Computer Science
-COS,130L,Comp Program Methodology Lab,COS,,0,,Computer Science
 COS,131,Computing For Engineers,COS,,4,,Computer Science
-COS,132,Computing with SAS,COS,,4,,Computer Science
 COS,150,Adv Programming Methodology,COS,,4,,Computer Science
-COS,150L,Adv. Computer Prog Method Lab,COS,,0,,Computer Science
+COS,150L,Adv Computer Prog Method Lab,COS,,0,,Computer Science
 COS,210,Discrete Struct. in Computing,COS,,4,,Computer Science
 COS,230,Data Structures & Algorithms,COS,,4,,Computer Science
-COS,240L,Management Info Systems Lab,COS,,0,,Computer Science
 COS,250,Intro To Computer Organization,COS,,4,,Computer Science
-COS,250L,Computer Architechture Lab,COS,,0,,Computer Science
 COS,260,Ethical/Pro Issues-Computing,COS,,3,,Computer Science
 COS,299,Special Topics,COS,,0,4,Computer Science
 COS,300,Database Systems,COS,,4,,Computer Science
@@ -287,148 +221,78 @@ COS,311,Computer and Inform. Security,COS,,4,,Computer Science
 COS,313,Introduction to Cryptography,COS,,4,,Computer Science
 COS,315,Cyber Defense,COS,,4,,Computer Science
 COS,317,Software Security Engineering,COS,,4,,Computer Science
-COS,325L,Operating Systems Lab,COS,,0,,Computer Science
 COS,326,Operating Systems,COS,,4,,Computer Science
 COS,327,Network Programming,COS,,4,,Computer Science
-COS,330,Intro to Mgmt Info Systems,COS,,3,,Computer Science
 COS,350,Programming Languages,COS,,4,,Computer Science
 COS,375,Software Engineering,COS,,4,,Computer Science
 COS,380,Personal Software Engineering,COS,,4,,Computer Science
 COS,411,Computer Science Internship,COS,110101,1,3,Computer Science
-COS,425,Foundations of Computer Scienc,COS,,4,,Computer Science
+COS,425,Foundations of Computer Science,COS,,4,,Computer Science
 COS,450,Special Topics,COS,,1,4,Computer Science
 COS,492,Senior Integration Paper,COS,,2,,Computer Science
 ECO,201,Principles of Macroeconomics,CDV,450601,3,,Economics & Community Develop
 ECO,202,Principles of Microeconomics,CDV,450601,4,,Economics & Community Develop
-ECO,210,Foundations of Community Dev,BUS,520101,1,3,Business
-ECO,211,Economics Internship,CDV,,1,4,Economics & Community Develop
+ECO,211,Economics Internship,CDV,,1,3,Economics & Community Develop
 ECO,301,Intermediate Macroeconomics,CDV,,3,,Economics & Community Develop
 ECO,302,Intermediate Microeconomics,CDV,450601,3,,Economics & Community Develop
 ECO,310,Public Finance,CDV,,3,,Economics & Community Develop
 ECO,320,History of Economic Thought,CDV,,3,,Economics & Community Develop
 ECO,330,Industrial Organization,CDV,,3,,Economics & Community Develop
-ECO,343,US Micro. Development Methods,CDV,,3,,Economics & Community Develop
 ECO,348,Microfinance,CDV,,3,,Economics & Community Develop
 ECO,400,International Economics,CDV,,3,,Economics & Community Develop
 ECO,405,Money and Banking,CDV,450601,3,,Economics & Community Develop
-ECO,410,Third World Economic Develpmnt,CDV,,3,,Economics & Community Develop
-ECO,411,Economics Internship,BUS,450601,1,4,Business
+ECO,410,Economic Development in Maj. World,CDV,,3,,Economics & Community Develop
+ECO,411,Economics Internship,BUS,450601,1,3,Business
 ECO,420,U.S. Urban Poverty,CDV,450601,3,,Economics & Community Develop
 ECO,430,Labor Economics,BUS,450601,3,,Business
 ECO,450,Health Economics,CDV,,3,,Economics & Community Develop
-ECO,460,Health Economics,CDV,450601,3,,Economics & Community Develop
 ECO,465,Econometrics I,CDV,450601,3,,Economics & Community Develop
 ECO,466,Econometrics II,CDV,450601,3,,Economics & Community Develop
-ECO,490,Independent Study,CDV,,2,3,Economics & Community Develop
+ECO,490,Independent Study,CDV,,3,,Economics & Community Develop
 ECO,492,Senior Integration Paper,CDV,,2,,Economics & Community Develop
-ECO,499,Special Topics,CDV,,1,3,Economics & Community Develop
-EDU,120,Foundations of Education,EDU,,4,,Education
+ECO,499,Special Topics,CDV,,3,,Economics & Community Develop
 EDU,121,Introduction to Teaching,EDU,,1,3,Education
-EDU,121F,Intro to Teach Field Placement,EDU,,0,,Education
 EDU,122,Perspectives in Teaching,EDU,,1,2,Education
 EDU,215,Technology for Educators,EDU,,3,,Education
-EDU,220,Foundations of Education,EDU,,4,,Education
 EDU,222,Educational Psychology,EDU,,3,,Education
-EDU,234,Tchng in a Pluralistic Society,EDU,,3,,Education
+EDU,234,Teaching in a Pluralistic Society,EDU,,3,,Education
 EDU,266,Literature For Children,EDU,,3,,Education
-EDU,296,May Practicum,EDU,,1,3,Education
-EDU,303,Developmental Psychology,EDU,,3,,Education
-EDU,310,Professional Development Exper,EDU,,0,,Education
-EDU,311,Professional Development Exper,EDU,,0,,Education
-EDU,312,Professional Development Exper,EDU,,0,,Education
-EDU,313,Lang Arts Content/Skills - EG,EDU,,2,,Education
-EDU,315,Tchng Reading in Early Grades,EDU,131202,3,,Education
-EDU,317,Assessing & Correcting Reading,EDU,,2,3,Education
-EDU,318,Reading/Writing Content Areas,EDU,,3,,Education
-EDU,322,Nature/Needs Early Adoles Lrnr,EDU,,3,,Education
+EDU,296,Practicum in Education,EDU,,1,3,Education
+EDU,313,Lang Arts Content/Skills in Early Grades - EG,EDU,,2,,Education
+EDU,315,Teaching Reading in Early Grades,EDU,131202,3,,Education
+EDU,317,Assessing & Correcting Reading Difficulties,EDU,,2,3,Education
 EDU,324,Science Content and Skills,EDU,131202,3,,Education
-EDU,326,Mathematics Content and Skills,EDU,,3,,Education
-EDU,328,Soc Stu Cont/Skills Early Grds,EDU,131202,3,,Education
-EDU,330,Soc/Studies Cont/Skills MG/Sec,EDU,,3,,Education
-EDU,335,Phys Education in Early Grades,EDU,131202,2,,Education
-EDU,337,"Music, Art & PE in Elem School",EDU,,3,,Education
-EDU,340,Curriculum Methds/Sec School,EDU,,4,,Education
-EDU,342,Ess of Inst Early Grades,EDU,,3,,Education
-EDU,343,Ess of Inst Middle Grades,EDU,,3,,Education
-EDU,345,Art for Children/Early Grades,EDU,131202,2,,Education
-EDU,350,Ed Thgt & Prct Charlotte Mason,EDU,,3,,Education
-EDU,352,Tchng Music in Early Grades,EDU,131202,2,,Education
-EDU,361,Education of Except Children,EDU,,3,,Education
-EDU,366,Lit for Children Early Grades,EDU,131202,3,,Education
-EDU,367,Lit for Children Middle Grades,EDU,131202,3,,Education
-EDU,370,Hist and Phil of American Educ,EDU,,3,,Education
-EDU,371,Applied Linguistics for ESOL,EDU,,3,,Education
-EDU,372,Methods & Materials of ESOL,EDU,,3,,Education
-EDU,373,Practicum for TESOL,EDU,,3,,Education
+EDU,326,Mathematics Content and Skills in Early Grades,EDU,,3,,Education
+EDU,328,Social Studies Cont/Skills Early Grades,EDU,131202,3,,Education
+EDU,337,"Music, Art & PE in Early Grades",EDU,,3,,Education
+EDU,342,Essentials of Instruction in Early Grades,EDU,,3,,Education
+EDU,350,Educational Thought & Practice of Charlotte Mason,EDU,,3,,Education
+EDU,361,Education of Exceptional Children,EDU,,3,,Education
+EDU,370,History and Philosophy of American Education,EDU,,3,,Education
 EDU,396,Practicum in Education,EDU,,1,3,Education
 EDU,401,Special Topics,EDU,,1,6,Education
 EDU,405,Senior Field Experience,EDU,,1,,Education
-EDU,410,Educational Assessment: EG,EDU,,1,,Education
-EDU,411,Edu Assessment: Mid & Sec,EDU,,1,,Education
-EDU,415,Content & Methods for Mid Gra,EDU,,4,,Education
-EDU,427,Math Content/Skills Mdle Grds,EDU,131202,3,4,Education
-EDU,454,Organization and Management,EDU,131202,2,,Education
-EDU,455,Organ/Manag Mid Gr Classroom,EDU,131202,2,,Education
-EDU,480,Sr Int Project: Elementary,EDU,,2,,Education
-EDU,481,Sr Int Project: Education Stu,EDU,,2,,Education
-EDU,482,Senior Seminar: Mid Grades,EDU,,1,,Education
+EDU,410,Educational Assessment: Early Grades,EDU,,1,,Education
+EDU,454,Organization and Management of Early Grade Classroom,EDU,131202,2,,Education
+EDU,480,Senior Int Project: Elementary,EDU,,2,,Education
+EDU,481,Senior Int Project: Education Studies,EDU,,2,,Education
 EDU,488,Clinical Practice,EDU,,15,,Education
 EDU,489,Clinical Practice Seminar: EC,EDU,,1,,Education
-EDU,490,Student Teaching Seminar:MidGr,EDU,,1,,Education
-EDU,491,Student Teaching Seminar: Sec,EDU,,1,,Education
-EDU,492,Teaching Practicum-Elem Grades,EDU,,12,,Education
-EDU,494,Sr Integ Proj and Seminar,EDU,,1,,Education
-EDU,495,Tchng Prac I Elem Education,EDU,131202,7.5,,Education
-EDU,496,Tchng Prac II Elem Education,EDU,131202,7.5,,Education
-EDU,497,Tchng Prac I Sec Education,EDU,,7.5,,Education
-EDU,498,Tchng Prac II Sec Education,EDU,,7.5,,Education
-EDU,499,Special Topics in Education,EDU,131202,1,3,Education
-EDU,510,Foundations for Curriculm Dev.,EDU,,2,,Education
-EDU,520,Introduction to Research,EDU,,2,,Education
-EDU,530,Content Area Literacy,EDU,,3,,Education
-EDU,540,Nature/Need Adolescent Learner,EDU,,2,,Education
-EDU,550,Hist/Phil of American Edu,EDU,,3,,Education
-EDU,560,Curriculum and Methods,EDU,,3,,Education
-EDU,570,Assessment and Research,EDU,,3,,Education
-EDU,580,Clinical Practice I,EDU,,3,,Education
-EDU,585,Diversity Field Experience,EDU,,1,,Education
-EDU,590,Research Seminar,EDU,,4,,Education
-EDU,595,Clinical Practice II,EDU,,8,,Education
-EDU,610,Foundations for Curr Develop,MED,130401,3,,Masters of Education
-EDU,620,Introduction to Research,MED,130401,3,,Masters of Education
-EDU,630,Lrng Theory Applied to Tchng,MED,130401,3,,Masters of Education
-EDU,650,The School in Society,MED,130401,3,,Masters of Education
-EDU,712,Shaping School Curriculum K-12,MED,130301,3,,Masters of Education
-EDU,720,Organizational Leadership,MED,130401,3,,Masters of Education
-EDU,725,Development of Personnel,MED,130401,3,,Masters of Education
-EDU,730,Implementing Instruct Strategy,MED,130301,3,,Masters of Education
-EDU,735,Integrative Approches to Curr,MED,130301,3,,Masters of Education
-EDU,738,Res & Prac Tchng Content Field,MED,130301,3,,Masters of Education
-EDU,740,Supervision of Instruction,MED,130401,3,,Masters of Education
-EDU,745,"School Law, Standards & Policy",MED,130401,3,,Masters of Education
-EDU,750,Nature of Knowled & Curr Integ,MED,130301,3,,Masters of Education
-EDU,760,School Business Management,MED,130401,3,,Masters of Education
-EDU,785,Field Experience in Edu Ldrshp,MED,130401,3,,Masters of Education
-EDU,790,Proj in Integ Curr Instruction,MED,130301,3,,Masters of Education
 ENG,50,Basic Writing,ENG,230101,1,3,English
 ENG,111,English Composition,ENG,230101,3,,English
-ENG,114,Introduction to Literature,ENG,230101,3,,English
-ENG,201,Intro to Literary Studies,ENG,230101,3,,English
+ENG,201,Introduction to Literary Studies,ENG,230101,3,,English
 ENG,202,Methods of Literary Study,ENG,230101,1,,English
-ENG,203,Amer Lit: Beginnings to 1865,ENG,230101,3,,English
-ENG,204,American Literature: 1865-1965,ENG,230101,3,,English
+ENG,203,Amerucab Lit: Beginnings to 1865,ENG,230101,3,,English
+ENG,204,American Lit: 1865-1965,ENG,230101,3,,English
 ENG,210,Classical Literature,ENG,230101,3,,English
-ENG,211,European Lit - Eng Translation,ENG,230101,3,,English
-ENG,220,Modern & Contemporary Drama,ENG,230101,3,,English
-ENG,235,Introduction to Linguistics,ENG,230101,3,,English
-ENG,236,English Syntax,ENG,230101,3,,English
+ENG,211,European Lit in Eng Translation,ENG,230101,3,,English
 ENG,240,Inklings,ENG,230101,3,,English
 ENG,245,Journalism,ENG,230101,2,,English
 ENG,250,Intro to Creative Writing,ENG,,3,,English
 ENG,252,Speech,ENG,230101,2,,English
 ENG,266,Reading Film,ENG,230101,3,,English
 ENG,272,The American Novel,ENG,230101,3,,English
-ENG,275,20th Century African-Amer Lit,ENG,230101,3,,English
+ENG,275,20th Century African-American Lit,ENG,230101,3,,English
 ENG,276,Literature Across Cultures,ENG,,3,,English
 ENG,299,Special Topics in English,ENG,230101,1,3,English
 ENG,301,Creative Writing: Fiction,ENG,,2,,English
@@ -437,59 +301,49 @@ ENG,303,Creative Writing: Nonfiction,ENG,,2,,English
 ENG,304,Advanced Composition,ENG,,2,,English
 ENG,305,Theories of Composition,ENG,230101,2,3,English
 ENG,307,Writing in Hypertext,ENG,230101,2,,English
-ENG,308,Brit Novel: Begin Until 1945,ENG,230101,3,,English
+ENG,308,British Novel: Beginnings Until 1945,ENG,230101,3,,English
 ENG,311,Chaucer and the Middle Ages,ENG,230101,3,,English
 ENG,318,The Renaissance,ENG,230101,3,,English
 ENG,331,The Restoration & 18th Century,ENG,230101,3,,English
 ENG,334,British Romanticism,ENG,230101,3,,English
 ENG,341,Victorian Poetry and Prose,ENG,230101,3,,English
-ENG,343,Amer Lit: Beginnings to 1865,ENG,230101,3,,English
-ENG,344,American Literature: 1865-1965,ENG,230101,3,,English
+ENG,343,American Lit: Beginnings to 1865,ENG,230101,3,,English
+ENG,344,American Lit: 1865-1965,ENG,230101,3,,English
 ENG,352,Contemporary Literature,ENG,230101,3,,English
-ENG,366,Lit for Child in Early Grades,ENG,230101,1,3,English
-ENG,367,Lit for Child in Middle Grades,ENG,230101,3,,English
 ENG,380,Critical Theory,ENG,230101,3,,English
 ENG,399,Independent Study,ENG,230101,1,3,English
 ENG,401,Special Topics in English,ENG,230101,3,,English
 ENG,418,Shakespeare,ENG,230101,3,,English
 ENG,446,Practicum in Journalism,ENG,230101,1,3,English
 ENG,491,SIP: Research,ENG,230101,1,,English
-ENG,491E,SIP:Research EDU,ENG,230101,1,,English
 ENG,492,Senior Integration Paper,ENG,230101,2,,English
-ENG,492E,Senior Integration Paper EDU,ENG,230101,2,,English
-FIN,200,Orientation Profssion&Practice,BUS,,3,,Business
+FIN,200,Finance: Orientation to Profession & Practice,BUS,,3,,Business
 FIN,210,Personal Finance,BUS,,3,,Business
 FIN,340,Principles of Finance,BUS,450601,3,,Business
 FIN,345,Corporate Financial Management,BUS,,3,,Business
 FIN,350,Investments,BUS,,3,,Business
-FIN,485,Financial Ins & Intermediaries,BUS,,3,,Business
+FIN,485,Financial Institutions & Intermediaries,BUS,,3,,Business
 FIN,490,Independent Study,BUS,450601,2,3,Business
 FIN,499,Selected Topics,BUS,450601,3,,Business
-FL,11X,1st Semester Foreign Language,,,3,4,
-FL,12X,2nd Semester Foreign Language,,,3,4,
-FRE,0,French Placement Exam,0,,0,,Undeclared
 FRE,101,Elementary French I,FL,,4,,Foreign Languages
 FRE,102,Elementary French II,FL,,4,,Foreign Languages
 FRE,201,Intermediate French I,FL,,3,,Foreign Languages
 FRE,202,Intermediate French II,FL,,3,,Foreign Languages
-FRE,305,Adv French Conv/Reading,FL,,3,,Foreign Languages
 FRE,310,French Conversation,FL,,3,,Foreign Languages
 FRE,315,French Conversation & Reading,FL,,3,,Foreign Languages
 FRE,320,French Phonetics and Diction,FL,,3,,Foreign Languages
-FRE,331,French Civ. & Culture I,FL,,3,,Foreign Languages
-FRE,332,French Civ. & Culture II,FL,,3,,Foreign Languages
-FRE,340,Adv French Grammar/Composition,FL,,3,,Foreign Languages
-FRE,341,French Structure&Stylistics I,FL,,3,,Foreign Languages
+FRE,331,French Civilization & Culture I,FL,,3,,Foreign Languages
+FRE,332,French Civilization & Culture II,FL,,3,,Foreign Languages
+FRE,341,French Structure & Stylistics I,FL,,3,,Foreign Languages
+FRE,342,French Structure & Stylistics II,FL,,3,,Foreign Languages
 FRE,351,French Literature I,FL,,3,,Foreign Languages
 FRE,352,French Literature II,FL,,3,,Foreign Languages
-FRE,400,Independent Study,FL,,1,4,Foreign Languages
-FRE,401,Special Topics,FL,,3,,Foreign Languages
-FRE,492,Senior Integegration Paper,FL,,3,,Foreign Languages
-GE,0,Study Hall,COR,,0,,Core
+FRE,353,French Literature III,FL,,3,,Foreign Languages
+FRE,354,French Literature IV,FL,,3,,Foreign Languages
+FRE 361,French Culture thru Media Arts,FL,,3,,Foreign Languages
+FRE,401,Special Topics in French Lang & Lit,FL,,3,,Foreign Languages
+FRE,492,Senior Integration Paper,FL,,3,,Foreign Languages
 GE,131,College Life,COR,,1,,Core
-GE,999,CSTCC / UTC,0,,1,9,Undeclared
-GE,XFER,Transfer XFER,,,1,4,
-GER,0,German Placement Exam,0,,0,,Undeclared
 GER,101,Elementary German I,FL,,4,,Foreign Languages
 GER,102,Elementary German II,FL,,4,,Foreign Languages
 GER,201,Intermediate German I,FL,,3,,Foreign Languages
@@ -498,14 +352,13 @@ GER,310,German Conversation,FL,,3,,Foreign Languages
 GER,315,German Conversation & Reading,FL,,3,,Foreign Languages
 GER,320,German Phonetics & Diction,FL,,3,,Foreign Languages
 GER,330,German Civilization & Culture,FL,,3,,Foreign Languages
-GER,340,Adv German Grammar/Composition,FL,,3,,Foreign Languages
-GER,342,Adv Ger Structure&StylisticsII,FL,,3,,Foreign Languages
+GER,341,German Structure & Stylistics I,FL,,3,,Foreign Languages
+GER,342,German Structure & Stylistics II,FL,,3,,Foreign Languages
 GER,351,German Literature I,FL,,3,,Foreign Languages
 GER,352,German Literature II,FL,,3,,Foreign Languages
 GER,353,German Literature III,FL,,3,,Foreign Languages
 GER,354,German Literature IV,FL,,3,,Foreign Languages
-GER,361,German Culture thruMedia Arts,FL,,3,,Foreign Languages
-GER,401,Special Topics,FL,,3,,Foreign Languages
+GER,361,German Culture thru Media Arts,FL,,3,,Foreign Languages
 GER,492,Senior Integration Paper,FL,,2,,Foreign Languages
 GRE,175,Elementary Greek I,FL,,4,,Foreign Languages
 GRE,176,Elementary Greek II,FL,,4,,Foreign Languages
@@ -514,28 +367,22 @@ GRE,278,Intermediate Greek II,FL,,3,,Foreign Languages
 GRE,400,Reading in Greek New Testament,FL,,1,3,Foreign Languages
 HEB,191,Elementary Hebrew I,FL,,4,,Foreign Languages
 HEB,192,Elementary Hebrew II,FL,,4,,Foreign Languages
-HEB,200,Inter. Hebrew/Read in Old Test,FL,,1,3,Foreign Languages
-HEB,301,Special Topics,FL,,1,3,Foreign Languages
-HEB,400,Int Hebrew/Read Old Testament,FL,,1,3,Foreign Languages
-HIS,111,U.S. History to 1877,HIS,,3,,History
-HIS,111D,U.S. History to 1877 (Georgia),HIS,,3,,History
-HIS,112,U.S. History Since 1877,HIS,,3,,History
-HIS,112D,US History Since 1877--Georgia,HIS,,3,,History
+HEB,200,Inter. Hebrew/Reading in Old Test,FL,,1,3,Foreign Languages
+HIS,111,History of the United States I,HIS,,3,,History
+HIS,112,History of the United States II,HIS,,3,,History
 HIS,150,Introduction to History,HIS,450801,3,,History
 HIS,198,Readings in US History to 1877,HIS,,1,,History
-HIS,199,Readings in US Hist Since 1877,HIS,,0,1,History
+HIS,199,Readings in US History Since 1877,HIS,,0,1,History
 HIS,205,Georgia History,HIS,,2,,History
+HIS,211,History Internship,HIS,,1,3,History
 HIS,213,Formation of Europe to 1550,HIS,450801,3,,History
-HIS,214,"Age of Europe, 1550-1871",HIS,450801,3,,History
-HIS,217,Amer Pol&Presidential Election,HIS,,3,,History
-HIS,218,Studies in US Constit History,HIS,450801,3,,History
-HIS,225,Public&Urban Hist/NewYorkCity,HIS,,3,,History
-HIS,235,Developing World Since 1945,HIS,450801,3,,History
+HIS,214,"Age of Europe 1550-1871",HIS,450801,3,,History
+HIS,218,Studies in US Constitutional History,HIS,450801,3,,History
+HIS,225,Excavating Gotham: Public History in NYC,HIS,,3,,History
 HIS,241,American Religious History,HIS,,3,,History
 HIS,250,The New South,HIS,450801,3,,History
 HIS,290,History Special Topics,HIS,450801,1,6,History
-HIS,300,Historiography,HIS,450801,3,,History
-HIS,302,Tudor-Stuart England 1485-1688,HIS,450801,3,,History
+HIS,302,England in Tudor-Stuart Period 1485-1688,HIS,450801,3,,History
 HIS,303,Ancient Greece and Rome,HIS,450801,3,,History
 HIS,304,Medieval Civilization,HIS,450801,3,,History
 HIS,305,History of Political Theory,HIS,450801,3,,History
@@ -543,13 +390,15 @@ HIS,306,History of the Early Church,HIS,450801,3,,History
 HIS,307,Modern Britain,HIS,450801,3,,History
 HIS,308,Modern Russia,HIS,450801,3,,History
 HIS,309,Modern Germany,HIS,450801,3,,History
-HIS,311,Hist of the Christian Church,HIS,450801,3,,History
-HIS,314,America -The Revolutionary Age,HIS,450801,3,,History
-HIS,316,Recent American Hist: 1960s,HIS,450801,3,,History
+HIS,312,Hist/Expansion Christianity I,HIS,450801,3,,History
+HIS,313,Hist/Expansion Christianity II,HIS,450801,3,,History
+HIS,314,America in the Revolutionary Age,HIS,450801,3,,History
+HIS,316,Recent American History: 1960s,HIS,450801,3,,History
 HIS,317,The American Civil War Era,HIS,450801,3,,History
-HIS,319,Progressive Era America,HIS,131328,3,,History
+HIS,319,Progressive Era America,HIS,450801,3,,History
+HIS,321,History of Modern Japan,HIS,450801,3,,History
 HIS,322,History of Modern China,HIS,450801,3,,History
-HIS,325,Twentieth Century World Hist,HIS,450801,3,,History
+HIS,325,Twentieth Century World History,HIS,450801,3,,History
 HIS,327,History of South Africa,HIS,450801,3,,History
 HIS,328,Developing World Since 1945,HIS,450801,3,,History
 HIS,330,American Environmental History,HIS,450801,3,,History
@@ -557,57 +406,46 @@ HIS,332,Modern Middle East,HIS,450801,3,,History
 HIS,335,The European Enlightenment,HIS,450801,3,,History
 HIS,336,Darwin,HIS,450801,3,,History
 HIS,339,Renaissance and Reformation,HIS,450801,3,,History
-HIS,340,US 20th Century Foreign Relatn,HIS,450801,3,,History
-HIS,341,American Religious History,HIS,450801,3,,History
+HIS,340,20th Century US Foreign Relations,HIS,450801,3,,History
 HIS,349,American Urban History,HIS,450801,3,,History
 HIS,350,Summer Reading Seminar,HIS,450801,1,3,History
-HIS,351,Hist/Cult African Amer to 1865,HIS,,3,,History
-HIS,352,Hist/Cult Afr Amer since 1865,HIS,,3,,History
-HIS,370,Hist and Phil of American Educ,HIS,450801,3,,History
-HIS,371,Hist/Cult of African Americans,HIS,450801,3,,History
+HIS,351,Hist/Culture African Americans to 1865,HIS,,3,,History
+HIS,352,Hist/Culture African Americans since 1865,HIS,,3,,History
+HIS,370,History and Philosophy of American Education,HIS,450801,3,,History
 HIS,372,Modern Africa,HIS,450801,3,,History
 HIS,390,Special Topics,HIS,450801,1,3,History
-HIS,390B,The Enlightenment,IDS,450801,4,,Interdisciplinary Studies
-HIS,398,North Amer Indians in Am Hist,HIS,450801,3,,History
+HIS,398,North American Indians in American History,HIS,450801,3,,History
 HIS,399,Historiography,HIS,450801,3,,History
 HIS,400,Independent Study,HIS,450801,1,3,History
 HIS,401,Seminar in U.S. History,HIS,450801,3,,History
 HIS,409,Seminar in Modern History,HIS,450801,3,,History
-HIS,411,History Internship,HIS,,1,6,History
+HIS,411,History Internship,HIS,,1,3,History
 HIS,491,Senior Seminar in History,HIS,450801,3,,History
 HIS,492,Senior Integration Paper,HIS,450801,3,,History
-ICS,122,Quantitative Microcomputing,ICS,110101,2,,Information & Computer Science
-ICS,130L,Comp Program Methodology Lab,ICS,110101,0,,Information & Computer Science
 IDS,201,Introduction to IDS,IDS,,3,,Interdisciplinary Studies
 IDS,202,Popular Culture,IDS,309999,3,,Interdisciplinary Studies
 IDS,205,The Church and Social Concern,IDS,309999,3,,Interdisciplinary Studies
 IDS,210,Special Topics in IDS,IDS,309999,0,3,Interdisciplinary Studies
 IDS,310,Darwin,IDS,309999,3,,Interdisciplinary Studies
-IDS,310G,Darwin,IDS,309999,3,,Interdisciplinary Studies
-IDS,315,Rel/SocTheory of 19th Cent Eur,IDS,309999,3,,Interdisciplinary Studies
+IDS,315,Rel/Social Theory of 19th Cent Europe,IDS,309999,3,,Interdisciplinary Studies
 IDS,320,Worldviews in Conflict,IDS,309999,3,,Interdisciplinary Studies
 IDS,335,The European Enlightenment,IDS,309999,3,4,Interdisciplinary Studies
-IDS,340,Augustine: Friendship & Societ,IDS,,3,,Interdisciplinary Studies
-IDS,345,Athl Sports & Relig/Ancnt Wrld,IDS,,3,,Interdisciplinary Studies
-IDS,347,Relig Sex & Love/Ancient World,IDS,,3,,Interdisciplinary Studies
+IDS,340,Augustine: Friendship & Society,IDS,,3,,Interdisciplinary Studies
+IDS,345,Athletics Sports & Religion in Ancient World,IDS,,3,,Interdisciplinary Studies
+IDS,347,Religion Sex & Love in Ancient World,IDS,,3,,Interdisciplinary Studies
 IDS,350,Rhetoric in European Tradition,IDS,,3,,Interdisciplinary Studies
-IDS,351,Hist/Cult African Amer to 1865,IDS,,3,,Interdisciplinary Studies
-IDS,352,Hist/Cult Afr Amer since 1865,IDS,,3,,Interdisciplinary Studies
+IDS,351,Hist/Cult African Americans to 1865,IDS,,3,,Interdisciplinary Studies
+IDS,352,Hist/Cult African Americans since 1865,IDS,,3,,Interdisciplinary Studies
 IDS,360,Roots of Dutch Neo-Calvinism,IDS,,3,,Interdisciplinary Studies
-IDS,371,Hist/Cult of African Americans,IDS,309999,3,4,Interdisciplinary Studies
 IDS,399,Independent Study,IDS,309999,1,4,Interdisciplinary Studies
 IDS,400,Special Topics,IDS,309999,3,4,Interdisciplinary Studies
-IDS,401,Philosophy of Culture,OM,521003,3,,Organizational Management
-IDS,408,Interpersonal Communication,OM,521003,3,,Organizational Management
-IDS,461,Applied Research Methods I,OM,521003,3,,Organizational Management
-IDS,471,Applied Research Methods II,OM,521003,3,,Organizational Management
 IDS,492,Senior Integration Paper,IDS,309999,2,,Interdisciplinary Studies
-INS,211,International Stu. Internship,INS,,0,3,International Studies
-INS,491,Senior Seminar: Int'l Studies,INS,,2,,International Studies
+INS,211,International Studies Internship,INS,,0,3,International Studies
+INS,411,International Studies Internship,INS,,0,3,International Studies
+INS,491,Senior Seminar: International Studies,INS,,2,,International Studies
 INS,492,Senior Integration Paper,INS,,3,,International Studies
 ISL,220,Introduction to Islam,HIS,,2,3,History
-LAT,0,Latin Placement Exam,0,,0,,Undeclared
-LIN,100,"Myths,Marvels,Mores: Stdy Lang",ENG,,3,,English
+LIN,100,Studies in Language,ENG,,3,,English
 LIN,150,Introduction to Linguistics,ENG,,3,,English
 LIN,210,Methods in TESOL,ENG,,3,,English
 LIN,300,TESOL Practicum,ENG,,2,3,English
@@ -616,91 +454,46 @@ LIN,315,Phonology,ENG,,3,,English
 LIN,320,Second Language Acquisition,ENG,,3,,English
 LIN,401,Special Topics,ENG,,3,,English
 LIN,402,Special Topics in TESOL,ENG,,3,,English
-LIN,410,Sociolinguistics,ENG,,3,,English
+LIN,410,Language in Society,ENG,,3,,English
 LIN,415,Child Language Acquisition,ENG,,3,,English
 LIN,450,Psycholinguistics,ENG,,3,,English
-MAT,0,Math Placement Exam,0,,0,,Undeclared
 MAT,40,Intermediate Algebra,MAT,,4,,Mathematics
-MAT,111,Mathematics for Educators I,MAT,,3,4,Mathematics
-MAT,112,Mathematics for Educators II,MAT,,3,4,Mathematics
+MAT,111,Mathematics for Educators I,MAT,,3,,Mathematics
+MAT,112,Mathematics for Educators II,MAT,,3,,Mathematics
 MAT,122,Concepts in Mathematics,MAT,,3,,Mathematics
-MAT,132,Concepts in Mathematics for OM,OM,,3,,Organizational Management
 MAT,141,College Algebra,MAT,,4,,Mathematics
-MAT,142,Precalculus,MAT,,4,,Mathematics
+MAT,142,Precalculus Mathemics,MAT,,4,,Mathematics
 MAT,144,Finite Mathematics,MAT,,2,4,Mathematics
 MAT,145,Calculus I,MAT,,4,,Mathematics
 MAT,146,Calculus II,MAT,,4,,Mathematics
 MAT,247,Calculus III,MAT,,4,,Mathematics
-MAT,248,Differential Equations,MAT,270101,4,,Mathematics
 MAT,250,Probability,MAT,,3,,Mathematics
-MAT,251,Elementary Statistical Methods,MAT,,4,,Mathematics
 MAT,258,Differential Equations,MAT,,4,,Mathematics
 MAT,270,Discrete Mathematics,MAT,270101,3,,Mathematics
-MAT,290,Proofs and Expositions,MAT,,3,,Mathematics
+MAT,290,Proofs and Exposition,MAT,,3,,Mathematics
 MAT,310,Linear Algebra,MAT,,3,,Mathematics
-MAT,341,Modern Algebra,MAT,,3,,Mathematics
 MAT,350,Modern Algebra,MAT,,3,,Mathematics
 MAT,360,Modern Geometry I,MAT,,3,,Mathematics
 MAT,361,Modern Geometry II,MAT,,3,,Mathematics
-MAT,401,Adv Topics in Mathematics,MAT,,4,,Mathematics
-MAT,402,Adv Topics in Mathematics,MAT,,4,,Mathematics
-MAT,405,Mathematical Methds of Physics,MAT,270101,4,,Mathematics
 MAT,410,Mathematical Logic,MAT,,3,,Mathematics
 MAT,460,Real Analysis,MAT,,3,,Mathematics
 MAT,470,Topology,MAT,,3,,Mathematics
 MAT,480,Advanced Topics in Mathematics,MAT,,3,,Mathematics
 MAT,492,Senior Integration Paper,MAT,,2,,Mathematics
-MGT,400,Group and Team Dynamics,OM,521003,3,,Organizational Management
-MGT,410,Managerial Communication,OM,521003,3,,Organizational Management
-MGT,420,Managerial Ethics,OM,521003,3,,Organizational Management
-MGT,421,Prior Learning Assesment,OM,521003,1,,Organizational Management
-MGT,425,Readings in Organizational Mgt,OM,521003,3,,Organizational Management
-MGT,425E,Readings in Org Mgmt,MGT,529999,3,,Management
-MGT,426,Creative Problem Solving,OM,521003,3,,Organizational Management
-MGT,426E,Creative Problem Solving,MGT,529999,3,,Management
-MGT,430,Principles of Management,OM,521003,3,,Organizational Management
-MGT,435,Conflict Mgmt I:  Survey,OM,521003,3,,Organizational Management
-MGT,435E,Conflict Mgmt I: Survey,MGT,529999,3,,Management
-MGT,436,Conflict Mgmt II:  Skills,OM,521003,3,,Organizational Management
-MGT,436E,Conflict Management II: Skills,MGT,529999,3,,Management
-MGT,437,Conflict Mgmt III: Application,OM,521003,3,,Organizational Management
-MGT,437E,Conflict Mgmt III:Application,MGT,529999,3,,Management
-MGT,440,Principles of Leadership,OM,521003,3,,Organizational Management
-MGT,446,Managing Improvement,OM,,3,,Organizational Management
-MGT,450,Organizational Behavior,OM,521003,3,,Organizational Management
-MGT,460,Human Resource Management,OM,521003,3,,Organizational Management
-MGT,470,Managerial Marketing,OM,521003,3,,Organizational Management
-MGT,480,Entrepreneurship,OM,521003,3,,Organizational Management
-MGT,490,Strategic Mgmt I: Concepts,OM,521003,3,,Organizational Management
-MGT,495,Strategic Mgmt II:Applications,OM,521003,3,,Organizational Management
-MIS,201,Introduction to Missions,BIB,390201,3,,Biblical & Theological Studies
 MIS,202,Theology of Missions,BIB,390201,3,,Biblical & Theological Studies
 MIS,203,Missionary Methods & Problems,BIB,390201,3,,Biblical & Theological Studies
-MIS,204,Missions Practicum,BIB,390201,1,3,Biblical & Theological Studies
-MIS,297,Special Topics,BIB,390201,1,3,Biblical & Theological Studies
-MIS,301,History of Missions,BIB,390201,3,,Biblical & Theological Studies
 MIS,302,World Religions,BIB,390201,3,,Biblical & Theological Studies
-MIS,303,Alternative Religious Movement,BIB,390201,3,,Biblical & Theological Studies
-MIS,380,Evangelism,BIB,,2,3,Biblical & Theological Studies
 MIS,404,Missions Practicum,BIB,390201,1,3,Biblical & Theological Studies
 MKT,300,Principles of Marketing,BUS,450601,3,,Business
 MKT,331,Retailing,BUS,450601,3,,Business
 MKT,332,Consumer Behavior,BUS,450601,3,,Business
 MKT,335,Promotion,BUS,450601,3,,Business
-MKT,336,Principles of Transp/Distrib,BUS,450601,3,,Business
+MKT,336,Principles of Transportation/Distribution,BUS,450601,3,,Business
 MKT,410,Marketing Research,BUS,450601,3,,Business
 MKT,415,Marketing Management,BUS,450601,3,,Business
 MKT,499,Selected Topics,BUS,450601,3,,Business
-MSP,141,Character of Leadership I,MSP,,2,,Maclellan Scholars Program
-MSP,142,Character of Leadership II,MSP,,1,,Maclellan Scholars Program
-MSP,143,Character of Leadership,MSP,,3,,Maclellan Scholars Program
-MSP,251,Introduction to Rhetoric,MSP,,1,,Maclellan Scholars Program
-MSP,252,Applied Rhetoric,MSP,,0,1,Maclellan Scholars Program
+MSP,143,The Character of Leadership,MSP,,3,,Maclellan Scholars Program
 MSP,253,Leadership in Context,MSP,,2,,Maclellan Scholars Program
-MSP,343,Issues in Leadership,MSP,,0,1,Maclellan Scholars Program
-MSP,344,Practicum in Leadership,MSP,,1,,Maclellan Scholars Program
-MSP,411,MSP Internship,MSP,,1,4,Maclellan Scholars Program
-MUS,100,Generic Music Lessons,MUS,,0,2,Music
 MUS,101,1st Year Applied Music Lessons,MUS,500903,0,1,Music
 MUS,101A,Applied Music lesson: Elective,MUS,,0,1,Music
 MUS,101B,Applied Music lesson: Elective,MUS,,0,2,Music
@@ -725,54 +518,20 @@ MUS,107B,Applied MUS lesson: Percussion,MUS,,0,2,Music
 MUS,108,Secondary Applied Music,MUS,,0,1,Music
 MUS,108A,Applied Music lesson: Other,MUS,,0,1,Music
 MUS,108B,Applied Music lesson: Other,MUS,,0,2,Music
-MUS,109,1st Year Applied Music Leesons,MUS,,0,2,Music
 MUS,110,Class Voice,MUS,,0,1,Music
 MUS,111,Performance Seminar,MUS,,0,,Music
-MUS,113,Music Lesson: 1/2-hour primary,MUS,,0,2,Music
-MUS,114,Music Lesson: 1/2-hour secndry,MUS,,0,2,Music
-MUS,115,Music Lesson: 1-hour primary,MUS,,0,2,Music
-MUS,116,Music Lesson: 1-hour secondary,MUS,,0,2,Music
-MUS,122,Basic Music Theory,MUS,500901,3,,Music
-MUS,161,Intro to Musical Structure,MUS,,3,,Music
-MUS,162,Elem. Conc. of Music Structure,MUS,,3,,Music
-MUS,163,Ear Training I,MUS,,1,,Music
+MUS,161,Introduction to Musical Structure,MUS,,3,,Music
+MUS,162,Elementary Concepts of Musical Structure,MUS,,3,,Music
 MUS,164,Aural Comprehension I,MUS,,1,,Music
-MUS,170,Music Appreciation,MUS,,3,,Music
 MUS,171,Introduction to Musical Style,MUS,500901,3,,Music
 MUS,193,Covenant Chorale,MUS,,0,1,Music
 MUS,194,Covenant Chorale,MUS,,0,1,Music
-MUS,195,Chamber Singers,MUS,,0,1,Music
+MUS,195,Madrigal Singers,MUS,,0,1,Music
 MUS,196,Chamber Singers,MUS,,0,1,Music
 MUS,197,Covenant Singers,MUS,,0,1,Music
 MUS,198,Covenant Singers,MUS,,0,1,Music
 MUS,199,Special Topics,MUS,,0,1,Music
 MUS,200,Piano Proficiency,MUS,,0,,Music
-MUS,201,2nd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,201A,Music Lesson: Elective,MUS,,0,1,Music
-MUS,201B,Music Lesson: Elective,MUS,,0,2,Music
-MUS,202,2nd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,202A,Music Lesson: Voice,MUS,,0,1,Music
-MUS,202B,Music Lesson: Voice,MUS,,0,2,Music
-MUS,203,2nd Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,203A,Music Lesson: Piano,MUS,,0,1,Music
-MUS,203B,Music Lesson: Piano,MUS,,0,2,Music
-MUS,204,2nd Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,204A,Music Lesson: Strings,MUS,,0,1,Music
-MUS,204B,Music Lesson: Strings,MUS,,0,2,Music
-MUS,205,2nd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,205A,Music Lesson: Woodwind,MUS,,0,1,Music
-MUS,205B,Music Lesson - Woodwind,MUS,,0,2,Music
-MUS,206,2nd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,206A,Music Lesson: Brass,MUS,,0,1,Music
-MUS,206B,Music Lesson: Brass,MUS,,0,2,Music
-MUS,207,Secondary Applied Music,MUS,,0,1,Music
-MUS,207A,Music Lesson: Percussion,MUS,,0,1,Music
-MUS,207B,Music Lesson: Percussion,MUS,,0,2,Music
-MUS,208,Secondary Applied Music,MUS,,0,1,Music
-MUS,208A,Music Lesson: Other,MUS,,0,1,Music
-MUS,208B,Music Lesson: Other,MUS,,0,2,Music
-MUS,209,2nd Year Applied Music Lessons,MUS,,0,2,Music
-MUS,210,2nd Year Applied Music Lessons,MUS,,0,2,Music
 MUS,211,Composition I,MUS,,0,1,Music
 MUS,212,Composition II,MUS,,0,1,Music
 MUS,220,Music Arranging & Composition,MUS,,3,,Music
@@ -781,18 +540,15 @@ MUS,222,Woodwind Methods,MUS,,1,,Music
 MUS,223,Brass Methods,MUS,,1,,Music
 MUS,224,Percussion Methods,MUS,,1,,Music
 MUS,241,Basic Music Technology,MUS,,3,,Music
-MUS,245,Intro to Musical Theatre,MUS,,3,,Music
-MUS,251,Choral Diction,MUS,500901,1,,Music
+MUS,245,Introduction to Musical Theatre,MUS,,3,,Music
 MUS,252,Introduction to Diction,MUS,,1,,Music
 MUS,253,Italian Diction,MUS,,1,,Music
 MUS,254,German Diction,MUS,,1,,Music
 MUS,255,French Diction,MUS,,1,,Music
-MUS,261,Int. Conc. of Music Structure,MUS,,3,,Music
-MUS,262,Adv. Conc. of Music Structure,MUS,,3,,Music
+MUS,261,Intermediate Concepts of Musical Structure,MUS,,3,,Music
+MUS,262,Advanced Concepts of Musical Structure,MUS,,3,,Music
 MUS,263,Aural Comprehension II,MUS,,1,,Music
 MUS,264,Aural Comprehension III,MUS,,1,,Music
-MUS,271,Medieval and Renaissance Music,MUS,,3,,Music
-MUS,272,Baroque Music,MUS,,3,,Music
 MUS,275,The Context of Dramatic Music,MUS,,3,,Music
 MUS,282,Basic Conducting,MUS,,3,,Music
 MUS,283,Covenant Jazz Ensemble,MUS,,0,1,Music
@@ -805,99 +561,33 @@ MUS,295,Brass Choir,MUS,,0,1,Music
 MUS,296,Brass Choir,MUS,,0,1,Music
 MUS,297,Instrumental Ensemble,MUS,,0,1,Music
 MUS,298,Instrumental Ensemble,MUS,,0,1,Music
-MUS,299,Special Topics,MUS,500901,2,3,Music
-MUS,301,3rd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,301A,Music Lesson-Elective,MUS,,0,1,Music
-MUS,301B,Music Lesson - Elective,MUS,,0,2,Music
-MUS,302,3rd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,302A,Music Lesson-Voice,MUS,,0,1,Music
-MUS,302B,Music Lesson - Voice,MUS,,0,2,Music
-MUS,303,3rd Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,303A,Music Lesson-Piano,MUS,,0,1,Music
-MUS,303B,Music Lesson-Piano,MUS,,0,2,Music
-MUS,304,3rd Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,304A,Music Lesson-Strings,MUS,,0,1,Music
-MUS,304B,Music Lesson - Strings,MUS,,0,2,Music
-MUS,305,3rd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,305A,Music Lesson - Woodwind,MUS,,0,1,Music
-MUS,305B,Music Lesson - Woodwind,MUS,,0,2,Music
-MUS,306,3rd Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,306A,Music Lesson - Brass,MUS,,0,1,Music
-MUS,306B,Music Lesson-Brass,MUS,,0,2,Music
-MUS,307,Secondary Applied Music,MUS,,0,1,Music
-MUS,307A,Music Lesson - Percussion,MUS,,0,1,Music
-MUS,307B,Music Lesson - Percussion,MUS,,0,2,Music
-MUS,308,Secondary Applied Music,MUS,,0,1,Music
-MUS,308A,Music Lesson - Other,MUS,,0,1,Music
-MUS,308B,Music Lesson - Other,MUS,,0,2,Music
-MUS,309,3rd Year Applied Music Lessons,MUS,,0,2,Music
-MUS,310,3rd Year Applied Music Lessons,MUS,,0,2,Music
+MUS,299,Special Topics,MUS,500901,3,,Music
 MUS,311,Composition III,MUS,,0,1,Music
 MUS,312,Composition IV,MUS,,0,1,Music
 MUS,313,Stage Dance,MUS,500903,0,3,Music
-MUS,315,Junior Recital (Applied Music),MUS,,1,,Music
-MUS,316,Senior Recital(BA-Church Mus),MUS,,1,,Music
-MUS,317,Senior Recital (BA-Piano Ped),MUS,,1,,Music
-MUS,318,Senior Recital (BA-Theory/Com),MUS,,1,,Music
-MUS,319,Junior Recital/Musical Theatre,MUS,,1,,Music
-MUS,320,Senior Recital (Elective),MUS,,1,,Music
-MUS,321,3rd Year Applied Music Lessons,MUS,500903,2,,Music
-MUS,322,3rd Year Applied Music Lessons,MUS,500903,2,,Music
+MUS,315,Elective Recital,MUS,,1,,Music
 MUS,351,Vocal Pedagogy,MUS,,3,,Music
 MUS,362,Counterpoint,MUS,,3,,Music
 MUS,363,Form and Analysis,MUS,,3,,Music
-MUS,370,Amer Music: Cultural Tapestry,MUS,,3,,Music
-MUS,371,Hist of Western Music to 1700,MUS,500901,3,,Music
-MUS,372,Hist Western Music 1700-1900,MUS,500901,3,,Music
-MUS,373,Hist Western Music 1900-Pres,MUS,,3,,Music
+MUS,370,American Music: The Cultural Tapestry,MUS,,3,,Music
+MUS,371,History of Western Music to 1700,MUS,500901,3,,Music
+MUS,372,History Western Music 1700-1900,MUS,500901,3,,Music
+MUS,373,History Western Music 1900-Present,MUS,,3,,Music
 MUS,374,Vocal Literature,MUS,,3,,Music
 MUS,376,Hymnology,MUS,,3,,Music
 MUS,381,Advanced Conducting,MUS,,3,,Music
-MUS,381A,Advanced Conducting-Choral,MUS,,2,,Music
-MUS,381B,Advanced Conduct-Instrumental,MUS,,2,,Music
 MUS,391,Ensemble Seminar,MUS,,0,3,Music
-MUS,393,Renaissance Consort,MUS,500901,0,1,Music
+MUS,393,Early Music Consort,MUS,500901,0,1,Music
 MUS,399,Special Topics,MUS,,3,,Music
 MUS,400,Independent Study,MUS,,0,4,Music
-MUS,401,4th Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,401A,Music Lesson - Elective,MUS,,0,1,Music
-MUS,401B,Music Lesson - Elective,MUS,,0,2,Music
-MUS,402,4th Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,402A,Music Lesson-Voice,MUS,,0,1,Music
-MUS,402B,Music Lesson-Voice,MUS,,0,2,Music
-MUS,403,4th Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,403A,Music Lesson - Piano,MUS,,0,1,Music
-MUS,403B,Music Lesson - Piano,MUS,,0,2,Music
-MUS,404,4th Year Applied Music Lessons,MUS,500903,0,2,Music
-MUS,404A,Music Lesson - Strings,MUS,,0,1,Music
-MUS,404B,Music Lesson - Strings,MUS,,0,2,Music
-MUS,405,4th Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,405A,Music Lesson - Woodwind,MUS,,0,1,Music
-MUS,405B,Music Lesson-Woodwind,MUS,,0,2,Music
-MUS,406,4th Year Applied Music Lessons,MUS,500903,0,1,Music
-MUS,406A,Music Lesson - Brass,MUS,,0,1,Music
-MUS,406B,Music Lesson - Brass,MUS,,0,2,Music
-MUS,407,Secondary Applied Music,MUS,,0,1,Music
-MUS,407A,Music Lesson-Percussion,MUS,,0,1,Music
-MUS,407B,Music Lesson - Percussion,MUS,,0,2,Music
-MUS,408,Secondary Applied Music,MUS,,0,1,Music
-MUS,408A,Music Lesson - Other,MUS,,0,1,Music
-MUS,408B,Music Lesson - Other,MUS,,0,2,Music
-MUS,409,4th Year Applied Music Lessons,MUS,,0,2,Music
-MUS,410,4th Year Applied Music Lessons,MUS,,0,2,Music
 MUS,411,Composition V,MUS,,1,,Music
 MUS,412,Composition VI,MUS,,1,,Music
 MUS,413,Stage Choreography,MUS,500903,0,3,Music
-MUS,415,Senior Recital (Applied Music),MUS,,2,,Music
-MUS,419,Senior Recital/Musical Theatre,MUS,,2,,Music
-MUS,421,4th Year Applied Music Lessons,MUS,500903,2,,Music
-MUS,422,4th Year Applied Music Lesson,MUS,500903,2,,Music
+MUS,415,Senior Recital,MUS,,2,,Music
 MUS,441,Church Music Internship,MUS,,1,3,Music
 MUS,452,Advanced Vocal Pedagogy,MUS,,3,,Music
 MUS,461,Orchestration,MUS,,3,,Music
-MUS,462,Keyboard Harmony,MUS,,3,,Music
 MUS,463,Jazz Improvisation,MUS,,3,,Music
-MUS,471,Piano Literature Survey,MUS,,3,,Music
 MUS,472,Piano Literature Survey,MUS,,3,,Music
 MUS,473,Choral Literature,MUS,,3,,Music
 MUS,474,Symphonic Literature,MUS,,3,,Music
@@ -906,24 +596,15 @@ MUS,482,Advanced Piano Pedagogy,MUS,,3,,Music
 MUS,491,Seminar for SIP in Music,MUS,500901,3,,Music
 MUS,499,Special Topics in Music,MUS,,3,,Music
 NSC,105,Physical Science,NSC,,4,,Natural Science
-NSC,105B,Nat Sci & Christian Thought,NSC,,1,3,Natural Science
-NSC,105L,Problems of Physical Sci Lab,NSC,,1,,Natural Science
 NSC,106,Issues in Contemporary Biology,NSC,,4,,Natural Science
 NSC,107,Concepts in Human Heredity,NSC,,4,,Natural Science
-NSC,107L,Concepts in Human Heredity Lab,NSC,,0,,Natural Science
 NSC,108,Concepts of Geology,NSC,,4,,Natural Science
-NSC,108L,Concepts of Geology Lab,NSC,,0,,Natural Science
-NSC,110,Concepts in Physical Geography,NSC,,4,,Natural Science
-NSC,110L,Physical Geography Lab,NSC,,1,,Natural Science
+NSC,110,Concepts of Physical Geography,NSC,,4,,Natural Science
 NSC,111,Earth Science Survey,NSC,,4,,Natural Science
 NSC,112,Astronomy,NSC,,4,,Natural Science
-NSC,112L,Astronomy Lab,NSC,,0,1,Natural Science
 NSC,115,Science in Perspective,NSC,,4,,Natural Science
-NSC,115L,Science in Perspective Lab,NSC,,0,,Natural Science
-NSC,116,Issues/Contemporary Bio for OM,BIO,,3,,Biology
 NSC,170,Introduction to Engineering,NSC,,1,,Natural Science
-NSC,299,Special Topics,NSC,,0,4,Natural Science
-NSC,492,Sr Integr Paper in Nat Science,NSC,,2,,Natural Science
+NSC,492,Senior Integration Paper in Natural Science,NSC,,2,,Natural Science
 OCS,101,American Studies Program,OCS,,12,,Off-Campus Studies Programs
 OCS,102,AuSable Institute,OCS,,4,,Off-Campus Studies Programs
 OCS,103,China Studies Program (CSP),OCS,,12,,Off-Campus Studies Programs
@@ -948,64 +629,19 @@ OCS,121,"Vesalius (Brussels, Belgium)",OCS,,15,,Off-Campus Studies Programs
 OCS,122,Semester in Paris,OCS,,15,,Off-Campus Studies Programs
 OCS,123,Semester in Thailand,OCS,,15,,Off-Campus Studies Programs
 OCS,125,May Term off-campus,OCS,,1,12,Off-Campus Studies Programs
-OM,411,Managerial Marketing,OM,521003,3,,Organizational Management
-OM,421,Business Communication,OM,521003,3,,Organizational Management
-OM,425,Human Resource Management,OM,521003,3,,Organizational Management
-OM,434,GroupDynamics & Org Behavior,OM,521003,3,,Organizational Management
-OM,437,Business Ethics,OM,521003,3,,Organizational Management
-OM,443,Prin of Mgmt & Supervision,OM,521003,3,,Organizational Management
-OM,452,Strategic Management,OM,521003,3,,Organizational Management
-PE,130,Tennis,PE,,1,,Physical Education
-PE,131,Weight Training/Aerobics,PE,,1,2,Physical Education
-PE,136,Basketball,PE,,1,,Physical Education
-PE,142,Golf,PE,,1,,Physical Education
-PE,145,Varsity Sport,PE,,1,2,Physical Education
-PE,146,Bowling,PE,,1,,Physical Education
-PE,147,Advanced Soccer,PE,,1,,Physical Education
-PE,148,Intermediate Tennis,PE,,1,,Physical Education
-PE,149,Badminton,PE,,1,,Physical Education
-PE,151,Concepts in PE,PE,,2,,Physical Education
-PE,152,Personal Aerobics & Gen Fit,PE,,1,,Physical Education
-PE,153,Intercollegiate Sport/Fitness,PE,,1,,Physical Education
-PE,211,"Intro to Health, PE & Sport",PE,,3,,Physical Education
-PE,212,"Meth, Materials & Meas in PE",PE,,3,,Physical Education
-PE,250,Foundations of Sport Ministry,PE,,3,,Physical Education
-PE,275,Athl in Secondary & Higher Edu,PE,,3,,Physical Education
-PE,290,Independent Study,PE,,3,,Physical Education
-PE,313,Critical Health Issues,PE,,3,,Physical Education
-PE,318,Sport Facility & Event Admin.,PE,,3,,Physical Education
-PE,328,1stAid/Prev&Trtmt of Ath Inj,PE,,3,,Physical Education
-PE,332,Management Health/Human Perf,PE,,3,,Physical Education
-PE,335,PE in the Early Grades,PE,,2,,Physical Education
-PE,337,Indiv & Team Sports I,PE,,3,,Physical Education
-PE,338,Indiv & Team Sports II,PE,,3,,Physical Education
-PE,386,Wilderness Learning Practicum,PE,,3,,Physical Education
-PE,405,Management in Sport,PE,,3,,Physical Education
-PE,406,Sport Law and Ethics,PE,,3,,Physical Education
-PE,407,Sociology & Psychologyof Sport,PE,,3,,Physical Education
-PE,431,Kinesiology,PE,,3,,Physical Education
-PE,433,Physiology of Exercise,PE,,3,,Physical Education
-PE,450,Struct/Meth of Sport Ministry,PE,,3,,Physical Education
-PE,460,Principles of Coaching,PE,,3,,Physical Education
-PE,482,Pract/Community Recreation,PE,,3,,Physical Education
-PE,483,Sport Ministry Internship,PE,,3,,Physical Education
-PE,492,Senior Integration Paper,PE,,2,,Physical Education
-PE,493,Physical Therapy Practicum,PE,,3,,Physical Education
-PE,494,Practicum in Adult Fitness,PE,,3,,Physical Education
-PE,495,Sp Topics/Phys Ed/Health,PE,,1,4,Physical Education
 PHI,101,Introduction to Philosophy,PHI,380101,3,,Philosophy
-PHI,102,Intro to Logic/Crit Thinking,PHI,380101,3,,Philosophy
+PHI,102,Introduction to Logic/Critical Thinking,PHI,380101,3,,Philosophy
 PHI,130,Contemporary Moral Issues,PHI,,3,,Philosophy
 PHI,171,Bioethics,PHI,,3,,Philosophy
-PHI,201,Hist of Phil I:Classical-Rena,PHI,380101,3,,Philosophy
-PHI,202,Hist of Phil II:Mod-19th Cent,PHI,380101,3,,Philosophy
-PHI,253,Hist of Phil III: Contem Philo,PHI,,3,,Philosophy
-PHI,254,20th Cent Continental Philo,PHI,,3,,Philosophy
+PHI,201,History of Phil I: Classical-Rena,PHI,380101,3,,Philosophy
+PHI,202,History of Phil II: Mod-19th Cent,PHI,380101,3,,Philosophy
+PHI,211,Philosophy Internship,PHI,380101,1,3,Philosophy
+PHI,253,History of Phil III: Contemp Phil,PHI,,3,,Philosophy
+PHI,254,20th Cent Continental Phil,PHI,,3,,Philosophy
 PHI,265,Existentialism,PHI,,3,,Philosophy
-PHI,272,Social Ethics,PHI,,3,,Philosophy
 PHI,281,Philosophy of Art,PHI,,3,,Philosophy
 PHI,283,Philosophy of Science,PHI,,3,,Philosophy
-PHI,299,Special Topics,PHI,,0,1,Philosophy
+PHI,299,Special Topics,PHI,,0,3,Philosophy
 PHI,301,Moral Philosophy,PHI,380101,3,,Philosophy
 PHI,302,Metaphysics,PHI,380101,3,,Philosophy
 PHI,303,Epistemology,PHI,380101,3,,Philosophy
@@ -1016,119 +652,126 @@ PHI,356,Philosophy of Language,PHI,,3,,Philosophy
 PHI,357,Formal Logic,PHI,,3,,Philosophy
 PHI,358,Philosophy of Mind,PHI,,3,,Philosophy
 PHI,380,Figure Seminar,PHI,,3,,Philosophy
-PHI,399,Directed Reading in Philosophy,PHI,,0,4,Philosophy
+PHI,399,Special Topics,PHI,,0,3,Philosophy
 PHI,405,Seminar in Philosophy,PHI,380101,3,,Philosophy
 PHI,411,Philosophy Internship,PHI,,1,3,Philosophy
-PHI,492,Senior Integ Paper Seminar,PHI,380101,2,,Philosophy
+PHI,492,Senior Integration Paper Seminar,PHI,380101,2,,Philosophy
 PHY,131,General College Physics I,PHY,,4,,Physics
-PHY,131L,Lab: General College Physics 1,PHY,,1,,Physics
 PHY,132,General College Physics II,PHY,,4,,Physics
-PHY,132L,General College Physics II Lab,PHY,,0,,Physics
 PHY,231,General Physics/Sci/Engin I,PHY,,4,,Physics
-PHY,231L,General Physics/Sci/En I Lab,PHY,,1,,Physics
 PHY,232,General Physics/Sci/Engin II,PHY,,4,,Physics
 PHY,233,Optics and Modern Physics,PHY,,3,4,Physics
-PHY,233L,Optics and Modern Physics Lab,PHY,,1,,Physics
+PHY,235,Modern Physics II,PHY,,3,,Physics
 PHY,321,Statics,PHY,,3,,Physics
 PHY,322,Dynamics,PHY,,3,,Physics
 PHY,328,Thermodynamics,PHY,,3,,Physics
+PHY,330,Circuits and Electronics,,3,,Physics
 PHY,341,Electromagnetism I,PHY,400801,3,,Physics
-PHY,342,Electromagnetism II,PHY,,3,,Physics
 PHY,351,Quantum Mechanics I,PHY,,3,,Physics
 PHY,352,Quantum Mechanics II,PHY,,3,,Physics
-PHY,405,Mathematical Methds of Physics,PHY,400801,4,,Physics
+PHY 375,Gravity,PHY,,3,,Physics
 PHY,410,Solid State Physics,PHY,,3,,Physics
 PHY,421,Advanced Mechanics,PHY,,3,,Physics
-PHY,431,Special Topics in Physics I,PHY,,3,4,Physics
-PHY,432,Special Topics in Physics II,PHY,,4,,Physics
+PHY,431,Special Topics in Physics,PHY,,3,4,Physics
+PHY,432,Special Topics in Physics,PHY,,3,4,Physics
 PHY,441,Statistical Mechanics,PHY,400801,3,,Physics
 PHY,450,Advanced Physics Lab,PHY,,3,,Physics
-PHY,461,Research In Physics:Thin Films,PHY,,3,,Physics
+PHY,461,Research In Physics: Thin Films,PHY,,3,,Physics
 PHY,480,Science Seminar,PHY,400801,0,,Physics
 PHY,490,Science Seminar,PHY,400801,1,,Physics
 PHY,491,Perspectives on Science,PHY,400801,2,3,Physics
-PHY,492,Senior Integ Paper in Physics,PHY,,2,,Physics
-POL,105,Intro to Political Studies,HIS,,3,,History
+PHY,492,Senior Integration Paper in Physics,PHY,,2,,Physics
+POL,105,Political Research Methods,HIS,,3,,History
 POL,200,Comparative Politics,HIS,,3,,History
 POL,202,American Government,HIS,,3,,History
 POL,210,International Relations,HIS,,3,,History
 POL,211,Politics Internship,HIS,,1,3,History
-POL,217,Presidential Politics/Election,HIS,,3,,History
-POL,225,Pol Stu Profession Orientation,HIS,,3,,History
-POL,290,Special Topics,HIS,,0,3,History
-POL,299,Special Topics in Political Sc,HIS,,1,3,History
+POL,217,Presidential Politics and Election,HIS,,3,,History
 POL,302,International Organizations,HIS,,3,,History
 POL,310,Public Opinion,HIS,,3,,History
-POL,317,Presidential Politics/Election,HIS,,3,,History
+POL,317,Presidential Politics and Election,HIS,,3,,History
 POL,320,Latin American Politics,HIS,,3,,History
 POL,325,European Politics,HIS,,3,,History
 POL,329,Authoritarian Politics,HIS,,3,,History
 POL,335,Terrorism,HIS,,3,,History
-POL,341,Cyberwarfare & Cyberterrorism,HIS,,3,,History
+POL,341,Cyberwarfare and Cyberterrorism,HIS,,3,,History
 POL,345,International Security,HIS,,3,,History
+POL,375,International Political Economy,,3,,History
 POL,390,Special Topics,HIS,,1,3,History
 POL,400,Independent Study,HIS,,1,3,History
+POL,401,Seminar in Political Studies,,3,,History
 POL,405,Social Movements,HIS,,3,,History
-POL,411,Political Studies Internship,HIS,,1,6,History
+POL,411,Politics Internship,HIS,,1,3,History
 POL,420,Decision Making,HIS,,3,,History
+PSE,130,Tennis,PSE,,1,,Physical and Sport Education
+PSE,131,Weight Training/Aerobics,PSE,,1,,Physical and Sport Education
+PSE,132,Folk and Square Dance,PSE,,1,,Physical and Sport Education
+PSE,133,Softball/Touch Football,PSE,,1,,Physical and Sport Education
+PSE,134,Swimming,PSE,,1,,Physical and Sport Education
+PSE,135,Volleyball,PSE,,1,,Physical and Sport Education
+PSE,136,Basketball,PSE,,1,,Physical and Sport Education
+PSE,140,Racquetball,PSE,,1,,Physical and Sport Education
+PSE,141a,Wilderness Skills: White Water Canoeing,PSE,,1,,Physical and Sport Education
+PSE,141b,Wilderness Skills: Backpacking,PSE,,1,,Physical and Sport Education
+PSE,141c,Wilderness Skills: Rock Climbing,PSE,,1,,Physical and Sport Education
+PSE,141d,Wilderness Skills: Orienteering,PSE,,1,,Physical and Sport Education
+PSE,142,Golf,PSE,,1,,Physical and Sport Education
+PSE,146,Bowling,PSE,,1,,Physical and Sport Education
+PSE,147,Advanced Soccer,PSE,,1,,Physical and Sport Education
+PSE,148,Intermediate Tennis,PSE,,1,,Physical and Sport Education
 PSE,149,Badminton,PSE,,1,,Physical and Sport Education
-PSE,150,Tennis,PSE,,1,,Physical and Sport Education
 PSE,151,Concepts in Physical Education,PSE,,2,,Physical and Sport Education
-PSE,152,Personal Aerobics& Gen Fitness,PSE,,1,,Physical and Sport Education
-PSE,153,Intercollegiate Sport&Fitness,PSE,,1,,Physical and Sport Education
-PSE,205,Principles of Sport Adminstrtn,PSE,,3,,Physical and Sport Education
-PSE,250,Foundation of Sports Ministry,PSE,,3,,Physical and Sport Education
-PSE,308,Marketing&Revenue Gen in Sport,PSE,,3,,Physical and Sport Education
-PSE,318,Sport Facility & Event Admin,PSE,,3,,Physical and Sport Education
-PSE,328,1stAid/Prev&Trtmt of Ath Inj,PSE,,3,,Physical and Sport Education
-PSE,338,Mthds of Indvdl&Team Sports II,PSE,,3,,Physical and Sport Education
-PSE,405,Mngmnt & Leadrshp in Sport Org,PSE,,3,,Physical and Sport Education
+PSE,152,Personal Aerobics & General Fitness,PSE,,1,,Physical and Sport Education
+PSE,153,Intercollegiate Sport & Fitness,PSE,,1,,Physical and Sport Education
+PSE,205,Principles of Sport Administration,PSE,,3,,Physical and Sport Education
+PSE,250,Foundations of Sport Ministry,PSE,,3,,Physical and Sport Education
+PSE,275,Athletics in Secondary & Higher Education,,3,,Physical and Sport Education
+PSE,308,Marketing & Revenue Generation in Sport,PSE,,3,,Physical and Sport Education
+PSE,318,Sport Facility & Event Administration,PSE,,3,,Physical and Sport Education
+PSE,328,1st Aid/Prev&Trt of Athletic Injuries,PSE,,3,,Physical and Sport Education
+PSE,335,Physical Education in the Early Grades,PSE,,3,,Physical and Sport Education
+PSE,337,Methods of Individual & Team Sports I,PSE,,3,,Physical and Sport Education
+PSE,338,Methods of Individual & Team Sports II,PSE,,3,,Physical and Sport Education
+PSE,405,Management & Leadership in Sport Org,PSE,,3,,Physical and Sport Education
 PSE,406,Sport Law and Ethics,PSE,,3,,Physical and Sport Education
+PSE,407,Sociology & Psychology of Sport,PSE,,3,,Physical and Sport Education
+PSE,431,Kinesiology,PSE,,3,,Physical and Sport Education
 PSE,433,Physiology of Exercise,PSE,,3,,Physical and Sport Education
-PSE,484,Internship in Sport Adminstrtn,PSE,,3,,Physical and Sport Education
+PSE,450,Structure & Methods of Sport Ministry,PSE,,3,,Physical and Sport Education
+PSE,460,Principles of Coaching,PSE,,3,,Physical and Sport Education
+PSE,482,Practicum in Community Recreation,PSE,,3,,Physical and Sport Education
+PSE,483,Internship in Sport Ministry,PSE,,3,,Physical and Sport Education
+PSE,484,Internship in Sport Adminstration,PSE,,3,,Physical and Sport Education
 PSE,485,Internship in Coaching,PSE,,3,,Physical and Sport Education
 PSE,492,Senior Integration Paper - PSE,PSE,,3,,Physical and Sport Education
+PSE,493,Physical Therapy Practicum,PSE,,3,,Physical and Sport Education
+PSE,494,Practicum in Adult Fitness,PSE,,3,,Physical and Sport Education
+PSE,495,Special Topics in PSE,PSE,,3,,Physical and Sport Education
 PSY,100,General Psychology,PSY,420101,4,,Psychology
 PSY,101,Advanced General Psychology,PSY,420101,2,,Psychology
-PSY,200,History/Systems of Psychology,PSY,420101,3,,Psychology
-PSY,201,Psychology Classics,PSY,,1,4,Psychology
+PSY,200,History and Systems of Psychology,PSY,420101,3,,Psychology
 PSY,202,Special Topics in Psychology,PSY,420101,1,4,Psychology
 PSY,205,Psychology as a Profession,PSY,,1,,Psychology
 PSY,210,Psych Field Trip (Convention),PSY,420101,0,2,Psychology
 PSY,220,Christian Issues in Psychology,PSY,420101,3,,Psychology
-PSY,222,Educational Psychology,PSY,420101,3,,Psychology
-PSY,233,Cross-Cultural Psychology,PSY,,3,,Psychology
-PSY,251,Elementary Statistical Methods,PSY,110101,4,,Psychology
 PSY,261,Intro to Research Methods,PSY,420101,4,,Psychology
-PSY,301,Psychology Tour,PSY,420101,0,6,Psychology
-PSY,302,Special Topics in Psychology,PSY,,2,3,Psychology
-PSY,302A,Special Topics,PSY,420101,2,4,Psychology
-PSY,302B,Special Topics,PSY,420101,3,,Psychology
+PSY,302,Special Topics in Psychology,PSY,,1,4,Psychology
 PSY,303,Lifespan Development,PSY,420101,4,,Psychology
-PSY,305,Developmental Psych. for OM,,,3,,
 PSY,306,Cognitive Psychology,PSY,,3,,Psychology
 PSY,331,Psychology of Personality,PSY,420101,4,,Psychology
 PSY,333,Cross-Cultural Psychology,PSY,,3,,Psychology
-PSY,342,Social Psychology,PSY,420101,3,,Psychology
 PSY,344,Abnormal Psychology,PSY,420101,3,,Psychology
-PSY,344P,Abnormal Psychology Practicum,PSY,,0,,Psychology
 PSY,345,Counseling and Psychotherapy,PSY,420101,4,,Psychology
-PSY,347,Relational Counseling,PSY,420101,3,,Psychology
-PSY,348,Marriage and Family Counseling,PSY,420101,3,,Psychology
-PSY,349,Professional Issues/Clinic Psy,PSY,,3,,Psychology
-PSY,352,Human Sexuality,PSY,,3,,Psychology
+PSY,346,Behavior Therapy,PSY,420101,4,,Psychology
+PSY,349,Professional Issues in Clinical Psychology,PSY,,3,,Psychology
 PSY,353,Psychological Assessment,PSY,420101,4,,Psychology
 PSY,357,Human Sexuality,PSY,,3,,Psychology
 PSY,360,Psychology of Religion,PSY,420101,3,,Psychology
-PSY,365,Organizational Psychology,PSY,,3,,Psychology
 PSY,373,Physiological Psychology,PSY,420101,4,,Psychology
-PSY,380,Psychology of Adulthood/Aging,PSY,420101,4,,Psychology
-PSY,399,Independent Study,PSY,420101,1,6,Psychology
+PSY,399,Independent Study,PSY,420101,1,4,Psychology
 PSY,440,Independent Research,PSY,420101,1,6,Psychology
 PSY,441,Psychology Internship,PSY,420101,1,4,Psychology
 PSY,492,Senior Integration Paper,PSY,420101,2,,Psychology
-SBS,ADD,Social/Behavioral Science,OM,521003,1,7,Organizational Management
-SLO,110,Slovak History & Culture,HIS,,3,,History
 SOC,141,Principles of Sociology,SOC,451101,3,,Sociology
 SOC,201,Sociology of Sport,SOC,,3,,Sociology
 SOC,229,Cultural Anthropology,SOC,451101,3,,Sociology
@@ -1137,20 +780,18 @@ SOC,242,Sociology of Emotion,SOC,,3,,Sociology
 SOC,244,Social Psychology,SOC,451101,3,,Sociology
 SOC,245,Sociology of Mission,SOC,,3,,Sociology
 SOC,246,Crime and Delinquency,SOC,451101,3,,Sociology
-SOC,247,Adolesence in Soc Perspective,SOC,,3,,Sociology
+SOC,247,Adolescence in Sociological Perspective,SOC,,3,,Sociology
 SOC,249,Interpersonal Communication,SOC,451101,3,,Sociology
 SOC,250,Introduction to Social Work,SOC,451101,3,,Sociology
-SOC,251,Elementary Statistical Methods,SOC,451101,4,,Sociology
-SOC,299,Special Topics,SOC,,0,3,Sociology
-SOC,317,Community Life & Soc Structure,SOC,,3,,Sociology
+SOC,299,Special Topics,SOC,,1,3,Sociology
+SOC,317,Community Life and Social Structure,SOC,,3,,Sociology
 SOC,341,The Family,SOC,451101,3,,Sociology
 SOC,342,Sociology of Religion,SOC,451101,3,,Sociology
 SOC,343,Sociology of Health,SOC,451101,3,,Sociology
-SOC,344,"Men, Women, & Society",SOC,,3,,Sociology
+SOC,344,"Men, Women, and Society",SOC,,3,,Sociology
 SOC,347,Relational Counseling,SOC,,3,,Sociology
 SOC,348,Marriage and Family Counseling,SOC,451101,3,,Sociology
 SOC,361,Methods of Social Research,SOC,451101,4,,Sociology
-SOC,361L,Methods of Social Research Lab,SOC,451101,1,,Sociology
 SOC,365,Qualitative Research Methods,SOC,,3,,Sociology
 SOC,399,Independent Study,SOC,451101,1,3,Sociology
 SOC,402,Contemporary Social Thought,SOC,451101,3,,Sociology
@@ -1158,89 +799,46 @@ SOC,419,Social Diversity & Inequality,SOC,451101,3,,Sociology
 SOC,444,Practicum in Sociology,SOC,451101,1,4,Sociology
 SOC,445,Field Research Practicum,SOC,,3,,Sociology
 SOC,490,Senior Integration Seminar,SOC,451101,3,,Sociology
-SPA,0,Spanish Placement Exam,0,,0,,Undeclared
-SPA,100,Elementary Spanish I for OM,,,3,,
 SPA,101,Elementary Spanish I,FL,,4,,Foreign Languages
 SPA,102,Elementary Spanish II,FL,,4,,Foreign Languages
 SPA,201,Intermediate Spanish I,FL,,3,,Foreign Languages
 SPA,202,Intermediate Spanish II,FL,,3,,Foreign Languages
-SPA,302,Advanced Spanish - Phonetics,FL,,3,,Foreign Languages
-SPA,315,Adv Spanish Conv/Read Practice,FL,,3,,Foreign Languages
+SPA,310,Spanish Conversation,FL,,3,,Foreign Languages
+SPA,315,Spanish Conversation and Reading,FL,,3,,Foreign Languages
 SPA,320,Spanish Phonetics and Diction,FL,,3,,Foreign Languages
 SPA,331,Hispanic Civ. & Culture I,FL,,3,,Foreign Languages
 SPA,332,Hispanic Civ. & Culture II,FL,,3,,Foreign Languages
-SPA,340,Adv Spanish Grammar/Compositio,FL,,3,,Foreign Languages
-SPA,341,Adv Spa Structure&Stylistics I,FL,,3,,Foreign Languages
-SPA,342,Adv Spa Structure&StylisticsII,FL,,3,,Foreign Languages
-SPA,350,Intro to Hispanic Literature,FL,,3,,Foreign Languages
+SPA,341,Adv Spanish Structure & Stylistics I,FL,,3,,Foreign Languages
+SPA,342,Adv Spanish Structure & StylisticsII,FL,,3,,Foreign Languages
 SPA,351,Hispanic Literature I,FL,,3,,Foreign Languages
 SPA,352,Hispanic Literature II,FL,,3,,Foreign Languages
 SPA,353,Hispanic Literature III,FL,,3,,Foreign Languages
-SPA,361,Spanish Culture thruMedia Arts,FL,,3,,Foreign Languages
-SPA,401,Special Topics,FL,,1,4,Foreign Languages
-SPA,492,Senior Integegration Paper,FL,,3,,Foreign Languages
-STA,250,Elememtary Statistics for OM,,,3,,
-STA,251,Elementary Statistical Methods,MAT,,4,,Mathematics
-STA,252,Statistics:Concepts & Methods,MAT,,4,,Mathematics
+SPA,361,Spanish Culture thru Media Arts,FL,,3,,Foreign Languages
+SPA,401,Special Topics,FL,,3,,Foreign Languages
+SPA,492,Senior Integration Paper,FL,,3,,Foreign Languages
+STA,252,Elementary Statistics: Concepts & Methods,MAT,,4,,Mathematics
 STA,253,Statistics for Decision Making,MAT,,4,,Mathematics
-THF,101,Company Muster I,THF,,0,,Theatre
-THF,102,Company Muster II,THF,,0,,Theatre
-THF,103,Company Muster III,THF,,0,1,Theatre
-THF,202,Introduction to Theatre,THF,,3,,Theatre
-THF,220,Modern & Contemporary Drama,THF,,3,,Theatre
-THF,235,Acting I,THF,,4,,Theatre
-THF,250,Theatre History to 20th Cent.,THF,,3,,Theatre
-THF,251,Theatre History II: 1700-1960s,THF,,3,,Theatre
-THF,260,Basic Design,THF,,3,,Theatre
-THF,290,Production Practicum,THF,,1,3,Theatre
-THF,292,Musical Theatre Practicum,THF,,1,3,Theatre
-THF,295,Introduction To Filmmaking I,THF,,3,,Theatre
-THF,296,Introduction to Filmmaking II,THF,,3,,Theatre
-THF,297,Voice and Diction,THF,,3,,Theatre
-THF,299,Special Topics in Theatre,THF,,1,3,Theatre
-THF,300,Stage Management,THF,,3,,Theatre
-THF,302,Dramatic Art&Christian Thought,THF,,3,,Theatre
-THF,310,Playwriting,THF,,3,,Theatre
-THF,315,Screenwriting,THF,,3,,Theatre
-THF,335,Acting II,THF,,4,,Theatre
-THF,360,Basic Design,THF,,3,,Theatre
-THF,370,Professional Devel forTheatre,THF,,2,,Theatre
-THF,390,Production Practicum,THF,,1,4,Theatre
-THF,392,Musical Theatre Practicum,THF,,1,3,Theatre
-THF,397,Accents and Dialects,THF,,3,,Theatre
-THF,399,Independent Study,THF,,1,3,Theatre
-THF,402,DramaticArt&ChrisitanThoughtII,THF,,3,,Theatre
-THF,411,Theatre Internship,THF,,3,,Theatre
-THF,450,Directing,THF,,4,,Theatre
-THF,460,Acting Shakespeare,THF,,3,,Theatre
-THF,492,Senior Integration Paper,THF,,2,3,Theatre
 THT,101,Company Muster I,THT,,0,,Theatre
 THT,102,Company Muster II,THT,,0,,Theatre
 THT,103,Company Muster III,THT,,0,1,Theatre
+THT,130,Text Analysis for Production,THT,,3,,Theatre
 THT,202,Introduction to Theatre,THT,,3,,Theatre
-THT,220,Contemporary Drama,THT,,3,,Theatre
-THT,230,Beginning Dance and Technique,THT,,3,,Theatre
+THT,211,Theatre Internship,THT,,1,3,Theatre
 THT,235,Acting I,THT,,4,,Theatre
 THT,250,Theatre History I,THT,,3,,Theatre
 THT,251,Theatre History II,THT,,3,,Theatre
 THT,290,Production Practicum,THT,,1,3,Theatre
-THT,295,Introduction to Filmmaking,THT,,3,,Theatre
-THT,297,Voice and Diction,THT,,3,,Theatre
 THT,299,Special Topics in Theatre,THT,,1,3,Theatre
 THT,300,Stage Management,THT,,3,,Theatre
-THT,302,Dramatic Art&Christian Thought,THT,,3,,Theatre
+THT,302,Dramatic Arts & Christian Thought,THT,,3,,Theatre
 THT,310,Playwriting,THT,,3,,Theatre
 THT,315,Screenwriting,THT,,3,,Theatre
-THT,335,Acting II,THT,,4,,Theatre
-THT,340,Acting for Singers,THT,,3,,Theatre
-THT,350,Costume History,,,3,,
 THT,360,Basic Design,THT,,3,,Theatre
-THT,370,Prof. Development for Theatre,THT,,2,,Theatre
 THT,390,Production Practicum,THT,,1,3,Theatre
 THT,397,Accents and Dialects,THT,,4,,Theatre
 THT,399,Independent Study,THT,,0,3,Theatre
-THT,402,Dram. Art & Christian Thght II,THT,,3,,Theatre
+THT,402,Dramatic Arts & Christian Thought II,THT,,3,,Theatre
 THT,411,Theatre Internship,THT,,3,,Theatre
 THT,435,Acting II,THT,,4,,Theatre
 THT,450,Directing,THT,,4,,Theatre
-THT,492,Senior Integration Paper,THT,,2,3,Theatre
+THT,492,Senior Integration Paper,THT,,2,,Theatre
