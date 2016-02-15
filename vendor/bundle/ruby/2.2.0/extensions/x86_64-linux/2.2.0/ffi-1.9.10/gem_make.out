@@ -1,0 +1,44 @@
+/home/cubemaster/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160125-20429-nqq9pw.rb extconf.rb 
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... yes
+checking for ffi_prep_raw_closure()... yes
+checking for rb_thread_blocking_region()... no
+checking for rb_thread_call_with_gvl()... yes
+checking for rb_thread_call_without_gvl()... yes
+checking for ffi_prep_cif_var()... yes
+creating extconf.h
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling MethodHandle.c
+compiling FunctionInfo.c
+compiling Pointer.c
+compiling Variadic.c
+compiling LastError.c
+compiling Thread.c
+compiling Function.c
+compiling StructByReference.c
+compiling ArrayType.c
+compiling Platform.c
+compiling StructByValue.c
+compiling DataConverter.c
+compiling Struct.c
+compiling Call.c
+compiling AbstractMemory.c
+compiling LongDouble.c
+compiling Types.c
+compiling MemoryPointer.c
+compiling StructLayout.c
+compiling ClosurePool.c
+compiling Buffer.c
+compiling MappedType.c
+compiling Type.c
+compiling DynamicLibrary.c
+compiling ffi.c
+linking shared-object ffi_c.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 ffi_c.so ./.gem.20160125-20429-1q7vpmn

@@ -1,0 +1,11 @@
+/home/cubemaster/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160125-20429-9nw06z.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+make "DESTDIR=" install
+/usr/bin/install -m 0755 debug_inspector.so ./.gem.20160125-20429-tcj2uj

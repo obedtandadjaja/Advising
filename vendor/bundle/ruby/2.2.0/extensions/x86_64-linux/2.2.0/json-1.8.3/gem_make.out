@@ -1,0 +1,9 @@
+/home/cubemaster/.rvm/rubies/ruby-2.2.1/bin/ruby -r ./siteconf20160125-20429-1jros3z.rb extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+make "DESTDIR=" install
