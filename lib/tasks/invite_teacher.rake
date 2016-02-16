@@ -21,24 +21,30 @@ namespace :db do
 	task :invite_teacher, [:arg1,:arg2] => :environment do |t,args|
 		require 'securerandom'
 
-		# assume that if major exists then minor must also exist
-		major = Major.where(:name => :arg2).first
-		minor = Minor.where(:name => :arg2).first
-		if major
-			new_user = User.create_with(
-				:password => SecureRandom.uuid,
-				:role => "admin"
-			)
-			.find_or_create_by(
-				:name => args[:arg1],
-				:email => args[:arg1]
-			)
-			new_user.save!
+		if !User.find_by_email(args[:arg1])
+			# assume that if major exists then minor must also exist
+			major = Major.find_by_name(args[:arg2])
+			minor = Minor.find_by_name(args[:arg2])
+			if (major && minor)
+				new_user = User.create_with(
+					:password => SecureRandom.uuid,
+					:role => "admin"
+				)
+				.find_or_create_by(
+					:name => args[:arg1],
+					:email => args[:arg1]
+				)
+				new_user.save!
 
-			new_user.major << major
-			new_user.minor << minor
+				new_user.major << major
+				new_user.minor << minor
 
-			UserMailer.invite(new_user).deliver
+				UserMailer.invite(new_user).deliver
+			else
+				puts "Error: Invalid Major/Minor!"
+			end
+		else
+			puts "Error: Email has been taken!"
 		end
 	end
 end
