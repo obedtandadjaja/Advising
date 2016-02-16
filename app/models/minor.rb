@@ -20,6 +20,7 @@ class Minor < ActiveRecord::Base
 	has_many :course, through: :minors_course
 	
 	has_many :users_minor
+	has_many :user, through: :users_minor
 
 	validates :name, :presence => true, :uniqueness => true
 	validates :total_hours, :presence => true

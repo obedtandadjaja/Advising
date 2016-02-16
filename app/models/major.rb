@@ -19,6 +19,9 @@ class Major < ActiveRecord::Base
 	has_many :majors_course, dependent: :destroy
 	has_many :course, through: :majors_course
 
+	has_many :users_major
+	has_many :user, through: :users_major
+
 	# make sure that all the form inputs are filled in
 	validates :name, :presence => true, :uniqueness => true
 	validates :total_hours, :presence => true
