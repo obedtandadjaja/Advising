@@ -15,7 +15,7 @@
 #
 
 class DistributionsCoursesController < ApplicationController
-	before_filter :authorize, :is_admin
+	before_filter :authorize, :only_admin
 	
 	# displas all distributions along with its courses
 	def index

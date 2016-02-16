@@ -15,7 +15,7 @@
 #
 
 class UsersConcentrationsController < ApplicationController
-	before_filter :authorize, :is_admin
+	before_filter :authorize, :only_admin
 	
 	# displays all users and their concentrations
 	def index

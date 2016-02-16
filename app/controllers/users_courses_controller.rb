@@ -15,7 +15,7 @@
 #
 
 class UsersCoursesController < ApplicationController
-	before_filter :authorize, :is_admin
+	before_filter :authorize, :only_admin
 	
 	# displays all users and its corresponding courses
 	def index

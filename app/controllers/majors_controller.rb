@@ -15,7 +15,7 @@
 #
 
 class MajorsController < ApplicationController
-	before_filter :authorize, :is_admin
+	before_filter :authorize, :only_admin
 
 	# displays all majors
 	def index

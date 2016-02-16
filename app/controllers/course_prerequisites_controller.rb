@@ -15,7 +15,7 @@
 #
 
 class CoursePrerequisitesController < ApplicationController
-	before_filter :authorize, :is_admin
+	before_filter :authorize, :only_admin
 	
 	# displays all courses and its prerequisites
 	def index
