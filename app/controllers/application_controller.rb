@@ -33,12 +33,16 @@ class ApplicationController < ActionController::Base
 
   # pages only for admins
   def only_admin
-    redirect_to '/' unless ["teacher", "admin"].include? current_user.role
+    redirect_to '/' unless (is_admin || is_teacher)
   end
 
-  # if user is admin
+  # return true if user is admin
   def is_admin
-    ["teacher", "admin"].include? current_user.role
+    "admin".include? current_user.role
+  end
+
+  def is_teacher
+    "teacher".include? current_user.role
   end
 
 end
