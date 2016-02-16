@@ -22,28 +22,36 @@ class AdvisingController < ApplicationController
 	# based on the student's enrollment time and graduation time, get the semesters
 	# he or she will be attending. Not the best algorithm but it works
 	def set_semesters
-	    @semesters = Array.new
-	    counter = @current_user.enrollment_time
-	    counter_limit = @current_user.graduation_time
-	    while counter <= counter_limit do
-	      @semesters << "#{counter}s"
-	      @semesters << "#{counter}f"
-	      counter = counter+1
-	    end
-	    @semesters.pop
-	    @semesters.shift
+		if is_student
+		    @semesters = Array.new
+		    counter = @current_user.enrollment_time
+		    counter_limit = @current_user.graduation_time
+		    while counter <= counter_limit do
+		      @semesters << "#{counter}s"
+		      @semesters << "#{counter}f"
+		      counter = counter+1
+		    end
+		    @semesters.pop
+		    @semesters.shift
+		end
 	end
 
 	# displays the current class schedule of user
 	def index
-		@user = @current_user
-		@distributions = Distribution.order(:title)
-		@majors = @user.major
-		@minors = @user.minor
-		@concentration = @user.concentration
-		@courses = @user.course
-		@user_semester_hours = get_semesters_hours
-		@completion_hash = check_completion(@user)
+		if is_admin
+			@students = User.where(:role => "students")
+		elsif is_teacher
+			@students = @current_user.major.user.where(:role => "student")
+		else
+			@user = @current_user
+			@distributions = Distribution.order(:title)
+			@majors = @user.major
+			@minors = @user.minor
+			@concentration = @user.concentration
+			@courses = @user.course
+			@user_semester_hours = get_semesters_hours
+			@completion_hash = check_completion(@user)
+		end
 	end
 	
 	# drag and drop course ajax is handled here
