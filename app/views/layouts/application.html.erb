@@ -61,6 +61,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
+                    <% if @current_user.role != "student" %>
+                    <li><a href="/majors">Majors</a></li>
+                    <li><a href="/minors">Minors</a></li>
+                    <li><a href="/concentrations">Concentrations</a></li>
+                    <li><a href="/users">Users</a></li>
+                    <% end %>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
