@@ -41,8 +41,14 @@ class ApplicationController < ActionController::Base
     "admin".include? current_user.role
   end
 
+  # return true if user is teacher
   def is_teacher
     "teacher".include? current_user.role
+  end
+
+  # return true if user is student
+  def is_student
+    !(is_teacher||is_admin)
   end
 
 end
