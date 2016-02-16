@@ -1,6 +1,6 @@
-<div class=" col-md-10">
-    <div class="col-md-12">
+<div class=" col-sm-10">
+    <div class="col-sm-12">
         <%= collection_select(:course, :id, Course.all, :id, :fullCourseName, {:prompt => true}, {:class => 'col-sm-12 chosen-select', :id => 'add_course'}) %>
     </div>
 </div>
-<button class="col-md-2 btn btn-primary" id="generate_course">Generate</button>
+<button class="col-sm-2 btn btn-primary" id="generate_course">Generate</button>
