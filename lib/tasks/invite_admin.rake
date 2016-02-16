@@ -21,15 +21,19 @@ namespace :db do
 	task :invite_admin, [:arg1] => :environment do |t,args|
 		require 'securerandom'
 
-		new_user = User.create_with(
-			:password => SecureRandom.uuid,
-			:role => "admin"
-		)
-		.find_or_create_by(
-			:email => args[:arg1]
-		)
-		new_user.save!
+		if !User.find_by_email(args[:arg1])
+			new_user = User.create_with(
+				:password => SecureRandom.uuid,
+				:role => "admin"
+			)
+			.find_or_create_by(
+				:email => args[:arg1]
+			)
+			new_user.save!
 
-		UserMailer.invite(new_user).deliver
+			UserMailer.invite(new_user).deliver
+		else
+			puts "Error: Email has been taken!"
+		end
 	end
 end
