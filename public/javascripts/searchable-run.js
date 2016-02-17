@@ -1,9 +1,9 @@
 $(document).ready(function()
 {
-    $('#searchable-container').searchable({
+    $('.row').searchable({
         searchField: '#container-search',
-        selector: '.row',
-        childSelector: '.col-xs-4',
+        selector: '.panel',
+        childSelector: '.panel-heading',
         show: function( elem ) {
             elem.slideDown(100);
         },

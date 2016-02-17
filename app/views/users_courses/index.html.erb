@@ -23,33 +23,36 @@
     <div class="row col-md-12">
         <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
             <a href="/users_courses/new"><button class="btn btn-default">Add A User's Course</button></a>
+            <input type="search" id="container-search" value="" class="form-control" placeholder="Search...">
         </div>
-          <% @users.each do |user| %>
-              <div class="panel panel-default col-md-4" style="padding: 0 0 0 0">
-                  <div class="panel-heading">
-                    <%= link_to users_course_path(:id => user.id), :method => :get do %>
-                      <%= user.name %>
-                    <% end %>
-                  </div>
-                  <div class="panel-body">
-                  <table class="table table-hover">
-                    <thead>
-                      <th>Course</th>
-                      <th>Name</th>
-                      <th>Credit</th>
-                    </thead>
-                    <tbody>
-                      <% user.course.order(:title).each do |course| %>
-                          <tr>
-                            <td><%= course.subject %> <%= course.course_number %></td>
-                            <td><%= course.title %></td>
-                            <td><%= course.hr_low %><% if course.hr_high? then course.hr_high %><% end %></td>
-                          </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
-              </div>
-          <% end %>
+
+                <% @users.each do |user| %>
+                    <div class="panel panel-default col-md-4" style="padding: 0 0 0 0; margin: 0px">
+                        <div class="panel-heading">
+                            <%= link_to users_course_path(:id => user.id), :method => :get do %><%= user.name %><% end %>
+                        </div>
+                        <div class="panel-body">
+                          <table class="table table-hover">
+                            <thead>
+                              <th>Course</th>
+                              <th>Name</th>
+                              <th>Credit</th>
+                              <th><i class="fa fa-times" style="display:none"></i></th>
+                            </thead>
+                            <tbody>
+                              <% user.course.order(:title).each do |course| %>
+                                  <tr>
+                                    <td><%= course.subject %> <%= course.course_number %></td>
+                                    <td><%= course.title %></td>
+                                    <td><%= course.hr_low %><% if course.hr_high?%>-<%= course.hr_high %><% end %></td>
+                                  </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                <% end %>
+          
     </div>
   </div>
 </div>

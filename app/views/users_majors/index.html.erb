@@ -23,10 +23,11 @@
     <div class="row col-md-12">
         <div class="col-md-12 text-center" style="margin: 10px 10px 20px 10px">
             <a href="/users_majors/new"><button class="btn btn-default">Add A User's Major</button></a>
+            <input type="search" id="container-search" value="" class="form-control" placeholder="Search...">
         </div>
                     
                 <% @users.each do |user| %>
-                    <div class="panel panel-default col-md-4" style="padding: 0 0 0 0; margin: 10px">
+                    <div class="panel panel-default col-md-4" style="padding: 0 0 0 0; margin: 0px">
                         <div class="panel-heading">
                             <%= link_to users_major_path(:id => user.id), :method => :get do %><%= user.name %><% end %>
                         </div>
