@@ -39,9 +39,12 @@ class AdvisingController < ApplicationController
 	# displays the current class schedule of user
 	def index
 		if is_admin
-			@students = User.where(:role => "students")
+			@students = User.where(role: "student")
 		elsif is_teacher
-			@students = @current_user.major.user.where(:role => "student")
+			@students = User.where(role: "student")
+			# @current_user.major.each do |major|
+			# 	@students += major.user.where(role: 'student')
+			# end
 		else
 			@user = @current_user
 			@distributions = Distribution.order(:title)
