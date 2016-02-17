@@ -29,6 +29,7 @@ namespace :db do
 		Rake::Task["db:load_cos_major"].invoke
 		Rake::Task["db:load_cos_minor"].invoke
 		Rake::Task["db:load_cos_prerequisites"].invoke
+		Rake::Task["db:seed"].invoke
 
 	end
 end
