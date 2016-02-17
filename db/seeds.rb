@@ -10,14 +10,16 @@ User.create(
 	name: 'admin',
 	email: 'admin@covenant.edu',
 	password: 'adminadmin',
-	role: 'admin'
+	role: 'admin',
+	confirmed_at: Time.now
 ).save!
 
 User.create(
 	name: 'teacher',
 	email: 'teacher@covenant.edu',
 	password: 'teacherteacher',
-	role: 'teacher'
+	role: 'teacher',
+	confirmed_at: Time.now
 ).save!
 
 User.create(name: 'student',
@@ -26,7 +28,8 @@ User.create(name: 'student',
 	role: 'student',
 	enrollment_time: 2015,
 	graduation_time: 2019,
-	banner_id: '01157703'
+	banner_id: '01157703',
+	confirmed_at: Time.now
 ).save!
 
 student = User.find_by_name("student")

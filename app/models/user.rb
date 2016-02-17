@@ -34,8 +34,6 @@ class User < ActiveRecord::Base
 	has_many :users_concentration
 	has_many :concentration, through: :users_concentration
 
-	attr_accessor :password
-
 	email_regex = /\A[\w+\-.]+@covenant\.edu\z/i
 
 	validates :email,

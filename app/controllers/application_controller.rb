@@ -30,6 +30,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :major
     devise_parameter_sanitizer.for(:sign_up) << :minor
     devise_parameter_sanitizer.for(:sign_up) << :concentration
+    devise_parameter_sanitizer.for(:sign_in) << :email
+    devise_parameter_sanitizer.for(:sign_in) << :password
   end
 
   # if not logged in then go to login page
@@ -55,6 +57,26 @@ class ApplicationController < ActionController::Base
   # return true if user is student
   def is_student
     !(is_teacher||is_admin)
+  end
+
+  def authenticate_current_user
+    render json: {}, status: :unauthorized if get_current_user.nil?
+  end
+
+  def get_current_user
+    return nil unless cookies[:auth_headers]
+    auth_headers = JSON.parse cookies[:auth_headers]
+
+    expiration_datetime = DateTime.strptime(auth_headers["expiry"], "%s")
+    current_user = User.find_by uid: auth_headers["uid"]
+
+    if current_user &&
+       current_user.tokens.has_key?(auth_headers["client"]) &&
+       expiration_datetime > DateTime.now
+
+      @current_user = current_user
+    end
+    @current_user
   end
 
 end

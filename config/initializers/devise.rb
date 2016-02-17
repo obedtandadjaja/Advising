@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '4c54a53a3e67da1adc6b6f8bc1358c08c8015d93e7d2453a5b4d365d369bdd8a827d1c3f927a72e79610735e7f0b2bc71fe2347bdba06d1708297448d7767b0a'
+  config.secret_key = '2f26c30df93ba328fa95ca65bf4873bf41caed37ca4091915827a696f2dc4b14bbb2162be258887e17aa9853abef2235a8c684284398b1be9e4106797d41d150'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -31,7 +31,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '9e744109120b71ec3228e616ebaee2221d326f54bc94c380417053ff7c6f753b2c0a0e13dc6ce645d223f83f753d922fd9c3fcc46237e2a1f5d55b9961006a63'
+  # config.pepper = '2bf693f4b400ddf9f1bc64fd87e699e8094dff4f9ee2685aceb162274a7e0172c83aed2ad01e0660000c64daf311155e3b1540774fc0710bb9401b388d42f7e1'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -145,7 +145,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..72
+  config.password_length = 8..72
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -191,7 +191,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 2.hours
+  config.reset_password_within = 6.hours
 
   # When set to false, does not sign a user in automatically after their password is
   # reset. Defaults to true, so a user is signed in automatically after a reset.

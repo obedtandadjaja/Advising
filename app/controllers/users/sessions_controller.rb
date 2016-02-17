@@ -7,9 +7,15 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_by_email(params[:email])
+    if user.valid_password?(params[:password])
+      puts "good login"
+    else
+      puts "bad login"
+    end
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
