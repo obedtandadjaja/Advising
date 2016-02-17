@@ -8,9 +8,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    # draw links to the user
+    @user = User.find_by_email(params[:user][:email])
+    puts "#{params[:user][:major]}"
+    params[:user]["major"].each do |major_id|
+        if !major_id.empty?
+            @user.major << Major.find(major_id)
+        end
+    end
+    puts "#{params[:user][:minor]}"
+    params[:user]["minor"].each do |minor_id|
+        if !minor_id.empty?
+            @user.minor << Minor.find(minor_id)
+        end
+    end
+    puts "#{params[:user][:concentration]}"
+    params[:user]["concentration"].each do |concentration_id|
+        if !concentration_id.empty?
+            @user.concentration << Concentration.find(concentration_id)
+        end
+    end
+  end
 
   # GET /resource/edit
   # def edit

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: "users/sessions" }
   default_url_options :host => "localhost:3000"
 
   root to: 'advising#index'
@@ -15,6 +14,11 @@ Rails.application.routes.draw do
   put '/advising_ajax_move/:id' => 'advising#advising_ajax_move'
 
   put '/advising_ajax_delete/:id' => 'advising#advising_ajax_delete'
+
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
 
   resources :courses
   resources :majors
