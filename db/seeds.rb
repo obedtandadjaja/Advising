@@ -6,50 +6,41 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(name: 'linda', email: 'linda@test.com', password: 'notthereyo', enrollment_time: '2015')
-User.create(name: 'lee', email: 'lee@test.com', password: 'helloworld')
+User.create(
+	name: 'admin',
+	email: 'admin@covenant.edu',
+	password: 'adminadmin',
+	role: 'admin'
+).save!
 
-UsersCourse.create(user_id: 1, course_id: 18, taken_planned: '2015f', taken_on: '2015-09-27')
-UsersCourse.create(user_id: 1, course_id: 19, taken_planned: '2015s', taken_on: '2015-03-13')
-UsersCourse.create(user_id: 1, course_id: 21, taken_planned: '2016s')
-UsersCourse.create(user_id: 1, course_id: 23, taken_planned: '2015f')
-UsersCourse.create(user_id: 1, course_id: 270, taken_planned: '2017f')
-UsersCourse.create(user_id: 1, course_id: 271, taken_planned: '2017f')
-UsersCourse.create(user_id: 1, course_id: 273)
-UsersCourse.create(user_id: 1, course_id: 400)
+User.create(
+	name: 'teacher',
+	email: 'teacher@covenant.edu',
+	password: 'teacherteacher',
+	role: 'teacher'
+).save!
 
-UsersMajor.create(user_id: 1, major_id: 1)
-UsersMajor.create(user_id: 1, major_id: 2)
-UsersMinor.create(user_id: 1, minor_id: 1)
+User.create(name: 'student',
+	email: 'student@covenant.edu',
+	password: 'studentstudent',
+	role: 'student',
+	enrollment_time: 2015,
+	graduation_time: 2019,
+	banner_id: '01157703'
+).save!
 
-MinorsCourse.create(minor_id: 1, course_id: 400)
+student = User.find_by_name("student")
+teacher = User.find_by_name("teacher")
+cos_major = Major.find_by_name("COS")
+cos_minor = Minor.find_by_name("COS")
+cyber_security = Concentration.find_by_name("Cyber Defense")
+software_development = Concentration.find_by_name("Software Development")
 
-MajorsCourse.create(major_id: 1, course_id: 18)
-MajorsCourse.create(major_id: 1, course_id: 19)
-MajorsCourse.create(major_id: 1, course_id: 20)
-MajorsCourse.create(major_id: 1, course_id: 21)
-MajorsCourse.create(major_id: 1, course_id: 23)
-MajorsCourse.create(major_id: 1, course_id: 100)
-
-MajorsCourse.create(major_id: 2, course_id: 270)
-MajorsCourse.create(major_id: 2, course_id: 271)
-MajorsCourse.create(major_id: 1, course_id: 273)
-MajorsCourse.create(major_id: 2, course_id: 500)
-
-Major.create(name: "Art", total_hours: 120)
-Major.create(name: "Computer Science", total_hours: 120)
-
-Minor.create(name: "Biblical Languages", total_hours: 60)
-
-Concentration.create(name: "Security", major_id: 2)
-ConcentrationsCourse.create(concentration_id: "1", course_id: 300)
-UsersConcentration.create(user_id: 1, concentration_id: 1)
-UsersCourse.create(user_id: 1, course_id: 300)
-
-Distribution.create(title: "Humanities")
-Distribution.create(title: "Fine Arts")
-DistributionsCourse.create(distribution_id: 2, course_id: 21)
-
-
-
-
+UsersMajor.create(user_id: student.id, major_id: cos_major.id)
+UsersMajor.create(user_id: teacher.id, major_id: cos_major.id)
+UsersMinor.create(user_id: student.id, minor_id: cos_minor.id)
+UsersMinor.create(user_id: teacher.id, minor_id: cos_minor.id)
+UsersConcentration.create(user_id: student.id, concentration_id: cyber_security.id)
+UsersConcentration.create(user_id: teacher.id, concentration_id: cyber_security.id)
+UsersConcentration.create(user_id: student.id, concentration_id: software_development.id)
+UsersConcentration.create(user_id: teacher.id, concentration_id: software_development.id)
