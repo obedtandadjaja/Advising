@@ -1,22 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: "users/sessions" }
   default_url_options :host => "localhost:3000"
-  
-  get '/' => 'sessions#new'
 
-  # these routes are for showing users a login form, logging them in, and logging them out.
-  get '/login' => 'sessions#new'
-  # post method of the login
-  post '/login' => 'sessions#create'
-  # get the user out
-  get '/logout' => 'sessions#destroy'
+  root to: 'advising#index'
 
   # get the view for the sign up
   get '/signup' => 'users#new'
 
   # get the view of advising
   get '/advising' => 'advising#index'
-
-  get '/home' => 'home#index'
 
   put '/advising_ajax/:id' => 'advising#advising_ajax'
 
@@ -39,6 +31,5 @@ Rails.application.routes.draw do
   resources :minors_courses
   resources :users
   resources :course_prerequisites
-  resources :password_resets
   
 end

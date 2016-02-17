@@ -20,54 +20,6 @@
 =end
 %>
 
-<% content_for :css do %>
-    <style>
-        [data-tip] {
-            position:relative;
-        }
-        [data-tip]:before {
-            content:'';
-            /* hides the tooltip when not hovered */
-            display:none;
-            content:'';
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-right: 5px solid #000;
-            position:absolute;
-            top: 10px;
-            left: 100%;
-            z-index:8;
-            font-size:0;
-            line-height:0;
-            width:0;
-            height:0;
-        }
-        [data-tip]:after {
-            display:none;
-            content:attr(data-tip);
-            position:absolute;
-            left: 101%;
-            top: 3px;
-            padding:5px 8px;
-            background:#1a1a1a;
-            color:#fff;
-            z-index:9;
-            font-size: 0.75em;
-            height: 2.5em;
-            line-height:18px;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-            white-space:nowrap;
-            word-wrap:normal;
-        }
-        [data-tip]:hover:before,
-        [data-tip]:hover:after {
-            display:block;
-        }
-    </style>
-<% end %>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Request Reset Password</div>
+        <div class="panel-body">
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-group">
+              <label class="col-md-4 control-label">Password</label>
+              <div class="col-md-6" data-tip="Password must be 6 characters long">
+                  <%= f.password_field :password, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="col-md-4 control-label">Confirm Password</label>
+              <div class="col-md-6">
+                  <%= f.password_field :password_confirmation, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-md-6 col-md-offset-4">
+                  <%= submit_tag "Update Password", class: "btn btn-primary" %>
+              </div>
+          </div>
+
+        <% end %>
+
+
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

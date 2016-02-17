@@ -19,7 +19,6 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :password_digest
       t.integer :enrollment_time
       t.integer :graduation_time
       t.string :banner_id
