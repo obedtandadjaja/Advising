@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  post '/become_student' => 'users#become'
+
   resources :courses
   resources :majors
   resources :minors

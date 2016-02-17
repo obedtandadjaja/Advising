@@ -117,8 +117,10 @@
                         <div class="panel panel-danger">
                             <div class="panel-heading">Log in as student</div>
                             <div class="panel-body">
-                                <%= collection_select(:course, :id, @students, :id, :name, {:prompt => true}, {:class => 'chosen-select', :id => 'student_select'}) %>
-                                <button class="btn btn-primary" id="login_as_student">Login</button>
+                                <%= form_for :user, url: '/become_student', html:{class: "form-horizontal"} do |f| %>
+                                <%= collection_select(:user, :id, @students, :id, :name, {:prompt => true}, {:class => 'chosen-select', :id => 'student_select'}) %>
+                                <%= f.submit "Login as student", class: "btn btn-default" %>
+                                <% end %>
                             </div>
                         </div>
                     </div>

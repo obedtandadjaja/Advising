@@ -26,6 +26,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def become
+        if(current_user.is_admin? || current_user.is_teacher?)
+            render :nothing => true
+        else
+            sign_in(:user, User.find(params[:user][:id]))
+            redirect_to root_url
+        end
+    end
+
     # handles user creation
     def create
         @user = User.new(user_params)
