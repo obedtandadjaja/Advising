@@ -88,6 +88,9 @@
         nav {
             margin-bottom: 20px;
         }
+        button {
+            white-space: normal;
+        }
     </style>
     <%= yield :css %>
 
@@ -95,18 +98,15 @@
 <body>
     <main>
     <nav>
-        <% if current_user %>
-        <ul id="dropdown1" class="dropdown_content">
-            <li><%= link_to "Profile", controller: "users", action: "show", id: current_user.id %></li>
-            <li><%= link_to "Logout", '/users/sign_out', method: 'delete' %></li>
-        </ul>
-        <% end %>
         <div class="nav-wrapper grey lighten-5">
-            <a class="brand-logo" href="/">
+            <a class="brand-logo hide-on-large-only" href="/">
                 <img src="/images/covenant_logo.png" style="height: 50px"/>
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down" style="margin-left: 200px">
+            <ul class="left hide-on-med-and-down">
+                <li><a href="/">
+                <img src="/images/covenant_logo.png" style="height: 50px"/>
+                </a></li>
                 <li><a href="/">Home</a></li>
                 <% if current_user %>
                     <% if current_user.role != 'student' %>
@@ -119,7 +119,16 @@
             </ul>
             <ul class="right hide-on-med-and-down" style="margin-right: 15px">
                 <% if current_user %>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= current_user.name %><i class="material-icons right"></i></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <%= current_user.name %>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to "Profile", controller: "users", action: "show", id: current_user.id %></li>
+                        <li><%= link_to "Logout", '/users/sign_out', method: 'delete' %></li>
+                    </ul>
+                </li>
                 <% else %>
                 <li><%= link_to 'Login', '/users/sign_in' %></li>
                 <li><%= link_to 'Sign up', new_registration_path(resource_name) %></li>
@@ -213,8 +222,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <%= csrf_meta_tag %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "chosen/chosen.jquery" %>
