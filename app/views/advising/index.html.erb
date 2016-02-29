@@ -29,20 +29,30 @@
 <div class="container-fluid">
     <div class="row">
         <% if @current_user.role == "student" %>
-        <div class="col-sm-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">Plan</div>
-                <div class="panel-body">
+        <div class="col s12 m12 l7">
+            <div class="card">
+                <!-- <div class="card-image">
+                    <div class="card blue-grey lighten-2">
+                        <div class="card-content white-text">
+                            Plan
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card-image">
+                    <img src="/images/picture.jpg">
+                    <span class="card-title white-text">Plan</span>
+                </div>
+                <div class="card-content">
                     <% @semesters.each_slice(2) do |semester1, semester2| %>
                     <div class="row row-eq-height">
-                        <div class="panel panel-default col-sm-6" style="padding: 0 0 0 0">
+                        <div class="panel panel-default col s12 m6 l6" style="padding: 0 0 0 0">
                             <div class="panel-heading"><%= semester1 %></div>
                             <div class="panel-body board" id="<%= semester1 %>">
                                 <% @courses.each do |course| %>
                                     <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester1 %>
-                                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
+                                    <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
-                                            <p class="col-sm-10 col-sm-10">
+                                            <p class="col s10">
                                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                             </p>
                                             <button class="pull-right remove_button">
@@ -56,14 +66,14 @@
                             <div class="panel-footer text-right" id="<%= semester1 %>_hours">Total Hours: <%= @user_semester_hours["#{semester1}"] ? @user_semester_hours["#{semester1}"] : 0 %>
                             </div>
                         </div>
-                        <div class="panel panel-default col-sm-6" style="padding: 0 0 0 0">
+                        <div class="panel panel-default col s12 m6 l6" style="padding: 0 0 0 0">
                             <div class="panel-heading"><%= semester2 %></div>
                             <div class="panel-body board" id="<%= semester2 %>">
                                 <% @courses.each do |course| %>
                                     <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester2 %>
-                                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
+                                    <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
-                                            <p class="col-sm-10 col-sm-10">
+                                            <p class="col s10">
                                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
                                             </p>
                                             <button class="pull-right remove_button">
@@ -82,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-5">
+        <div class="col s12 m5 l5">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" data-target="#required_courses">
@@ -109,11 +119,11 @@
             </div>
         </div>
         <% else %>
-        <div class="col-sm-12">
+        <div class="col s12">
             <div class="panel panel-primary">
                 <div class="panel-heading">Teacher | Admin Resources</div>
                 <div class="panel-body">
-                    <div class="col s12 m12 l6">
+                    <div class="col s12 m12 l12">
                         <div class="panel panel-danger">
                             <div class="panel-heading">Log in as student</div>
                             <div class="panel-body">
@@ -126,58 +136,57 @@
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-4">
+                    <div class="col s12 m6 l4">
                         <div class="panel panel-default">
                             <div class="panel-heading">User</div>
                             <div class="panel-body">
-                                <a href="/users_majors" class="col-sm-12 btn btn-default">Add/Remove a student's major</a>
-                                <a href="/users_minors" class="col-sm-12 btn btn-default">Add/Remove a student's minor</a>
-                                <a href="/users_concentrations" class="col-sm-12 btn btn-default">Add/Remove a student's concentration</a>
-                                <a href="/users_courses" class="col-sm-12 btn btn-default">Add/Remove a student's course</a>
-                                <a href="#" class="col-sm-12 btn btn-default">Edit a student's profile</a>
+                                <a href="/users_majors" class="col s12 btn btn-default">Add/Remove a student's major</a>
+                                <a href="/users_minors" class="col s12 btn btn-default">Add/Remove a student's minor</a>
+                                <a href="/users_concentrations" class="col s12 btn btn-default">Add/Remove a student's concentration</a>
+                                <a href="/users_courses" class="col s12 btn btn-default">Add/Remove a student's course</a>
+                                <a href="#" class="col s12 btn btn-default">Edit a student's profile</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col s12 m6 l4">
                         <div class="panel panel-default">
                             <div class="panel-heading">Major</div>
                             <div class="panel-body">
-                                <a href="/majors_courses" class="col-sm-12 btn btn-default">Add/Remove a majors's course</a>
-                                <a href="/majors_concentrations" class="col-sm-12 btn btn-default">Add/Remove a major's concetration</a>
-                                <a href="/majors/new" class="col-sm-12 btn btn-default">Add a major</a>
-                                <a href="/majors" class="col-sm-12 btn btn-default">Edit a major</a>
+                                <a href="/majors_courses" class="col s12 btn btn-default">Add/Remove a majors's course</a>
+                                <a href="/majors_concentrations" class="col s12 btn btn-default">Add/Remove a major's concetration</a>
+                                <a href="/majors/new" class="col s12 btn btn-default">Add a major</a>
+                                <a href="/majors" class="col s12 btn btn-default">Edit a major</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col s12 m6 l4">
                         <div class="panel panel-default">
                             <div class="panel-heading">Minor</div>
                             <div class="panel-body">
-                                <a href="/minors_courses" class="col-sm-12 btn btn-default">Add/Remove a minors's course</a>
-                                <a href="/minors/new" class="col-sm-12 btn btn-default">Add a minor</a>
-                                <a href="/minors" class="col-sm-12 btn btn-default">Edit a minor</a>
+                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a minors's course</a>
+                                <a href="/minors/new" class="col s12 btn btn-default">Add a minor</a>
+                                <a href="/minors" class="col s12 btn btn-default">Edit a minor</a>
                             </div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col-sm-4">
+                    <div class="col s12 m6 l4">
                         <div class="panel panel-default">
                             <div class="panel-heading">Concentration</div>
                             <div class="panel-body">
-                                <a href="/minors_courses" class="col-sm-12 btn btn-default">Add/Remove a concentration's course</a>
-                                <a href="/minors/new" class="col-sm-12 btn btn-default">Add a concetration</a>
-                                <a href="/minors" class="col-sm-12 btn btn-default">Edit a concentration</a>
+                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a concentration's course</a>
+                                <a href="/minors/new" class="col s12 btn btn-default">Add a concetration</a>
+                                <a href="/minors" class="col s12 btn btn-default">Edit a concentration</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col s12 m6 l4">
                         <div class="panel panel-default">
                             <div class="panel-heading">Distribution</div>
                             <div class="panel-body">
-                                <a href="/minors_courses" class="col-sm-12 btn btn-default">Add/Remove a distribution's course</a>
-                                <a href="/minors/new" class="col-sm-12 btn btn-default">Add a distribution</a>
-                                <a href="/minors" class="col-sm-12 btn btn-default">Edit a distribution</a>
+                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a distribution's course</a>
+                                <a href="/minors/new" class="col s12 btn btn-default">Add a distribution</a>
+                                <a href="/minors" class="col s12 btn btn-default">Edit a distribution</a>
                             </div>
                         </div>
                     </div>
