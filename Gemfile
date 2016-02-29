@@ -20,6 +20,8 @@ gem 'chosen-rails'
 
 gem 'responders', '~> 2.0'
 
+gem 'rails_12factor', group: :production
+
 # authentication gem
 gem 'devise'
 
