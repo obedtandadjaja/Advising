@@ -38,6 +38,7 @@ cos_major = Major.find_by_name("COS")
 cos_minor = Minor.find_by_name("COS")
 cyber_security = Concentration.find_by_name("Cyber Defense")
 software_development = Concentration.find_by_name("Software Development")
+plan = Plan.create(name: :plan1)
 
 UsersMajor.create(user_id: student.id, major_id: cos_major.id)
 UsersMajor.create(user_id: teacher.id, major_id: cos_major.id)
@@ -47,3 +48,4 @@ UsersConcentration.create(user_id: student.id, concentration_id: cyber_security.
 UsersConcentration.create(user_id: teacher.id, concentration_id: cyber_security.id)
 UsersConcentration.create(user_id: student.id, concentration_id: software_development.id)
 UsersConcentration.create(user_id: teacher.id, concentration_id: software_development.id)
+UsersPlan.create(user_id: student.id, plan_id: plan.id)

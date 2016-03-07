@@ -24,8 +24,8 @@ class Course < ActiveRecord::Base
 	has_many :majors_course
 	has_many :major, -> { uniq }, through: :majors_course
 
-	has_many :users_course
-	has_many :user, -> { uniq }, through: :users_course
+	has_many :plans_course
+	has_many :plan, -> { uniq }, through: :plans_course
 
 	has_many :minors_course
 	has_many :minor, -> { uniq }, through: :minors_course

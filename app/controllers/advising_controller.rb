@@ -16,8 +16,14 @@
 
 class AdvisingController < ApplicationController
 
-	before_filter :authorize, :set_semesters
+	before_filter :authorize, :set_semesters, :set_plan
 	respond_to :js, :json, :html
+
+	def set_plan
+		if is_student
+			@plan = @current_user.plan.first
+		end
+	end
 
 	# based on the student's enrollment time and graduation time, get the semesters
 	# he or she will be attending. Not the best algorithm but it works
@@ -50,8 +56,9 @@ class AdvisingController < ApplicationController
 			@distributions = Distribution.order(:title)
 			@majors = @user.major
 			@minors = @user.minor
+			@plans = @user.plan
 			@concentration = @user.concentration
-			@courses = @user.course
+			@courses = @plan.course
 			@user_semester_hours = get_semesters_hours
 			@completion_hash = check_completion(@user)
 		end

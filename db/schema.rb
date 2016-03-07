@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217013810) do
+ActiveRecord::Schema.define(version: 20160307212419) do
 
   create_table "concentrations", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -94,6 +94,19 @@ ActiveRecord::Schema.define(version: 20160217013810) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "plans_courses", force: :cascade do |t|
+    t.integer  "plan_id",    limit: 4
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -152,6 +165,13 @@ ActiveRecord::Schema.define(version: 20160217013810) do
   create_table "users_minors", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "minor_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "users_plans", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "plan_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

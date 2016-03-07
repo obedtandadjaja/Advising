@@ -36,6 +36,9 @@
                         </div>
                     </div>
                 </div> -->
+                <% @plans.each do |plan| %>
+                    <button class="btn"><%= plan.name %></button>
+                <% end %>
                 <div class="card-image">
                     <img src="/images/picture.jpg">
                     <span class="card-title white-text">Plan</span>
