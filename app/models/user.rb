@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-	enum role: [ :student, :admin, :teacher ]
+	enum role: [:student, :admin, :teacher]
 
 	has_many :users_course, dependent: :destroy
 	has_many :course, through: :users_course
