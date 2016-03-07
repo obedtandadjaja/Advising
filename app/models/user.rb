@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
 
 	enum role: [:student, :admin, :teacher]
 
-	has_many :users_course, dependent: :destroy
-	has_many :course, through: :users_course
+	has_many :users_plan, dependent: :destroy
+	has_many :plan, through: :users_plan
 
 	has_many :users_major
 	has_many :major, through: :users_major
