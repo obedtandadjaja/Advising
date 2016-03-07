@@ -69,7 +69,7 @@ $(document).ready(function()
 			    		});
 			    		modal_text += "</ul>";
 			    		$('.modal-body').append(modal_text);
-			    		$('#myModal').modal('show');
+			    		$('#myModal').openModal();
 			    	}
 			    	else
 			    	{
@@ -142,7 +142,7 @@ $(document).ready(function()
 			    		});
 			    		modal_text += "</ul>";
 			    		$('.modal-body').append(modal_text);
-			    		$('#myModal').modal('show');
+			    		$('#myModal').openModal();
 			    	}
 			    	else
 			    	{
