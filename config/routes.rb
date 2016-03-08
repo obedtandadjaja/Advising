@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   put '/advising_ajax_delete/:id' => 'advising#advising_ajax_delete'
 
+  put '/add_plan' => 'advising#add_plan'
+
+  put '/edit_plan/:id' => 'advising#edit_plan'
+
   devise_for :users, controllers: {
     # sessions: "users/sessions",
     registrations: "users/registrations"
