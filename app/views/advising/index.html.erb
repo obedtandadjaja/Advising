@@ -21,6 +21,7 @@
 %>
 
 <% content_for :script do %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <%= javascript_include_tag "advising/index/main" %>
 <% end %>
 
@@ -28,29 +29,38 @@
     <div class="row">
         <% if @current_user.role == "student" %>
         <div class="col s12 m12 l7">
+            <div class="row" style="margin: 0; padding: 0">
+                <div class="col s11">
+                    <ul id="tabs" class="nav nav-tabs">
+                        <% @plans.each do |plan| %>
+                            <li><a href="#plan_<%= plan.id %>"><%= plan.name %></a></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="fixed-action-btn horizontal col s1" style="position: relative; right: 0; bottom: 0; padding-left: 0; padding-top: 5px">
+                    <a class="btn-floating btn-small red">
+                        <i class="small material-icons">menu</i>
+                    </a>
+                    <ul>
+                        <li><a class="btn-floating green" id="add_plan"><i class="material-icons">add</i></a></li>
+                        <li><a class="btn-floating yellow darken-1" id="edit_plan"><i class="material-icons">mode_edit</i></a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="card">
-                <!-- <div class="card-image">
-                    <div class="card blue-grey lighten-2">
-                        <div class="card-content white-text">
-                            Plan
-                        </div>
-                    </div>
-                </div> -->
-                <% @plans.each do |plan| %>
-                    <button class="btn"><%= plan.name %></button>
-                <% end %>
                 <div class="card-image">
                     <img src="/images/picture.jpg">
-                    <span class="card-title white-text">Plan</span>
+                    <span class="card-title white-text" id="plan_title"></span>
                 </div>
-                <div class="card-content">
+                <% @plans.each do |plan| %>
+                <div class="card-content" id="plan_<%= plan.id %>" style="display: none">
                     <% @semesters.each_slice(2) do |semester1, semester2| %>
                     <div class="row row-eq-height">
                         <div class="panel panel-default col s12 m6 l6" style="padding: 0 0 0 0">
                             <div class="panel-heading"><%= semester1 %></div>
                             <div class="panel-body board" id="<%= semester1 %>">
-                                <% @courses.each do |course| %>
-                                    <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester1 %>
+                                <% plan.course.each do |course| %>
+                                    <% if PlansCourse.where(course_id: course.id, plan_id: plan.id).first.taken_planned == semester1 %>
                                     <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
                                             <p class="col s10">
@@ -70,8 +80,8 @@
                         <div class="panel panel-default col s12 m6 l6" style="padding: 0 0 0 0">
                             <div class="panel-heading"><%= semester2 %></div>
                             <div class="panel-body board" id="<%= semester2 %>">
-                                <% @courses.each do |course| %>
-                                    <% if UsersCourse.where(course_id: course.id, user_id: @user.id).first.taken_planned == semester2 %>
+                                <% plan.course.each do |course| %>
+                                    <% if PlansCourse.where(course_id: course.id, plan_id: plan.id).first.taken_planned == semester2 %>
                                     <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
                                             <p class="col s10">
@@ -91,6 +101,7 @@
                     </div>
                     <% end %>
                 </div>
+                <% end %>
             </div>
         </div>
         <div class="col s12 m5 l5">
