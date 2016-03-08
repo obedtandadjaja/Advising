@@ -1084,7 +1084,7 @@ p {
 }
 i {
   display: inline;
-  margin: 5px 0 5px;
+  /*margin: 5px 0 5px;*/
 }
 .lead {
   margin-bottom: 20px;

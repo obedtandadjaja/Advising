@@ -14,6 +14,22 @@
 //   limitations under the License.
 $(document).ready(function()
 {
+	$('#tabs a:first').tab('show');
+	$('#plan_title').text($('#tabs a:first').text());
+	$('.card-content.active').show();
+	function initializeTabs()
+	{
+		$('#tabs a').click(function (e) {
+			e.preventDefault();
+			$('.card-content.active').hide();
+			$(this).tab('show');
+			$('#plan_title').text($(this).text());
+			$($(this).attr("href")).show();
+		});
+	}
+
+	initializeTabs();
+
 	// drag and drop
 	function handleDragStart(e)
 	{
@@ -318,7 +334,7 @@ $(document).ready(function()
 		{
 			var course_full_name = $('#add_course option:selected').html()
 			var new_course =
-				'<div class="panel panel-default col-md-12 item" id="'+course_id+'" style="margin: 0; padding: 0">'+
+				'<div class="panel panel-default col-md-12 item hoverable" id="'+course_id+'" style="margin: 0; padding: 0">'+
 	                '<div class="panel-body" style="padding: 0">'+
 	                    '<p class="col-md-10 col-sm-10">'+
 	                    course_full_name+
@@ -337,5 +353,24 @@ $(document).ready(function()
 			item.addEventListener('dragstart', handleDragStart, false);
 			item.addEventListener('dragend', handleDragEnd, false);
 		}
+	});
+
+	$('#add_plan').unbind('click').bind('click', function()
+	{
+		$.ajax({
+		    url: '/add_plan/',
+		    type: 'PUT',
+		    data: {},
+		    dataType: "json",
+		    success: function (response) {
+		    	console.log(response);
+		    	var string = '<li><a href="#plan_'+response.id+'">'+response.name+'</a></li>'
+		    	$('#tabs').append(string);
+		    	initializeTabs();
+		    },
+		    error: function (response) {
+		    	alert("Something appears to be wrong");
+		    }
+		});
 	});
 });
