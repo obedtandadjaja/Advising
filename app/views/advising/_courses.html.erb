@@ -8,7 +8,7 @@
         <div class="panel-collapse collapse out item_group" id="major_<%= major.id %>" style="padding: 0; margin: 0">
             <div class="panel-body board nope" id="origin">
                 <% major.course.each do |course| %>
-                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
+                    <div class="panel panel-default col-sm-12 item hoverable" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
                         <div class="panel-body" style="padding: 0">
                             <p class="col-sm-10 col-sm-10">
                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
@@ -33,7 +33,7 @@
         <div class="panel-collapse collapse out item_group" id="minor_<%= minor.id %>" style="padding: 0; margin: 0">
             <div class="panel-body board nope" id="origin">
                 <% minor.course.each do |course| %>
-                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin: 0; padding: 0">
+                    <div class="panel panel-default col-sm-12 item hoverable" id=<%= course.id %> style="margin: 0; padding: 0">
                         <div class="panel-body" style="padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
                             <p class="col-sm-10 col-sm-10">
                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
@@ -58,7 +58,7 @@
         <div class="panel-collapse collapse out item_group" id="concentration_<%= concentration.id %>" style="padding: 0; margin: 0">
             <div class="panel-body board nope" id="origin">
                 <% concentration.course.each do |course| %>
-                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
+                    <div class="panel panel-default col-sm-12 item hoverable" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
                         <div class="panel-body" style="padding: 0">
                             <p class="col-sm-10 col-sm-10">
                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
@@ -83,7 +83,7 @@
         <div class="panel-collapse collapse out item_group" id="distribution_<%= distribution.id %>" style="padding: 0; margin: 0">
             <div class="panel-body board nope" id="origin">
                 <% distribution.course.each do |course| %>
-                    <div class="panel panel-default col-sm-12 item" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
+                    <div class="panel panel-default col-sm-12 item hoverable" id=<%= course.id %> style="margin: 0; padding: 0; display: <%= !@courses.include?(course) ? "inline" : "none" %>">
                         <div class="panel-body" style="padding: 0">
                             <p class="col-sm-10 col-sm-10">
                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
