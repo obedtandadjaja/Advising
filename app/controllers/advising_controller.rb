@@ -155,6 +155,15 @@ class AdvisingController < ApplicationController
 		end
 	end
 
+	def add_plan
+		@user = @current_user
+		@new_plan = Plan.create(name: :Untitled)
+		@user.plan << @new_plan
+		respond_to do |format|
+			format.json { render json: @new_plan }
+		end
+	end
+
 	# pack hashes from get_semesters_courses and check_completion functions to json
 	def get_user_courses_completion_json(user)
 		@user_courses_hash = get_semesters_courses
