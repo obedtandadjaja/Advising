@@ -25,6 +25,7 @@ $(document).ready(function()
 			$(this).tab('show');
 			$('#plan_title').text($(this).text());
 			$($(this).attr("href")).show();
+			changePlanAJAX($(this).attr('id'));
 		});
 	}
 
@@ -374,4 +375,20 @@ $(document).ready(function()
 		    }
 		});
 	});
+
+	function changePlanAJAX(id)
+	{
+		$.ajax({
+		    url: '/change_plan/'+id,
+		    type: 'PUT',
+		    data: {},
+		    dataType: "json",
+		    success: function (response) {
+		    	console.log(response);
+		    },
+		    error: function (response) {
+		    	alert("Something appears to be wrong");
+		    }
+		});
+	}
 });

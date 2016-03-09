@@ -101,10 +101,12 @@ ActiveRecord::Schema.define(version: 20160307212419) do
   end
 
   create_table "plans_courses", force: :cascade do |t|
-    t.integer  "plan_id",    limit: 4
-    t.integer  "course_id",  limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "plan_id",       limit: 4
+    t.integer  "course_id",     limit: 4
+    t.date     "taken_on"
+    t.string   "taken_planned", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "sessions", force: :cascade do |t|

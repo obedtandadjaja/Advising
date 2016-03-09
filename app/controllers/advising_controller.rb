@@ -25,6 +25,13 @@ class AdvisingController < ApplicationController
 		end
 	end
 
+	def change_plan
+		@plan = Plan.find(params[:id])
+		respond_to do |format|
+			format.json { render json: @plan }
+		end
+	end
+
 	# based on the student's enrollment time and graduation time, get the semesters
 	# he or she will be attending. Not the best algorithm but it works
 	def set_semesters
@@ -48,9 +55,6 @@ class AdvisingController < ApplicationController
 			@students = User.where(role: "student")
 		elsif is_teacher
 			@students = User.where(role: "student")
-			# @current_user.major.each do |major|
-			# 	@students += major.user.where(role: 'student')
-			# end
 		else
 			@user = @current_user
 			@distributions = Distribution.order(:title)
@@ -60,7 +64,7 @@ class AdvisingController < ApplicationController
 			@concentration = @user.concentration
 			@courses = @plan.course
 			@user_semester_hours = get_semesters_hours
-			@completion_hash = check_completion(@user)
+			@completion_hash = check_completion(@plan)
 		end
 	end
 	
@@ -70,8 +74,8 @@ class AdvisingController < ApplicationController
 		@course = Course.find(params[:id])
 
 		# if course has been taken then show an error
-		@user_course = UsersCourse.where(user_id: @user.id, course_id: @course.id).first
-		if @user_course
+		@plans_course = PlansCourse.where(plan_id: @plan.id, course_id: @course.id).first
+		if @plans_course
 			error_messages = Array.new
 			error_messages << "You have taken #{@course.name} before"
 			respond_to do |format|
@@ -83,12 +87,12 @@ class AdvisingController < ApplicationController
 		end
 
 		# check whether user has taken all the prerequisites for the course
-		check_prerequisitesArray = check_prerequisites(@user, @course)
+		check_prerequisitesArray = check_prerequisites(@plan, @course)
 		# if there is no prerequisite error then save the course
 		if(check_prerequisitesArray.count == 0)
-			@user_course = UsersCourse.new(user_id: @user.id, course_id: @course.id, taken_planned: params[:date])
-			@user_course.save
-			@json_response = get_user_courses_completion_json(@user)
+			@plans_course = PlansCourse.new(plan_id: @plan.id, course_id: @course.id, taken_planned: params[:date])
+			@plans_course.save
+			@json_response = get_plans_courses_completion_json(@plan)
 			respond_to do |format|
 		    	format.html
 		    	format.json { render json: @json_response }
@@ -110,13 +114,13 @@ class AdvisingController < ApplicationController
 		@course = Course.find(params[:id])
 
 		# check prerequisites error upon the move
-		error_messages = check_prerequisites_on_change(@user, @course, 'move')
+		error_messages = check_prerequisites_on_change(@plan, @course, 'move')
 
 		# if there is no prerequisite error then update the course to be taken at the new date
 		if error_messages.length == 0
-			@user_course =  UsersCourse.where(user_id: @user.id, course_id: @course.id).first
-			@user_course.update_attributes(:taken_planned => params[:date])
-			@json_response = get_user_courses_completion_json(@user)
+			@plans_course =  PlansCourse.where(plan_id: @plan.id, course_id: @course.id).first
+			@plans_course.update_attributes(:taken_planned => params[:date])
+			@json_response = get_plans_courses_completion_json(@plan)
 			respond_to do |format|
 		    	format.html
 		    	format.json { render json: @json_response }
@@ -138,12 +142,12 @@ class AdvisingController < ApplicationController
 		@course = Course.find(params[:id])
 
 		# check prerequisites error upon the remove
-		error_messages = check_prerequisites_on_change(@user, @course, 'remove')
+		error_messages = check_prerequisites_on_change(@plan, @course, 'remove')
 
 		# if there is no prerequisite error then delete the course
 		if error_messages.length == 0
-			@user.course.delete(@course)
-			@json_response = get_user_courses_completion_json(@user)
+			@plan.course.delete(@course)
+			@json_response = get_plans_courses_completion_json(@plan)
 			respond_to do |format|
 				format.json { render json: @json_response }
 			end
@@ -165,28 +169,28 @@ class AdvisingController < ApplicationController
 	end
 
 	# pack hashes from get_semesters_courses and check_completion functions to json
-	def get_user_courses_completion_json(user)
-		@user_courses_hash = get_semesters_courses
-		@completion_hash = check_completion(user)
+	def get_plans_courses_completion_json(plan)
+		@plans_courses_hash = get_semesters_courses
+		@completion_hash = check_completion(plan)
 
 		@json_response = Hash.new
-		@json_response["user_courses"] = @user_courses_hash
+		@json_response["plans_courses"] = @plans_courses_hash
 		@json_response["completion"] = @completion_hash
 
 		return @json_response.to_json
 	end
 
-	# check which major, minor, distribution, and concentration that the user has completed
-	def check_completion(user)
+	# check which major, minor, distribution, and concentration that the user has completed on that plan
+	def check_completion(plan)
 		completion_hash = Hash.new
 
-		# check the user's major(s), make sure the user has taken all the required courses
+		# check the user's major(s), make sure the user has taken all the required courses on that plan
 		completion_hash["major"] = Hash.new
-		user.major.each do |major|
+		@current_user.major.each do |major|
 			completion_hash["major"][major.id] = true
 			major.course.each do |major_course|
-				user_course = UsersCourse.where(user_id: user.id, course_id: major_course.id).first
-				if(!user_course)
+				plan_course = PlansCourse.where(plan_id: plan.id, course_id: major_course.id).first
+				if(!plan_course)
 					completion_hash["major"][major.id] = false
 					break
 				end
@@ -196,12 +200,12 @@ class AdvisingController < ApplicationController
 		# check the user's minor(s), make sure the user has taken all the required courses
 		# or have completed the minimum hours required for the minor
 		completion_hash["minor"] = Hash.new
-		user.minor.each do |minor|
+		@current_user.minor.each do |minor|
 			completion_hash["minor"][minor.id] = true
 			course_hours = 0
 			minor.course.each do |minor_course|
-				user_course = UsersCourse.where(user_id: user.id, course_id: minor_course.id).first
-				if(!user_course)
+				plans_course = PlansCourse.where(plan_id: plan.id, course_id: minor_course.id).first
+				if(!plans_course)
 					completion_hash["minor"][minor.id] = false
 					break
 				else
@@ -216,11 +220,11 @@ class AdvisingController < ApplicationController
 
 		# check the user's concentration(s), make sure the user has taken all the required courses
 		completion_hash["concentration"] = Hash.new
-		user.concentration.each do |concentration|
+		@current_user.concentration.each do |concentration|
 			completion_hash["concentration"][concentration.id] = true
 			concentration.course.each do |concentration_course|
-				user_course = UsersCourse.where(user_id: user.id, course_id: concentration_course.id).first
-				if(!user_course)
+				plans_course = PlansCourse.where(plan_id: plan.id, course_id: concentration_course.id).first
+				if(!plans_course)
 					completion_hash["concentration"][concentration.id] = false
 					break
 				end
@@ -235,8 +239,8 @@ class AdvisingController < ApplicationController
 			if(distribution.title == "CORE")
 				completion_hash["distribution"][distribution.id] = true
 				distribution.course.each do |distribution_course|
-					user_course = UsersCourse.where(user_id: user.id, course_id: distribution_course.id).first
-					if(!user_course)
+					plans_course = PlansCourse.where(plan_id: plan.id, course_id: distribution_course.id).first
+					if(!plans_course)
 						completion_hash["distribution"][distribution.id] = false
 						break
 					end
@@ -245,8 +249,8 @@ class AdvisingController < ApplicationController
 				# must complete at least one course for other distributions
 				distribution.course.each do |distribution_course|
 					completion_hash["distribution"][distribution.id] = false
-					user_course = UsersCourse.where(user_id: user.id, course_id: distribution_course.id).first
-					if(user_course)
+					plans_course = PlansCourse.where(plan_id: plan.id, course_id: distribution_course.id).first
+					if(plans_course)
 						completion_hash["distribution"][distribution.id] = true
 						break
 					end
@@ -259,10 +263,10 @@ class AdvisingController < ApplicationController
 	end
 
 	# checks whether all prerequisites of a course has been taken
-	def check_prerequisites(user, course)
+	def check_prerequisites(plan, course)
 		errors = Array.new
 		course.prerequisite.each do |prereq|
-			prerequisite = UsersCourse.where(user_id: user.id, course_id: prereq.id).first
+			prerequisite = PlansCourse.where(plan_id: plan.id, course_id: prereq.id).first
 			if(prerequisite)
 				prerequisite_taken_on = @semesters.index(prerequisite.taken_planned)
 				course_taken_on = @semesters.index(params[:date])
@@ -277,22 +281,22 @@ class AdvisingController < ApplicationController
 	end
 
 	# checks whether the change would cause prerequisite conflict
-	def check_prerequisites_on_change(user, course, string)
+	def check_prerequisites_on_change(plan, course, string)
 		error_messages = Array.new
 
 		if string == "move"
-			error_messages = check_prerequisites(user, course)
+			error_messages = check_prerequisites(plan, course)
 			if error_messages.length != 0
 				return error_messages
 			end
 		end
 
 		if course
-			user.course.each do |user_course|
-				if user_course.id != course.id
-					user_course.prerequisite.each do |prereq|
+			plan.course.each do |plans_course|
+				if plans_course.id != course.id
+					plans_course.prerequisite.each do |prereq|
 						if prereq.id == course.id
-							error_messages << "Cannot #{string} course: #{course.subject} #{course.course_number} is a prerequisite for #{user_course.subject} #{user_course.course_number}"
+							error_messages << "Cannot #{string} course: #{course.subject} #{course.course_number} is a prerequisite for #{plans_course.subject} #{plans_course.course_number}"
 							break
 						end
 					end
@@ -306,30 +310,30 @@ class AdvisingController < ApplicationController
 
 	# get each semester's courses
 	def get_semesters_courses
-		@user_courses = UsersCourse.where(user_id: @user.id)
-		@user_courses_hash = Hash.new
+		@plans_courses = PlansCourse.where(plan_id: @plan.id)
+		@plans_courses_hash = Hash.new
 		@semesters.each do |semester|
-			@user_courses_hash["#{semester}"] = Array.new
+			@plans_courses_hash["#{semester}"] = Array.new
 		end
-		@user_courses.each do |course|
-			if(@user_courses_hash.has_key?(course.taken_planned))
-				@user_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
+		@plans_courses.each do |course|
+			if(@plans_courses_hash.has_key?(course.taken_planned))
+				@plans_courses_hash["#{course.taken_planned}"] << Course.find(course.course_id)
 			end
 		end
-		return @user_courses_hash
+		return @plans_courses_hash
 	end
 
 	# get each semester's hours
 	def get_semesters_hours
-		@user_courses_hash = get_semesters_courses
-		@user_semester_hours = Hash.new
-		@user_courses_hash.each do |key, array|
-			@user_semester_hours["#{key}"] = 0
+		@plans_courses_hash = get_semesters_courses
+		@plan_semester_hours = Hash.new
+		@plans_courses_hash.each do |key, array|
+			@plan_semester_hours["#{key}"] = 0
 			array.each do |course|
-				@user_semester_hours["#{key}"] += course.hr_low
+				@plan_semester_hours["#{key}"] += course.hr_low
 			end
 		end
-		return @user_semester_hours
+		return @plan_semester_hours
 	end
 
 end

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   put '/edit_plan/:id' => 'advising#edit_plan'
 
+  put '/change_plan/:id' => 'advising#change_plan'
+
   devise_for :users, controllers: {
     # sessions: "users/sessions",
     registrations: "users/registrations"
