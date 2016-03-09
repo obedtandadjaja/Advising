@@ -364,9 +364,10 @@ $(document).ready(function()
 		    dataType: "json",
 		    success: function (response) {
 		    	console.log(response);
-		    	var string = '<li><a href="#plan_'+response.id+'">'+response.name+'</a></li>'
-		    	$('#tabs').append(string);
-		    	initializeTabs();
+		    	// var string = '<li><a href="#plan_'+response.id+'">'+response.name+'</a></li>'
+		    	// $('#tabs').append(string);
+		    	// initializeTabs();
+		    	window.location.reload();
 		    },
 		    error: function (response) {
 		    	alert("Something appears to be wrong");
