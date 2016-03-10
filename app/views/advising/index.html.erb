@@ -21,7 +21,6 @@
 %>
 
 <% content_for :script do %>
-    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> -->
     <%= javascript_include_tag "advising/index/main" %>
 <% end %>
 
@@ -33,7 +32,9 @@
                 <div class="col s11">
                     <ul id="tabs" class="nav nav-tabs">
                         <% @plans.each do |plan| %>
-                            <li><a href="#plan_<%= plan.id %>" id="<%= plan.id %>"><%= plan.name %></a></li>
+                            <li>
+                                <a href="#plan_<%= plan.id %>" id="<%= plan.id %>" class="plan"><%= plan.name %></a>
+                            </li>
                         <% end %>
                     </ul>
                 </div>
@@ -44,6 +45,7 @@
                     <ul>
                         <li><a class="btn-floating green" id="add_plan"><i class="material-icons">add</i></a></li>
                         <li><a class="btn-floating yellow darken-1" id="edit_plan"><i class="material-icons">mode_edit</i></a></li>
+                        <li><a class="btn-floating red" id="delete_plan"><i class="material-icons">delete</i></a></li>
                     </ul>
                 </div>
             </div>

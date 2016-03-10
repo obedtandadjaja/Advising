@@ -168,6 +168,22 @@ class AdvisingController < ApplicationController
 		end
 	end
 
+	def edit_plan
+		@edit_plan = Plan.find(params[:id])
+		@edit_plan.update_attribute(:name, params[:name])
+		respond_to do |format|
+			format.json { render json: @edit_plan }
+		end
+	end
+
+	def delete_plan
+		@plan_deleted = Plan.find(params[:id])
+		@plan_deleted.destroy
+		respond_to do |format|
+			format.json { render json: @plan_deleted }
+		end
+	end
+
 	# pack hashes from get_semesters_courses and check_completion functions to json
 	def get_plans_courses_completion_json(plan)
 		@plans_courses_hash = get_semesters_courses

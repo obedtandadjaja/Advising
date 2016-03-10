@@ -376,6 +376,90 @@ $(document).ready(function()
 		});
 	});
 
+	$('#edit_plan').unbind('click').bind('click', function()
+	{
+		$('.modal-title').text('Edit plan name');
+		$('.modal-body').empty();
+		$.each($('.plan'), function()
+		{
+			// console.log($(this)[0].id);
+			// console.log($(this)[0].innerHTML);
+			var modal_text = "";
+			modal_text += "<div class='card col s12'>"+
+				"<input class='col s10 text-center' type='text' name='"+$(this)[0].id+"' value='"+$(this)[0].innerHTML+"'/>"+
+				"<button class='btn waves-effect waves-light edit_plan_submit' type='submit' name='action'>Submit"+
+				    "<i class='material-icons right'>send</i>"
+				"</button>"+
+				"</div>";
+			$('.modal-body').append(modal_text);
+		});
+		$('#myModal').openModal();
+
+		$('.edit_plan_submit').unbind('click').bind('click', function()
+		{
+			var id = $(this).prev().attr('name');
+			var new_name = $(this).prev()[0].value;
+			console.log(new_name);
+			$.ajax({
+			    url: '/edit_plan/'+id,
+			    type: 'PUT',
+			    data: {name: new_name},
+			    dataType: "json",
+			    success: function (response) {
+			    	console.log(response);
+			    	$('a#'+id+'.plan').text(new_name);
+			    	if($('a#'+id+'.plan').parent().hasClass('active'))
+			    	{
+			    		$('#plan_title').text(new_name);
+			    	}
+			    	$('#myModal').closeModal();
+			    },
+			    error: function (response) {
+			    	alert("Something appears to be wrong");
+			    }
+			});
+		});
+	});
+
+	$('#delete_plan').unbind('click').bind('click', function()
+	{
+		$('.modal-title').text('Delete plan');
+		$('.modal-body').empty();
+		$.each($('.plan'), function()
+		{
+			// console.log($(this)[0].id);
+			// console.log($(this)[0].innerHTML);
+			var modal_text = "";
+			modal_text += "<button class='btn delete_plan' style='margin: 10px' id='"+$(this)[0].id+"'>"+
+				$(this)[0].innerHTML+
+				"</button>";
+			$('.modal-body').append(modal_text);
+		});
+		$('#myModal').openModal();
+
+		$('.delete_plan').unbind('click').bind('click', function()
+		{
+			if (confirm('Are you sure you want to delete '+$(this).text()+'?')) {
+				if (confirm('Once deleted this plan cannot be recovered... Do you still want to delete this plan?')) {
+		        	var id = $(this).attr('id');
+					$.ajax({
+					    url: '/delete_plan/'+id,
+					    type: 'PUT',
+					    data: {},
+					    dataType: "json",
+					    success: function (response) {
+					    	console.log(response);
+					    	window.location.reload();
+					    },
+					    error: function (response) {
+					    	alert("Something appears to be wrong");
+					    }
+					});
+				}
+	       	}
+		});
+	});
+
 	function changePlanAJAX(id)
 	{
 		$.ajax({
