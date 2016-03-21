@@ -61,6 +61,8 @@ $(document).ready(function()
 	{
 		var element = document.getElementById(e.dataTransfer.getData('element_id'));
 		var id = e.dataTransfer.getData('element_id');
+		alert(id);
+		alert(element.innerHTML);
 		var source_id = e.dataTransfer.getData('element_source_id');
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board over" && source_id == "origin")
@@ -91,8 +93,9 @@ $(document).ready(function()
 			    	else
 			    	{
 		    			e.target.appendChild(element.cloneNode(true));
+		    			element.style.display = "none";
+		    			$(element).hide();
 						$('#'+id).find("button").css("display", "inline");
-						element.style.display = "none";
 						var item = document.getElementById(id);
 						item.setAttribute('draggable', 'true');
 						item.setAttribute('droppable', 'false');

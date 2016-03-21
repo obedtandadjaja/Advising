@@ -63,7 +63,7 @@
                             <div class="panel-body board" id="<%= semester1 %>">
                                 <% plan.course.each do |course| %>
                                     <% if PlansCourse.where(course_id: course.id, plan_id: plan.id).first.taken_planned == semester1 %>
-                                    <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
+                                    <div class="panel panel-default col s12 item hoverable" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
                                             <p class="col s10">
                                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
@@ -84,7 +84,7 @@
                             <div class="panel-body board" id="<%= semester2 %>">
                                 <% plan.course.each do |course| %>
                                     <% if PlansCourse.where(course_id: course.id, plan_id: plan.id).first.taken_planned == semester2 %>
-                                    <div class="panel panel-default col s12 item" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
+                                    <div class="panel panel-default col s12 item hoverable" id=<%= course.id %> style="margin-bottom: 0; padding: 0">
                                         <div class="panel-body" style="padding: 0">
                                             <p class="col s10">
                                             <%= course.subject %> <%= course.course_number %> - <%= course.title %>
