@@ -63,7 +63,7 @@ class AdvisingController < ApplicationController
 			@majors = @user.major
 			@minors = @user.minor
 			@plans = @user.plan
-			@concentration = @user.concentration
+			@concentrations = @user.concentration
 			@courses = @plan.course
 			@user_semester_hours = get_semesters_hours
 			@completion_hash = check_completion(@plan)
