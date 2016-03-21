@@ -12,25 +12,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     # draw links to the user
     @user = User.find_by_email(params[:user][:email])
-    plan = Plan.create(name: :Untitled)
-    UsersPlan.create({plan_id: plan.id, user_id: @user.id})
-    puts "#{params[:user][:major]}"
-    params[:user]["major"].each do |major_id|
-        if !major_id.empty?
-            @user.major << Major.find(major_id)
-        end
-    end
-    puts "#{params[:user][:minor]}"
-    params[:user]["minor"].each do |minor_id|
-        if !minor_id.empty?
-            @user.minor << Minor.find(minor_id)
-        end
-    end
-    puts "#{params[:user][:concentration]}"
-    params[:user]["concentration"].each do |concentration_id|
-        if !concentration_id.empty?
-            @user.concentration << Concentration.find(concentration_id)
-        end
+    if @user
+      plan = Plan.create(name: :Untitled)
+      UsersPlan.create({plan_id: plan.id, user_id: @user.id})
+      puts "#{params[:user][:major]}"
+      params[:user]["major"].each do |major_id|
+          if !major_id.empty?
+              @user.major << Major.find(major_id)
+          end
+      end
+      puts "#{params[:user][:minor]}"
+      params[:user]["minor"].each do |minor_id|
+          if !minor_id.empty?
+              @user.minor << Minor.find(minor_id)
+          end
+      end
+      puts "#{params[:user][:concentration]}"
+      params[:user]["concentration"].each do |concentration_id|
+          if !concentration_id.empty?
+              @user.concentration << Concentration.find(concentration_id)
+          end
+      end
     end
   end
 
@@ -79,4 +81,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end

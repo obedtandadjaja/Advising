@@ -15,4 +15,13 @@
 #
 
 module ApplicationHelper
+
+  # merge the devise messages with the normal flash messages
+  def devise_flash
+    if controller.devise_controller? && resource.errors.any?
+      flash.now[:danger] = flash[:danger].to_a.concat resource.errors.full_messages
+      flash.now[:danger].uniq!
+    end
+  end
+
 end

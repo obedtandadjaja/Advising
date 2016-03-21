@@ -1,0 +1,1 @@
+$(".dynamic").html("<%= escape_javascript(render('courses', :locals => {:majors => @majors, minors: @minors, concentration: @concentration, courses: @courses})) %>");

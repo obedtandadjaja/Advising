@@ -27,9 +27,11 @@ class AdvisingController < ApplicationController
 
 	def change_plan
 		@plan = Plan.find(params[:id])
-		respond_to do |format|
-			format.json { render json: @plan }
-		end
+		@courses = @plan.course
+		# respond_to do |format|
+		# 	format.js { render "change_plan" }
+		# end
+		index
 	end
 
 	# based on the student's enrollment time and graduation time, get the semesters

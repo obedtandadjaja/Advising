@@ -462,17 +462,6 @@ $(document).ready(function()
 
 	function changePlanAJAX(id)
 	{
-		$.ajax({
-		    url: '/change_plan/'+id,
-		    type: 'PUT',
-		    data: {},
-		    dataType: "json",
-		    success: function (response) {
-		    	console.log(response);
-		    },
-		    error: function (response) {
-		    	alert("Something appears to be wrong");
-		    }
-		});
+		$.getScript('/change_plan/'+id);
 	}
 });

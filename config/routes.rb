@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   put '/edit_plan/:id' => 'advising#edit_plan'
 
-  put '/change_plan/:id' => 'advising#change_plan'
+  get '/change_plan/:id' => 'advising#change_plan'
 
   put '/delete_plan/:id' => 'advising#delete_plan'
 
