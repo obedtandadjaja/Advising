@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # draw links to the user
     @user = User.find_by_email(params[:user][:email])
     if @user
-      plan = Plan.create(name: :Untitled)
+      plan = Plan.create(name: "Untitled Plan")
       UsersPlan.create({plan_id: plan.id, user_id: @user.id})
       puts "#{params[:user][:major]}"
       params[:user]["major"].each do |major_id|
