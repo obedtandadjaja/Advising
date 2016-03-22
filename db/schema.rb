@@ -148,15 +148,6 @@ ActiveRecord::Schema.define(version: 20160307212419) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "users_courses", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
-    t.integer  "course_id",     limit: 4
-    t.date     "taken_on"
-    t.string   "taken_planned", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "users_majors", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "major_id",   limit: 4

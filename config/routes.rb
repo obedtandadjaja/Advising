@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   resources :minors
   resources :distributions
   resources :concentrations
-  resources :users_courses
   resources :concentrations_courses
   resources :distributions_courses
   resources :majors_courses
