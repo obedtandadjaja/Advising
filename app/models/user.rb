@@ -69,11 +69,11 @@ class User < ActiveRecord::Base
   	end
 
   	def is_teacher?
-  		self.role == "student"
+  		self.role == "teacher"
   	end
 
   	def is_admin?
-  		self.role == "student"
+  		self.role == "admin"
   	end
 
 end
