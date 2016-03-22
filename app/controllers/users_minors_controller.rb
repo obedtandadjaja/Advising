@@ -19,7 +19,12 @@ class UsersMinorsController < ApplicationController
 	
 	# displays all users and their minors
 	def index
-		@users = User.all
+		if @current_user.is_admin?
+			@users = User.where(role: "teacher")
+			@users += User.where(role: "student")
+		elsif @current_user.is_teacher?
+			@users = User.where(role: "student")
+		end
 	end
 
 	# display a particular user and his/her minor(s)

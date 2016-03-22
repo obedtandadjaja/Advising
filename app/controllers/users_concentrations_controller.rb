@@ -19,7 +19,12 @@ class UsersConcentrationsController < ApplicationController
 	
 	# displays all users and their concentrations
 	def index
-		@users = User.all
+		if @current_user.is_admin?
+			@users = User.where(role: "teacher")
+			@users += User.where(role: "student")
+		elsif @current_user.is_teacher?
+			@users = User.where(role: "student")
+		end
 	end
 
 	# displays a particular user and his/her concentration(s)

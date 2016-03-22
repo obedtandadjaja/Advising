@@ -19,7 +19,12 @@ class UsersMajorsController < ApplicationController
 	
 	# displays all users and their majors
 	def index
-		@users = User.all
+		if @current_user.is_admin?
+			@users = User.where(role: "teacher")
+			@users += User.where(role: "student")
+		elsif @current_user.is_teacher?
+			@users = User.where(role: "student")
+		end
 	end
 
 	# displays a particular student and his/her major(s)
