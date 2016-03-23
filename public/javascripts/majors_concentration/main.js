@@ -14,7 +14,7 @@
 //   limitations under the License.
 $(document).ready(function()
 {
-	$('.chosen-select').chosen();
+	$('.chosen-select').chosen({width: '100%'});
 
 	// hide concentration at first
 	$('#concentration_select').parent().parent().hide();
