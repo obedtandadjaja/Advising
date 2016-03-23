@@ -17,7 +17,7 @@ $(document).ready(function()
 	$('.chosen-select').chosen({width: '100%'});
 
 	// hide concentration at first
-	$('#concentration_select').parent().parent().hide();
+	// $('#concentration_select').parent().parent().hide();
 
 	var concentrations = $('#concentration_select').html();
 	$('#major_select').change(function()
@@ -39,20 +39,20 @@ $(document).ready(function()
 		// show concentrations if array is not empty
 		if(array.length > 0)
 		{
-			$('#concentration_select').parent().parent().show();
+			// $('#concentration_select').parent().parent().show();
 			$('#concentration_select').empty();
 			for(i = 0; i < array.length; i++)
 			{
 				$('#concentration_select').append(array[i]);
 			}
 			$('#concentration_select').trigger("chosen:updated");
-			$('#concentration_select').parent().show();
+			// $('#concentration_select').parent().show();
 		}
 		else
 		{
 			$('#concentration_select').empty();
 			$('#concentration_select').trigger("chosen:updated");
-			$('#concentration_select').parent().parent().hide();
+			// $('#concentration_select').parent().parent().hide();
 		}
 	});
 
