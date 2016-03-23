@@ -15,6 +15,7 @@
 $(document).ready(function()
 {
 	$('.chosen-select').chosen({width: '100%'});
+	$('#concentration_select').parent().parent().show();
 
 	// hide concentration at first
 	// $('#concentration_select').parent().parent().hide();
