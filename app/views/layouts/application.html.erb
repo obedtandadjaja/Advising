@@ -190,19 +190,9 @@
         </div>
     <% end %>
 
-    <% if notice %>
-    <div class="alert alert-success">
-        <%= notice %>
+    <div class="container">
+        <%= yield %>
     </div>
-    <% end %>
-
-    <% if alert %>
-    <div class="alert alert-danger">
-        <%= alert %>
-    </div>
-    <% end %>
-
-    <%= yield %>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -211,7 +201,7 @@
             <p class="modal-body text-center"></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-blue-grey btn-flat">Close</a>
         </div>
         </div>
     </div>
@@ -265,6 +255,15 @@
     <%= javascript_include_tag "jquery.searchable-1.1.0.min.js" %>
     <%= javascript_include_tag "searchable-run-table" %>
     <%= javascript_include_tag "searchable-run" %>
+    <script>
+    $(document).ready(function(){
+      $(".button-collapse").sideNav();
+      $('.alert a').click(function() {
+        $('.alert').fadeOut();
+      });
+    });
+    </script>
+    </script>
     <%= yield :script %>
 
 </body>
