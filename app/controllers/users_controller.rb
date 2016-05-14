@@ -116,6 +116,16 @@ class UsersController < ApplicationController
         redirect_to '/users'
     end
 
+    def create_guest
+        create_guest_user
+        redirect_to '/'
+    end
+
+    def destroy_guest
+        session[:guest_user_id] = nil
+        redirect_to '/'
+    end
+
     private
     # strong params for sign up
     def user_params

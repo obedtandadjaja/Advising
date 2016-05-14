@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  # Guest
+  post '/create_guest' => 'users#create_guest'
+
   post '/become_student' => 'users#become'
 
   resources :courses
