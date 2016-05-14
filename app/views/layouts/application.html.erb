@@ -98,7 +98,8 @@
 </head>
 <body>
     <main>
-    <nav>
+    <nav class="white">
+        <div class="container">
         <div class="nav-wrapper grey lighten-5">
             <a class="brand-logo hide-on-large-only" href="/">
                 <img src="/images/covenant_logo.png" style="height: 50px"/>
@@ -152,35 +153,40 @@
                 <% end %>
             </ul>
         </div>
+        </div>
     </nav>
 
-    <% devise_flash %>
-
-    <% if flash[:danger] %>
-        <div class="alert alert-danger">
+    <% if flash[:notice] %>
+        <div class="alert alert-success">
+            <div class="container">
+            <a class="right" href="#"><i class="material-icons">done_all</i></a>
             <ul>
-            <% if flash[:danger].kind_of?(Array) %>
-                <% flash[:danger].each do |flash| %>
+            <% if flash[:notice].kind_of?(Array) %>
+                <% flash[:notice].each do |flash| %>
                     <%= content_tag :li, flash %>
                 <% end %>
             <% else %>
-                <%= content_tag :li, flash[:danger] %>
+                <%= content_tag :li, flash[:notice] %>
             <% end %>
             </ul>
+            </div>
         </div>
     <% end %>
 
-    <% if flash[:success] %>
-        <div class="alert alert-success">
+    <% if flash[:alert] %>
+        <div class="alert alert-danger">
+            <div class="container">
+            <a class="right" href="#"><i class="material-icons">done_all</i></a>
             <ul>
-            <% if flash[:success].kind_of?(Array) %>
-                <% flash[:success].each do |flash| %>
+            <% if flash[:alert].kind_of?(Array) %>
+                <% flash[:alert].each do |flash| %>
                     <%= content_tag :li, flash %>
                 <% end %>
             <% else %>
-                <%= content_tag :li, flash[:success] %>
+                <%= content_tag :li, flash[:alert] %>
             <% end %>
             </ul>
+            </div>
         </div>
     <% end %>
 
@@ -212,11 +218,35 @@
 
     </main>
 
-    <footer class="page-footer transparent">
-        <div class="footer-copyright blue">
+    <!-- Footer -->
+    <footer class="page-footer blue-grey lighten-2">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h5 class="white-text">Navigation</h5>
+                </div>
+                <div class="col l4 m4 s12">
+                    <ul class="white-text">
+                        <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="/users/password/new">Recover Password</a></li>
+                    </ul>
+                </div>
+                <div class="col l4 m4 s12">
+                    <ul class="white-text">
+                        <li><a class="grey-text text-lighten-3" href="/users/sign_up">Sign Up</a></li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+                <div class="col l4 m4 s12">
+                    <ul class="white-text">
+                        <li><a class="grey-text text-lighten-3" href="/users/sign_in">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-                <p class="white-text text-lighten-4 left">Covenant College Advising</p>
-                <p class="white-text text-lighten-4 right">© 2016 Covenant College</p>
+                © 2016 Covenant College Advising
             </div>
         </div>
     </footer>
