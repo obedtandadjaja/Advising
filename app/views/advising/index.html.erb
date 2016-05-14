@@ -20,6 +20,14 @@
 =end
 %>
 
+<% content_for :css do %>
+<style type="text/css">
+    .btn {
+        margin-top: 5px;
+    }
+</style>
+<% end %>
+
 <% content_for :script do %>
     <%= javascript_include_tag "advising/index/main" %>
 <% end %>
@@ -134,74 +142,67 @@
         </div>
         <% else %>
         <div class="col s12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Teacher | Admin Resources</div>
-                <div class="panel-body">
-                    <div class="col s12 m12 l12">
-                        <div class="panel panel-danger">
-                            <div class="panel-heading">Log in as student</div>
-                            <div class="panel-body">
-                                <%= form_for :user, url: '/become_student', html:{class: "form-horizontal"} do |f| %>
-                                <%= collection_select(:user, :id, @students, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :id => 'student_select'}) %>
-                                <div style="margin-top: 10px">
-                                <%= f.submit "Login as student", class: "btn btn-primary" %>
-                                </div>
-                                <% end %>
-                            </div>
-                        </div>
+            <div class="col s12 m12 l12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Log in as student</div>
+                    <div class="panel-body">
+                        <%= form_for :user, url: '/become_student', html:{class: "form-horizontal"} do |f| %>
+                        <%= collection_select(:user, :id, @students, :id, :name, {:prompt => true}, {:class => 'form-control chosen-select', :id => 'student_select'}) %>
+                        <%= f.submit "Login as student", class: "btn blue-grey btn-primary" %>
+                        <% end %>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">User</div>
-                            <div class="panel-body">
-                                <a href="/users_majors" class="col s12 btn btn-default">Add/Remove a student's major</a>
-                                <a href="/users_minors" class="col s12 btn btn-default">Add/Remove a student's minor</a>
-                                <a href="/users_concentrations" class="col s12 btn btn-default">Add/Remove a student's concentration</a>
-                                <a href="#" class="col s12 btn btn-default">Edit a student's profile</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Student</div>
+                    <div class="panel-body">
+                        <a href="/users_majors" class="col s12 btn blue-grey btn-default">Add/Remove a student's major</a>
+                        <a href="/users_minors" class="col s12 btn blue-grey btn-default">Add/Remove a student's minor</a>
+                        <a href="/users_concentrations" class="col s12 btn blue-grey btn-default">Add/Remove a student's concentration</a>
+                        <a href="#" class="col s12 btn blue-grey btn-default">Edit a student's profile</a>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Major</div>
-                            <div class="panel-body">
-                                <a href="/majors_courses" class="col s12 btn btn-default">Add/Remove a majors's course</a>
-                                <a href="/majors_concentrations" class="col s12 btn btn-default">Add/Remove a major's concetration</a>
-                                <a href="/majors/new" class="col s12 btn btn-default">Add a major</a>
-                                <a href="/majors" class="col s12 btn btn-default">Edit a major</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Major</div>
+                    <div class="panel-body">
+                        <a href="/majors_courses" class="col s12 btn blue-grey btn-default">Add/Remove a majors's course</a>
+                        <a href="/majors_concentrations" class="col s12 btn blue-grey btn-default">Add/Remove a major's concetration</a>
+                        <a href="/majors/new" class="col s12 btn blue-grey btn-default">Add a major</a>
+                        <a href="/majors" class="col s12 btn blue-grey btn-default">Show all major</a>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Minor</div>
-                            <div class="panel-body">
-                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a minors's course</a>
-                                <a href="/minors/new" class="col s12 btn btn-default">Add a minor</a>
-                                <a href="/minors" class="col s12 btn btn-default">Edit a minor</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Minor</div>
+                    <div class="panel-body">
+                        <a href="/minors_courses" class="col s12 btn blue-grey btn-default">Add/Remove a minors's course</a>
+                        <a href="/minors/new" class="col s12 btn blue-grey btn-default">Add a minor</a>
+                        <a href="/minors" class="col s12 btn blue-grey btn-default">Show all minor</a>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="col s12 m6 l4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Concentration</div>
-                            <div class="panel-body">
-                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a concentration's course</a>
-                                <a href="/minors/new" class="col s12 btn btn-default">Add a concetration</a>
-                                <a href="/minors" class="col s12 btn btn-default">Edit a concentration</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col s12 m6 l4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Concentration</div>
+                    <div class="panel-body">
+                        <a href="/minors_courses" class="col s12 btn blue-grey btn-default">Add/Remove a concentration's course</a>
+                        <a href="/concentrations/new" class="col s12 btn blue-grey btn-default">Add a concetration</a>
+                        <a href="/concentrations" class="col s12 btn blue-grey btn-default">Show all concentration</a>
                     </div>
-                    <div class="col s12 m6 l4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Distribution</div>
-                            <div class="panel-body">
-                                <a href="/minors_courses" class="col s12 btn btn-default">Add/Remove a distribution's course</a>
-                                <a href="/minors/new" class="col s12 btn btn-default">Add a distribution</a>
-                                <a href="/minors" class="col s12 btn btn-default">Edit a distribution</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Distribution</div>
+                    <div class="panel-body">
+                        <a href="/minors_courses" class="col s12 btn blue-grey btn-default">Add/Remove a distribution's course</a>
+                        <a href="/distributions/new" class="col s12 btn blue-grey btn-default">Add a distribution</a>
+                        <a href="/distributions" class="col s12 btn blue-grey btn-default">Show all distribution</a>
                     </div>
                 </div>
             </div>
