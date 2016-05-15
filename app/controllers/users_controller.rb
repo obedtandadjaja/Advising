@@ -15,7 +15,7 @@
 #
 
 class UsersController < ApplicationController
-    before_filter :authorize, :except => [:new, :create]
+    before_filter :authorize, :except => [:new, :create, :create_guest, :create_guest_user]
 
     # display form for signing up
     def new
@@ -116,13 +116,20 @@ class UsersController < ApplicationController
         redirect_to '/users'
     end
 
-    def create_guest
-        create_guest_user
-        redirect_to '/'
+    def create_guest_user
+        user = User.create(:name => "Covenant Guest", :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com",
+            :confirmed_at => Time.now, :enrollment_time => Date.today.year, :graduation_time => Date.today.year+4)
+        user.save!(:validate => false)
+        plan = Plan.create(name: "Untitled Plan")
+        UsersPlan.create({plan_id: plan.id, user_id: user.id})
+        user
     end
 
-    def destroy_guest
-        session[:guest_user_id] = nil
+    def create_guest
+        puts "in"
+        guest_user = create_guest_user
+        puts "out"
+        sign_in guest_user
         redirect_to '/'
     end
 

@@ -45,7 +45,7 @@
                     <div class="content">
                         <label class="col-md-4 control-label">Banner ID</label>
                         <div class="col-md-6">
-                            <p><%= @user.banner_id %></p>
+                            <p><%= @user.banner_id ? @user.banner_id : "N/A" %></p>
                         </div>
                     </div>
 

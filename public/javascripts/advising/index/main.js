@@ -61,8 +61,6 @@ $(document).ready(function()
 	{
 		var element = document.getElementById(e.dataTransfer.getData('element_id'));
 		var id = e.dataTransfer.getData('element_id');
-		alert(id);
-		alert(element.innerHTML);
 		var source_id = e.dataTransfer.getData('element_source_id');
 		if(e.stopPropagation) e.stopPropagation();
 		if(e.target.getAttribute('class') == "panel-body board over" && source_id == "origin")
@@ -101,20 +99,20 @@ $(document).ready(function()
 						item.setAttribute('droppable', 'false');
 						item.addEventListener('dragstart', handleDragStart, false);
 						item.addEventListener('dragend', handleDragEnd, false);
-			    		$.each(response.user_courses, function(key, value)
+			    		$.each(response.plans_courses, function(key, value)
 			    		{
-							$hours = 0;
+							hours = 0;
 							$.each(value, function(key2, value2)
 							{
-								$hours += value2["hr_low"];
+								hours += value2["hr_low"];
 							});
-							if(($hours < 12 || $hours > 18) && ($hours != 0))
+							if((hours < 12 || hours > 18) && (hours != 0))
 							{
-								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+hours+"</font>");
 							}
 							else
 							{
-								$('#'+key+'_hours').html("Total Hours: "+$hours);
+								$('#'+key+'_hours').html("Total Hours: "+hours);
 							}
 						});
 						$.each(response.completion, function(key, value)
@@ -166,20 +164,20 @@ $(document).ready(function()
 			    	}
 			    	else
 			    	{
-			    		$.each(response.user_courses, function(key, value)
+			    		$.each(response.plans_courses, function(key, value)
 			    		{
-							$hours = 0;
+							hours = 0;
 							$.each(value, function(key2, value2)
 							{
-								$hours += value2["hr_low"];
+								hours += value2["hr_low"];
 							});
-							if(($hours < 12 || $hours > 18) && ($hours != 0))
+							if((hours < 12 || hours > 18) && (hours != 0))
 							{
-								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+hours+"</font>");
 							}
 							else
 							{
-								$('#'+key+'_hours').html("Total Hours: "+$hours);
+								$('#'+key+'_hours').html("Total Hours: "+hours);
 							}
 						});
 						$.each(response.completion, function(key, value)
@@ -294,19 +292,19 @@ $(document).ready(function()
 		    		element.parentNode.parentNode.remove();
 		    		$('#'+id).show();
 
-		    		$.each(response.user_courses, function(key, value) {
-						$hours = 0;
+		    		$.each(response.plans_courses, function(key, value) {
+						hours = 0;
 						$.each(value, function(key2, value2)
 						{
-							$hours += value2["hr_low"];
+							hours += value2["hr_low"];
 						});
-						if(($hours < 12 || $hours > 18) && ($hours != 0))
+						if((hours < 12 || hours > 18) && (hours != 0))
 						{
-							$('#'+key+'_hours').html("Total Hours: <font color='red'>"+$hours+"</font>");
+							$('#'+key+'_hours').html("Total Hours: <font color='red'>"+hours+"</font>");
 						}
 						else
 						{
-							$('#'+key+'_hours').html("Total Hours: "+$hours);
+							$('#'+key+'_hours').html("Total Hours: "+hours);
 						}
 					});
 					$.each(response.completion, function(key, value)

@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
 
   # pages only for admins
   def only_admin
-    redirect_to '/advising' unless (is_admin || is_teacher)
+    redirect_to '/advising' unless !is_student
   end
 
   # return true if user is admin
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_current_user
-    render json: {}, status: :unauthorized if get_current_user.nil?
+    render json: {}, status: :unauthorized if current_user.nil?
   end
 
   def get_current_user
