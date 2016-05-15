@@ -27,6 +27,10 @@ gem 'devise'
 
 gem 'rake', '11.1.2'
 
+gem 'wicked_pdf'
+
+gem 'wkhtmltopdf-binary'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

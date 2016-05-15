@@ -354,4 +354,29 @@ class AdvisingController < ApplicationController
 		return @plan_semester_hours
 	end
 
+	# download plan
+	def download
+		@user = @current_user
+		@distributions = Distribution.order(:title)
+		@majors = @user.major
+		@minors = @user.minor
+		@plans = @user.plan
+		@concentrations = @user.concentration
+		@courses = @plan.course
+		@user_semester_hours = get_semesters_hours
+		@completion_hash = check_completion(@plan)
+		respond_to do |format|
+		    format.pdf do
+		      render  :pdf => "file.pdf", :template => 'advising/index.html.erb'
+		    end
+	    	format.html
+    	end
+		# html = render_to_string('/advising', :layout => "pdf_layout.html")
+		# pdf = WickedPdf.new.pdf_from_string(html)
+
+		# send_data(pdf,
+		#     :filename => "my_pdf_name.pdf",
+		#     :disposition => 'attachment')
+	end
+
 end

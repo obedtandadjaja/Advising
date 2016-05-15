@@ -532,4 +532,20 @@ $(document).ready(function()
 	{
 		$.getScript('/change_plan/'+id);
 	}
+
+	$('#download_plan').unbind('click').bind('click', function()
+	{
+		$.ajax({
+		    url: '/download_plan/',
+		    type: 'PUT',
+		    data: {},
+		    dataType: "json",
+		    success: function (response) {
+		    	console.log(response);
+		    },
+		    error: function (response) {
+		    	alert("Something appears to be wrong");
+		    }
+		});
+	});
 });
