@@ -1,4 +1,9 @@
 <div class=" col s12" style="margin-bottom: 20px">
     <%= collection_select(:course, :id, Course.all, :id, :fullCourseName, {:prompt => true}, {:class => 'form-control chosen-select col s12', :id => 'add_course'}) %>
-    <button class="waves-effect waves-light btn blue-grey col s12" id="generate_course" style="margin-top: 10px">Generate</button>
+    <select id="choose_semester" data-placeholder="Choose semester" class="form-control chosen-select col s12">
+		<% @semesters.each do |semester| %>
+			<option value="<%= semester %>"><%= semester %></option>
+		<% end %>
+	</select>
+    <button class="waves-effect waves-light btn blue-grey" id="generate_course" style="margin-top: 10px">Add</button>
 </div>

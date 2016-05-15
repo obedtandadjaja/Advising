@@ -332,28 +332,98 @@ $(document).ready(function()
 	$('#generate_course').unbind('click').bind('click', function()
 	{
 		var course_id = $('#add_course').val();
-		if(course_id)
+		var semester = $('#choose_semester').val();
+		var element = document.getElementById(course_id);
+		if(course_id && semester)
 		{
-			var course_full_name = $('#add_course option:selected').html()
-			var new_course =
-				'<div class="panel panel-default col-md-12 item hoverable" id="'+course_id+'" style="margin: 0; padding: 0">'+
-	                '<div class="panel-body" style="padding: 0">'+
-	                    '<p class="col-md-10 col-sm-10">'+
-	                    course_full_name+
-	                    '</p>'+
-	                    '<button class="pull-right remove_button" style="display: none">'+
-	                        '<i class="fa fa-times"></i>'+
-	                    '</button>'+
-	                '</div>'+
-	            '</div>';
-			$('#other_courses').find('.other_courses_list').append(new_course);
+			$.ajax({
+			    url: '/advising_ajax/'+course_id,
+			    type: 'PUT',
+			    data: { date: semester },
+			    dataType: "json",
+			    success: function (response)
+			    {
+			    	console.log(response);
+			    	if(response.error_messages)
+			    	{
+			    		$('.modal-title').text('Invalid Schedule');
+			    		$('.modal-body').empty();
+			    		var modal_text = "<ul>";
+			    		$.each(response.error_messages, function(key, message)
+			    		{
+			    			modal_text += "<li>";
+			    			modal_text += message;
+			    			modal_text += "</li>";
+			    		});
+			    		modal_text += "</ul>";
+			    		$('.modal-body').append(modal_text);
+			    		$('#myModal').openModal();
+			    	}
+			    	else
+			    	{
+		    			$(element).hide();
 
-			var item = document.getElementsByClassName('item');
-			item = item[item.length-1];
-			item.setAttribute('draggable', 'true');
-			item.setAttribute('droppable', 'false');
-			item.addEventListener('dragstart', handleDragStart, false);
-			item.addEventListener('dragend', handleDragEnd, false);
+		    			var course_full_name = $('#add_course option:selected').html();
+						var new_course =
+							'<div class="panel panel-default col-md-12 item hoverable" id="'+course_id+'" style="margin: 0; padding: 0">'+
+				                '<div class="panel-body" style="padding: 0">'+
+				                    '<p class="col-md-10 col-sm-10">'+
+				                    course_full_name+
+				                    '</p>'+
+				                    '<button class="pull-right remove_button">'+
+				                        '<i class="fa fa-times"></i>'+
+				                    '</button>'+
+				                '</div>'+
+				            '</div>';
+						$('#'+semester).append(new_course);
+						var item = $('#'+semester).find('.item');
+						item = item[item.length-1];
+						item.setAttribute('draggable', 'true');
+						item.setAttribute('droppable', 'false');
+						item.addEventListener('dragstart', handleDragStart, false);
+						item.addEventListener('dragend', handleDragEnd, false);
+
+			    		$.each(response.plans_courses, function(key, value)
+			    		{
+							hours = 0;
+							$.each(value, function(key2, value2)
+							{
+								hours += value2["hr_low"];
+							});
+							if((hours < 12 || hours > 18) && (hours != 0))
+							{
+								$('#'+key+'_hours').html("Total Hours: <font color='red'>"+hours+"</font>");
+							}
+							else
+							{
+								$('#'+key+'_hours').html("Total Hours: "+hours);
+							}
+						});
+						$.each(response.completion, function(key, value)
+						{
+							$.each(value, function(key2, value2)
+							{
+								if(value2)
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'completed');
+								}
+								else
+								{
+									$('.completion_'+key+'_'+key2).attr('id', 'not_completed');
+								}
+							});
+						});
+			    	}
+			    },
+			    error: function (response)
+			    {
+			    	alert("Something appears to be wrong");
+			    }
+			});
+		}
+		else
+		{
+			alert("Please fill in both the course and the designated semester");
 		}
 	});
 
@@ -366,9 +436,6 @@ $(document).ready(function()
 		    dataType: "json",
 		    success: function (response) {
 		    	console.log(response);
-		    	// var string = '<li><a href="#plan_'+response.id+'">'+response.name+'</a></li>'
-		    	// $('#tabs').append(string);
-		    	// initializeTabs();
 		    	window.location.reload();
 		    },
 		    error: function (response) {
