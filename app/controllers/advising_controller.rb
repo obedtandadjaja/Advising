@@ -188,10 +188,17 @@ class AdvisingController < ApplicationController
 	end
 
 	def delete_plan
-		@plan_deleted = Plan.find(params[:id])
-		@plan_deleted.destroy
-		respond_to do |format|
-			format.json { render json: @plan_deleted }
+		if @current_user.plan.length != 1
+			@plan_deleted = Plan.find(params[:id])
+			@plan_deleted.destroy
+			respond_to do |format|
+				format.json { render json: @plan_deleted }
+			end
+		else
+			error_messages = "Cannot delete plan... Add a new plan and delete this plan again"
+			respond_to do |format|
+				format.json { render json: { :error => true, :error_messages => error_messages } }
+			end
 		end
 	end
 
