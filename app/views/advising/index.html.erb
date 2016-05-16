@@ -139,7 +139,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn blue-grey col s12" id="download_plan">Download plan</button>
+            <!-- <a href="/donwload_plan" class="btn blue-grey col s12" id="download_plan">Download plan</a> -->
+            <%= link_to 'Printable PDF', advising_path(@plan, format: 'pdf'), :class => "btn blue-grey col s12" %>
         </div>
         <% else %>
         <div class="col s12">

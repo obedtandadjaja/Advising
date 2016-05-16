@@ -30,6 +30,7 @@ gem 'rake', '11.1.2'
 gem 'wicked_pdf'
 
 gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

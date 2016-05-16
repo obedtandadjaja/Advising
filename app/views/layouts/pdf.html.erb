@@ -1,0 +1,32 @@
+<!-- app/views/layout/application.html.erb -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Covenant College Advising</title>
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <%= yield %>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%= wicked_pdf_javascript_include_tag "application" %>
+    <%= wicked_pdf_javascript_include_tag "chosen/chosen.jquery" %>
+    <%= wicked_pdf_javascript_include_tag "chosen/chosen.jquery.min" %>
+    <%= wicked_pdf_javascript_include_tag "bootstrap.min.js" %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <%= wicked_pdf_javascript_include_tag "app/main" %>
+    <%= wicked_pdf_javascript_include_tag "jquery.searchable-1.1.0.min.js" %>
+    <%= wicked_pdf_javascript_include_tag "searchable-run-table" %>
+    <%= wicked_pdf_javascript_include_tag "searchable-run" %>
+
+</body>
+</html>

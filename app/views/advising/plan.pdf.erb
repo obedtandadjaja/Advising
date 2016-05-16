@@ -1,0 +1,81 @@
+<h5><b>Course Schedule</b></h5>
+<p>Name: <%= @current_user.name %></p>
+<p>Major:
+	<% if @current_user.major.any? %>
+        <% @current_user.major.each do |major| %>
+        	<% if @current_user.major.first == major %>
+            	<%= major.name %>
+            <% else %>
+            	, <%= major.name %>
+            <% end %>
+        <% end %>
+    <% else %>
+        Undecided
+    <% end %>
+</p>
+<p>Minor:
+	<% if @current_user.minor.any? %>
+        <% @current_user.minor.each do |minor| %>
+        	<% if @current_user.minor.first == minor %>
+            	<%= minor.name %>
+            <% else %>
+            	, <%= minor.name %>
+            <% end %>
+        <% end %>
+    <% else %>
+        None
+    <% end %>
+</p>
+<p>Concentration:
+	<% if @current_user.concentration.any? %>
+        <% @current_user.concentration.each do |concentration| %>
+        	<% if @current_user.concentration.first == concentration %>
+            	<%= concentration.name %>
+            <% else %>
+            	, <%= concentration.name %>
+            <% end %>
+        <% end %>
+    <% else %>
+        None
+    <% end %>
+</p>
+<p>Generated at <%= Time.now %></p>
+<br>
+<% @semesters.each_slice(2) do |semester1, semester2| %>
+<div class="row">
+	<div class="col xs6 s6 l6 m6">
+		<p><b><%= semester1 %></b></p>
+		<hr>
+		<p>
+		<% @plan.course.each do |course| %>
+	        <% if PlansCourse.where(course_id: course.id, plan_id: @plan.id).first.taken_planned == semester1 %>
+	                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+	        <% end %>
+	    <% end %>
+		</p>
+		<p><b>Total Hours: <%= @user_semester_hours["#{semester1}"] ? @user_semester_hours["#{semester1}"] : 0 %></b></p>
+    </div>
+    <div class="col" style="width: 43%">
+    	<p><b><%= semester2 %></b></p>
+    	<hr>
+    	<p>
+		<% @plan.course.each do |course| %>
+	        <% if PlansCourse.where(course_id: course.id, plan_id: @plan.id).first.taken_planned == semester1 %>
+	                <%= course.subject %> <%= course.course_number %> - <%= course.title %>
+	        <% end %>
+	    <% end %>
+		</p>
+		<p><b>Total Hours: <%= @user_semester_hours["#{semester1}"] ? @user_semester_hours["#{semester1}"] : 0 %></b></p>
+    </div>
+</div>
+<br>
+<% end %>
+
+<p><b>Total schedule hour:
+	<% @total_hours = 0 %>
+	<% @semesters.each do |s| %>
+		<% @total_hours += @user_semester_hours["#{s}"] %>
+	<% end %>
+	<%= @total_hours %>
+	</b>
+</p>
