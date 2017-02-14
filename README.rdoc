@@ -1,4 +1,13 @@
-== README
+== Covenant College Course Scheduler
+
+A Couse Scheduler web application I made for my college so that students can schedule their classes without their advisors. I made this using Ruby on Rails and experimented with Google's new materialize design pattern, which I grow to love. 
+
+This project is hosted on heroku at https://covenantadvising.herokuapp.com
+
+== Screenshot
+rdoc-image:https://github.com/obedtandadjaja/Advising/blob/master/Screenshot%202017-02-14%2000.04.00.png
+
+== For Developers
 
 Email me for any errors: obed.tandadjaja@gmail.com or obed.tandadjaja@covenant.edu
 
